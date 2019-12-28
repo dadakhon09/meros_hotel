@@ -7,7 +7,7 @@ from django.utils.text import slugify
 from adminka.tours.get_icons import Icons
 
 
-class VillaImage(models.Model):
+class RoomImage(models.Model):
     image = models.ImageField(upload_to='villas', null=True, blank=True)
     villa = models.ForeignKey('Villa', on_delete=models.CASCADE)
 
@@ -19,28 +19,28 @@ class VillaImage(models.Model):
         return self.image.name or 'asd'
 
 
-class VillaServiceCategory(models.Model):
-    title = JSONField()
+# class RoomServiceCategory(models.Model):
+#     title = JSONField()
+#
+#     class Meta:
+#         db_table = 'villa_service_categories'
+#         ordering = ['-id']
+#
+#     def __str__(self):
+#         return self.title['title_en'] or 'asd'
 
-    class Meta:
-        db_table = 'villa_service_categories'
-        ordering = ['-id']
 
-    def __str__(self):
-        return self.title['title_en'] or 'asd'
-
-
-class VillaService(models.Model):
-    title = JSONField()
-    category = models.ForeignKey(VillaServiceCategory, on_delete=models.SET_NULL, null=True)
-    villas = models.ManyToManyField('Villa', related_name='v_services')
-
-    class Meta:
-        db_table = 'villa_services'
-        ordering = ['-id']
-
-    def __str__(self):
-        return self.title['title_en'] or 'asd'
+# class VillaService(models.Model):
+#     title = JSONField()
+#     category = models.ForeignKey(VillaServiceCategory, on_delete=models.SET_NULL, null=True)
+#     villas = models.ManyToManyField('Villa', related_name='v_services')
+#
+#     class Meta:
+#         db_table = 'villa_services'
+#         ordering = ['-id']
+#
+#     def __str__(self):
+#         return self.title['title_en'] or 'asd'
 
 
 STATUS = (
@@ -49,7 +49,7 @@ STATUS = (
 )
 
 
-class Villa(models.Model):
+class Room(models.Model):
     title = JSONField()
     address = JSONField(null=True)
     description = JSONField(null=True)
@@ -70,7 +70,7 @@ class Villa(models.Model):
         return self.title['title_en'] or 'asd'
 
 
-@receiver(post_save, sender=Villa)
+@receiver(post_save, sender=Room)
 def get_slug3(sender, instance, created, **kwargs):
     if created:
         slug = slugify(instance.title['title_en'])

@@ -5,7 +5,7 @@ from django.urls import reverse
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.views.decorators.csrf import csrf_exempt
 
-from adminka.model.villa import Villa, VillaService, VillaServiceCategory, VillaImage
+from adminka.model.room import Villa, VillaService, VillaServiceCategory, VillaImage
 
 
 class AdminVillasView(View):
