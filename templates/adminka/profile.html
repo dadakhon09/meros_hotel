@@ -1,0 +1,99 @@
+{% extends 'adminka/_base.html' %}
+{% load static i18n %}
+
+{% block head %}
+    <link href="{% static 'adminka/css/pages/tab-page.css' %}" rel="stylesheet">
+    <link href="{% static 'adminka/assets/plugins/uploader/css/fileinput.css' %}" media="all" rel="stylesheet"
+          type="text/css"/>
+    <link href="{% static 'adminka/assets/plugins/uploader/themes/explorer-fas/theme.css' %}" media="all"
+          rel="stylesheet" type="text/css"/>
+{% endblock %}
+
+{% block body %}
+
+    <div class="container-fluid">
+        <!-- ============================================================== -->
+        <!-- Start Page Content -->
+        <!-- ============================================================== -->
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <form action="{% url 'profile-update' %}" method="post">{% csrf_token %}
+                            <div class="p-20">
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-3 text-right">
+                                            <label for="login" class="control-label">{% trans 'Login' %}</label>
+                                        </div>
+                                        <div class="col-md-9">
+                                            <input type="text" id="login" class="form-control" name="username"
+                                                   value="{{ request.user.username }}" placeholder=""
+                                                   autocomplete="off">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-3 text-right">
+                                            <label for="old_pass" class="control-label">{% trans 'Old password' %}</label>
+                                        </div>
+                                        <div class="col-md-9">
+                                            <input type="text" id="old_pass" class="form-control" name="old_password"
+                                                   placeholder="" autocomplete="off">
+                                            <h4 style="color: red">{% if error_1 %}{% trans 'Old password is not correct' %}{% endif %}</h4>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-3 text-right">
+                                            <label for="new_pass" class="control-label">{% trans 'New password' %}</label>
+                                        </div>
+                                        <div class="col-md-9">
+                                            <input type="text" id="new_pass" class="form-control" name="new_password"
+                                                   placeholder="" autocomplete="off">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-3 text-right">
+                                            <label for="confirm_pass" class="control-label">{% trans 'Confirm password' %}</label>
+                                        </div>
+                                        <div class="col-md-9">
+                                            <input type="text" id="confirm_pass" class="form-control"
+                                                   name="confirm_pass" placeholder="" autocomplete="off">
+                                            <h4 style="color: red">{% if error_2 %}{% trans 'Passwords do not match' %}{% endif %}</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="offset-sm-3 col-md-9">
+                                            <button id="updateButton" type="submit"
+                                                    class="btn btn-success"><i
+                                                    class="fa fa-check"></i> {% trans 'Save' %}
+                                            </button>
+                                            <a href="{% url 'adminka-index' %}"><button type="button" class="btn btn-inverse">{% trans 'Cancel' %}</button></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- End PAge Content -->
+        <!-- ============================================================== -->
+
+    </div>
+
+{% endblock %}
+
+{% block js %}
+
+{% endblock %}

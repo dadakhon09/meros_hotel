@@ -1,0 +1,130 @@
+{% extends 'adminka/_base.html' %}
+{% load static i18n %}
+{% block head %}
+{% endblock %}
+{% block body %}
+    <div class="container-fluid">
+        <!-- ============================================================== -->
+        <!-- Start Page Content -->
+        <!-- ============================================================== -->
+        {% get_current_language as LANGUAGE_CODE %}
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="card-main__title main-title">
+                            <h2>{% trans 'Sight Categories' %}</h2>
+                            {% if s_categories %}
+                            <div class="custom-search">
+                                <svg style="display: none">
+                                  <symbol id="magnify" viewBox="0 0 18 18" height="100%" width="100%">
+                                    <path d="M12.5 11h-.8l-.3-.3c1-1.1 1.6-2.6 1.6-4.2C13 2.9 10.1 0          6.5 0S0 2.9 0 6.5 2.9 13 6.5 13c1.6 0 3.1-.6 4.2-1.6l.3.3v.8l5 5          1.5-1.5-5-5zm-6 0C4 11 2 9 2 6.5S4 2 6.5 2 11 4 11 6.5 9 11 6.5            11z" fill="#fff" fill-rule="evenodd"/>
+                                  </symbol>
+                                </svg>
+                                
+                                <form action="{% url 'sight-categories' %}" method="get">
+                                    <div class="search-bar">
+                                      <input type="text" class="input" name="q" placeholder="&nbsp;">
+                                      <span class="label">Title</span>
+                                      <span class="highlight"></span>
+                                      
+                                      <button class="search-btn" style="border: none;">
+                                           <svg class="icon icon-18">
+                                             <use xlink:href="#magnify"></use>
+                                            </svg>
+                                       </button>
+                                      </div>
+                                </form>
+                            </div>
+                            {% endif %}
+                            <div>
+                                {% if s_categories.has_other_pages %}
+                                    <ul class="pagination">
+                                        {% if s_categories.has_previous %}
+                                            <li class="page-item"><a class="page-link"
+                                                                     href="?page={{ s_categories.previous_page_number }}">&laquo;</a>
+                                            </li>
+                                        {% else %}
+                                            <li class="page-item disabled"><span class="page-link">&laquo;</span></li>
+                                        {% endif %}
+                                        {% for i in s_categories.paginator.page_range %}
+                                            {% if s_categories.number == i %}
+                                                <li class="page-item active"><span class="page-link">{{ i }} <span
+                                                        class="sr-only">(current)</span></span></li>
+                                            {% else %}
+                                                <li class="page-item"><a class="page-link"
+                                                                         href="?page={{ i }}">{{ i }}</a></li>
+                                            {% endif %}
+                                        {% endfor %}
+                                        {% if s_categories.has_next %}
+                                            <li class="page-item"><a class="page-link"
+                                                                     href="?page={{ s_categories.next_page_number }}">&raquo;</a>
+                                            </li>
+                                        {% else %}
+                                            <li class="page-item disabled"><span class="page-link">&raquo;</span></li>
+                                        {% endif %}
+                                    </ul>
+                                {% endif %}
+                                <a href="{% url 'sight-categories-create' %}" type="button"
+                                   class="btn btn-info m-t-10 float-right">{% trans 'Add' %}</a>
+                            </div>
+                        </div>
+                        <!-- Add Contact Popup Model -->
+                        <div class="table-responsive">
+                            <table id="demo-foo-addrow" class="table table-bordered m-t-30 table-hover contact-list"
+                                   data-paging="true" data-paging-size="7">
+                                <thead>
+                                <tr>
+                                    <th width="1%">#</th>
+                                    <th width="86%">{% trans 'Title' %}</th>
+                                    <th width="1%"></th>
+                                    <th width="1%"></th>
+                                </tr>
+                                <tbody>
+                                {% for c in s_categories %}
+                                    <tr>
+                                        <td>{{ c.id }}</td>
+                                        <td>
+                                            <a href="{% url 'sight-categories-update' c.id %}">
+                                                <div>
+                                                    {% if LANGUAGE_CODE == 'en' %}
+                                                        <span>{{ c.title.title_en }}</span>
+                                                    {% elif LANGUAGE_CODE == 'ru' %}
+                                                        <span>{{ c.title.title_ru }}</span>
+                                                    {% endif %}
+                                                </div>
+                                            </a>
+                                        </td>
+                                        <td><a href="{% url 'sight-categories-update' c.id %}" class="label label-info"><i
+                                                class="fas fa-edit"></i>{% trans 'Edit' %}</a></td>
+                                        <td><a href="" data-id="{{ c.id }}" id=""
+                                               class="removeButton label label-danger"><i class="fas fa-trash"></i></a></td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- End PAge Content -->
+        <!-- ============================================================== -->
+        <div id="myModal" class="modal-custom">
+            <!-- Modal content -->
+            <div class="modal-content-custom">
+                <span class="close">&times;</span>
+                <h2>{% trans 'Are you sure you want to delete?' %}</h2>
+                <a id="modalDeleteButton" href="#">
+                    <button type="button" class="btn btn-success">
+                        Yes
+                    </button>
+                </a>
+                <button type="button" class="btn btn-danger No">
+                    No
+                </button>
+            </div>
+        </div>
+    </div>
+{% endblock %}

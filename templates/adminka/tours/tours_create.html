@@ -1,0 +1,548 @@
+{% extends 'adminka/_base.html' %}
+{% load static i18n %}
+{% block head %}
+    <link href="{% static 'adminka/css/pages/tab-page.css' %}" rel="stylesheet">
+    <link href="{% static 'adminka/assets/plugins/uploader/css/fileinput.css' %}" media="all" rel="stylesheet"
+          type="text/css"/>
+    <link href="{% static 'adminka/assets/plugins/uploader/themes/explorer-fas/theme.css' %}" media="all"
+          rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretty-checkbox@3.0/dist/pretty-checkbox.min.css">
+{% endblock %}
+{% block body %}
+    <div class="container-fluid">
+        <!-- ============================================================== -->
+        <!-- Start Page Content -->
+        <!-- ============================================================== -->
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <form action="{% url 'tours-create' %}" method="post"
+                              enctype="multipart/form-data">{% csrf_token %}
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#1tab"
+                                                        role="tab"><span class="hidden-sm-up"><i
+                                        class="ti-home"></i></span> <span
+                                        class="hidden-xs-down">{% trans 'English' %}</span></a></li>
+                                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#2tab" role="tab"><span
+                                        class="hidden-sm-up"><i class="ti-email"></i></span> <span
+                                        class="hidden-xs-down">{% trans 'Arabic' %}</span></a></li>
+                                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#3tab" role="tab"><span
+                                        class="hidden-sm-up"><i class="ti-email"></i></span> <span
+                                        class="hidden-xs-down">{% trans 'Persian' %}</span></a></li>
+                                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#4tab" role="tab"><span
+                                        class="hidden-sm-up"><i class="ti-email"></i></span> <span
+                                        class="hidden-xs-down">{% trans 'Indian' %}</span></a></li>
+                                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#5tab" role="tab"><span
+                                        class="hidden-sm-up"><i class="ti-email"></i></span> <span
+                                        class="hidden-xs-down">{% trans 'Russian' %}</span></a></li>
+                                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#6tab" role="tab"><span
+                                        class="hidden-sm-up"><i class="ti-email"></i></span> <span
+                                        class="hidden-xs-down">{% trans 'Chinese' %}</span></a></li>
+                            </ul>
+                            <!-- Tab panes -->
+                            <div class="tab-content tabcontent-border">
+                                <div class="tab-pane active" id="1tab" role="tabpanel">
+                                    <div class="p-20">
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-md-3 text-right">
+                                                    <label for="title_en" class="control-label">{% trans 'Title' %}
+                                                        (en)</label>
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <input type="text" id="title_en" class="form-control"
+                                                           name="title_en" placeholder="" autocomplete="off" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-md-3 text-right">
+                                                    <label for="plan_en" class="control-label">{% trans 'Plan' %}
+                                                        (en)</label>
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <textarea type="text" id="plan_en" class="moxiecut form-control"
+                                                              name="plan_en"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-md-3 text-right">
+                                                    <label for="description_en"
+                                                           class="control-label">{% trans 'Description' %}(en)</label>
+                                                </div>
+                                                <div class="col-md-9">
+                                                <textarea type="text" rows="10" class="form-control" id="description_en"
+                                                          name="description_en" autocomplete="off"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-md-3 text-right">
+                                                    <label for="route_en"
+                                                           class="control-label">{% trans 'Route' %}(en)</label>
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <input type="text" class="form-control" id="route_en"
+                                                           name="route_en" autocomplete="off">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane p-20" id="2tab" role="tabpanel">
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-3 text-right">
+                                                <label for="title_ar"
+                                                       class="control-label">{% trans 'Title' %}(ar)</label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <input type="text" id="title_ar" class="form-control" name="title_ar"
+                                                       placeholder="" autocomplete="off">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-3 text-right">
+                                                <label for="plan_ar"
+                                                       class="control-label">{% trans 'Plan' %}(ar)</label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <textarea type="text" id="plan_ar" class="moxiecut form-control"
+                                                          name="plan_ar"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-3 text-right">
+                                                <label for="description_ar"
+                                                       class="control-label">{% trans 'Description' %}(ar)</label>
+                                            </div>
+                                            <div class="col-md-9">
+                                            <textarea type="text" rows="10" class="form-control" id="description_ar"
+                                                      name="description_ar" autocomplete="off"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-3 text-right">
+                                                <label for="route_ar"
+                                                       class="control-label">{% trans 'Route' %}(ar)</label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control" id="route_ar" name="route_ar"
+                                                       autocomplete="off">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane p-20" id="3tab" role="tabpanel">
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-3 text-right">
+                                                <label for="title_fa"
+                                                       class="control-label">{% trans 'Title' %}(fa)</label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <input type="text" id="title_fa" class="form-control" name="title_fa"
+                                                       placeholder="" autocomplete="off">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-3 text-right">
+                                                <label for="plan_fa"
+                                                       class="control-label">{% trans 'Plan' %}(fa)</label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <textarea type="text" id="plan_fa" class="moxiecut form-control"
+                                                          name="plan_fa"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-3 text-right">
+                                                <label for="description_fa"
+                                                       class="control-label">{% trans 'Description' %}(fa)</label>
+                                            </div>
+                                            <div class="col-md-9">
+                                            <textarea type="text" rows="10" class="form-control" id="description_fa"
+                                                      name="description_fa" autocomplete="off"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-3 text-right">
+                                                <label for="route_fa"
+                                                       class="control-label">{% trans 'Route' %}(fa)</label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control" id="route_fa" name="route_fa"
+                                                       autocomplete="off">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane p-20" id="4tab" role="tabpanel">
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-3 text-right">
+                                                <label for="title_hi"
+                                                       class="control-label">{% trans 'Title' %}(hi)</label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <input type="text" id="title_hi" class="form-control" name="title_hi"
+                                                       placeholder="" autocomplete="off">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-3 text-right">
+                                                <label for="plan_hi"
+                                                       class="control-label">{% trans 'Plan' %}(hi)</label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <textarea type="text" id="plan_hi" class="moxiecut form-control"
+                                                          name="plan_hi"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-3 text-right">
+                                                <label for="description_hi"
+                                                       class="control-label">{% trans 'Description' %}(hi)</label>
+                                            </div>
+                                            <div class="col-md-9">
+                                            <textarea type="text" rows="10" class="form-control" id="description_hi"
+                                                      name="description_hi" autocomplete="off"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-3 text-right">
+                                                <label for="route_hi"
+                                                       class="control-label">{% trans 'Route' %}(hi)</label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control" id="route_hi" name="route_hi"
+                                                       autocomplete="off">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane p-20" id="5tab" role="tabpanel">
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-3 text-right">
+                                                <label for="title_ru"
+                                                       class="control-label">{% trans 'Title' %}(ru)</label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <input type="text" id="title_ru" class="form-control" name="title_ru"
+                                                       placeholder="" autocomplete="off">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-3 text-right">
+                                                <label for="plan_ru"
+                                                       class="control-label">{% trans 'Plan' %}(ru)</label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <textarea type="text" id="plan_ru" class="moxiecut form-control"
+                                                          name="plan_ru"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-3 text-right">
+                                                <label for="description_ru"
+                                                       class="control-label">{% trans 'Description' %}(ru)</label>
+                                            </div>
+                                            <div class="col-md-9">
+                                            <textarea type="text" rows="10" class="form-control" id="description_ru"
+                                                      name="description_ru" autocomplete="off"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-3 text-right">
+                                                <label for="route_ru"
+                                                       class="control-label">{% trans 'Route' %}(ru)</label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control" id="route_ru" name="route_ru"
+                                                       autocomplete="off">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane p-20" id="6tab" role="tabpanel">
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-3 text-right">
+                                                <label for="title_zh"
+                                                       class="control-label">{% trans 'Title' %}(zh)</label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <input type="text" id="title_zh" class="form-control" name="title_zh"
+                                                       placeholder="" autocomplete="off">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-3 text-right">
+                                                <label for="plan_zh" class="control-label">{% trans 'Plan' %}
+                                                    (zh)</label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <textarea type="text" id="plan_zh" class="moxiecut form-control"
+                                                          name="plan_zh"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-3 text-right">
+                                                <label for="description_zh"
+                                                       class="control-label">{% trans 'Description' %}(zh)</label>
+                                            </div>
+                                            <div class="col-md-9">
+                                            <textarea type="text" rows="10" class="form-control" id="description_zh"
+                                                      name="description_zh" autocomplete="off"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-md-3 text-right">
+                                                <label for="route_zh"
+                                                       class="control-label">{% trans 'Route' %}(zh)</label>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control" id="route_zh" name="route_zh"
+                                                       autocomplete="off">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="p-20">
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-3 text-right">
+                                            <label for="file" class="control-label">{% trans 'Images' %}</label>
+                                        </div>
+                                        <div class="col-md-9">
+                                            <div class="file-loading">
+                                                <input id="kv-explorer" type="file" name="image" multiple>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-3 text-right">
+                                            <label for="duration"
+                                                   class="control-label">{% trans 'Duration(in days)' %}</label>
+                                        </div>
+                                        <div class="col-md-9">
+                                            <input type="number" min="0" oninput="validity.valid||(value='');"
+                                                   class="form-control" id="duration" name="duration"
+                                                   autocomplete="off">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-3 text-right">
+                                            <label for="num_people"
+                                                   class="control-label">{% trans 'Number of people' %}</label>
+                                        </div>
+                                        <div class="col-md-9">
+                                            <input type="number" min="0" oninput="validity.valid||(value='');"
+                                                   class="form-control" id="num_people" name="num_people"
+                                                   autocomplete="off">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-3 text-right">
+                                            <label for="price"
+                                                   class="control-label">{% trans 'Price(in dollars)' %}</label>
+                                        </div>
+                                        <div class="col-md-9">
+                                            <input type="number" min="0" oninput="validity.valid||(value='');"
+                                                   class="form-control" id="price" name="price"
+                                                   autocomplete="off">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-3 text-right">
+                                            <label class="control-label">{% trans 'Facilities' %}</label>
+                                        </div>
+                                        <div class="col-md-9">
+                                            <div class="row">
+                                                {% for f in t_facilities %}
+                                                    <div class="col-6 my-2 ml-3 pretty p-default">
+                                                        <input type="checkbox" class="" id="t_facility{{ f.id }}"
+                                                               name="t_facilities" value="{{ f.id }}">
+                                                        <div class="state p-primary"><label
+                                                                for="t_facility{{ f.id }}">{{ f.title.title_en }}</label>
+                                                        </div>
+
+                                                    </div>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-3 text-right">
+                                            <label class="control-label">{% trans 'Expenses' %}</label>
+                                        </div>
+                                        <div class="col-md-9">
+                                            <div class="row">
+                                                {% for e in t_expenses %}
+                                                    <div class="col-6 my-2 ml-3 pretty p-default">
+                                                        <input type="checkbox" class="" id="t_expense{{ e.id }}"
+                                                               name="t_expenses" value="{{ e.id }}">
+                                                        <div class="state p-primary"><label
+                                                                for="t_expense{{ e.id }}">{{ e.title.title_en }}</label>
+                                                        </div>
+                                                    </div>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-3 text-right">
+                                            <label for="guide" class="control-label">{% trans 'Guide' %}</label>
+                                        </div>
+                                        <div class="col-md-9">
+                                            <select name="guide" id="guide" class="form-control custom-select">
+                                                {% if LANGUAGE_CODE == 'en' %}
+                                                    <option value="1">Yes</option>
+                                                    <option value="0">No</option>
+                                                {% elif LANGUAGE_CODE == 'ru' %}
+                                                    <option value="1">Да</option>
+                                                    <option value="0">Нет</option>
+                                                {% endif %}
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="offset-sm-3 col-md-9">
+                                            <button id="saveBtn" type="submit" class="btn btn-success"><i
+                                                    class="fa fa-check"></i>{% trans 'Save' %}
+                                            </button>
+                                            <button type="button" class="btn btn-inverse"
+                                                    id="cancelBtn">{% trans 'Cancel' %}</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Page Content -->
+        <!-- ============================================================== -->
+        <div id="myModal" class="modal-custom">
+            <!-- Modal content -->
+            <div class="modal-content-custom">
+                <span class="close">&times;</span>
+                <h2>{% trans 'Are you sure you want to cancel?' %}</h2>
+                <a href="{% url 'adminka-tours' %}">
+                    <button type="button" class="btn btn-success">
+                        Yes
+                    </button>
+                </a>
+                <button type="button" class="btn btn-danger No">
+                    No
+                </button>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block js %}
+    <script>document.getElementById("title_en").focus();</script>
+    <script src="{% static 'adminka/assets/tinymce/js/tinymce/tinymce.min.js' %}"></script>
+    <script>
+        tinymce.init({
+            selector: "textarea.moxiecut",
+            theme: "modern",
+            width: '100%',
+            height: 300,
+            plugins: [
+                'advlist autolink lists link image charmap preview hr anchor pagebreak',
+                'searchreplace wordcount visualblocks visualchars code',
+                'insertdatetime nonbreaking table contextmenu directionality',
+                'emoticons template paste textcolor colorpicker textpattern imagetools codesample'
+            ],
+            toolbar: 'insertfile undo redo | bold italic sizeselect fontsizeselect | hr alignleft aligncenter alignjustify | bullist numlist | emoticons | code',
+            fontsize_formats: "8pt 10pt 12pt 14pt 18pt 24pt 36pt",
+            branding: false,
+            menubar: false
+        });
+    </script>
+    <script src="{% static 'adminka/assets/plugins/uploader/js/plugins/piexif.js' %}" type="text/javascript"></script>
+    <script src="{% static 'adminka/assets/plugins/uploader/js/plugins/sortable.js' %}" type="text/javascript"></script>
+    <script src="{% static 'adminka/assets/plugins/uploader/js/fileinput.js' %}" type="text/javascript"></script>
+    <script src="{% static 'adminka/assets/plugins/uploader/js/locales/ru.js' %}" type="text/javascript"></script>
+    <script src="{% static 'adminka/assets/plugins/uploader/js/locales/uz.js' %}" type="text/javascript"></script>
+    <script src="{% static 'adminka/assets/plugins/uploader/themes/fas/theme.js' %}" type="text/javascript"></script>
+    <script src="{% static 'adminka/assets/plugins/uploader/themes/explorer-fas/theme.js' %}"
+            type="text/javascript"></script>
+    <script>
+        $(document).ready(function () {
+            $("#kv-explorer").fileinput({
+                'theme': 'explorer-fas',
+                language: 'en',
+                allowedFileExtensions: ['jpg', 'jpeg', 'png', 'gif', 'svg'],
+                showUpload: true,
+                showCaption: true,
+                overwriteInitial: false,
+                initialPreviewAsData: true,
+                initialPreview: [
+                    /*"http://lorempixel.com/1920/1080/nature/1",
+                    "http://lorempixel.com/1920/1080/nature/2",
+                    "http://lorempixel.com/1920/1080/nature/3"*/
+                ],
+                initialPreviewConfig: [
+                    /*{caption: "nature-1.jpg", size: 329892, width: "120px", url: "{$url}", key: 1},
+                    {caption: "nature-2.jpg", size: 872378, width: "120px", url: "{$url}", key: 2},
+                    {caption: "nature-3.jpg", size: 632762, width: "120px", url: "{$url}", key: 3}*/
+                ]
+            });
+        });
+    </script>
+{% endblock %}

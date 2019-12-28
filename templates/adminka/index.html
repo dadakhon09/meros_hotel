@@ -1,0 +1,62 @@
+{% extends 'adminka/_base.html' %}
+{% load static i18n %}
+{% block head %}
+<style>
+.sss {
+    margin-top: 30vh;
+
+}
+.counter {
+    font-size: 100px;
+}
+</style>
+{% endblock %}
+{% block body %}
+{% get_current_language as LANGUAGE_CODE %}
+<div class="container text-center">
+    <div class="row sss">
+        <div class="col-md-3">
+            <h1><span class="counter">{{ tours }}</span></h1>
+            <a href="{% url 'adminka-tours' %}">
+                <h3>{% trans 'Tours' %}</h3>
+            </a>
+        </div>
+        <div class="col-md-2">
+            <h1><span class="counter">{{ villas }}</span></h1>
+            <a href="{% url 'adminka-villas' %}">
+                <h3>{% trans 'Villas' %}</h3>
+            </a>
+        </div>
+        <div class="col-md-2">
+            <h1><span class="counter">{{ sights }}</span></h1>
+            <a href="{% url 'adminka-sights' %}">
+                {% if LANGUAGE_CODE == 'ru' %}<h3>Достоприме-<br>чательности</h3>{% else %} <h3>Sights</h3>{% endif %}
+            </a>
+        </div>
+        <div class="col-md-2">
+            <h1><span class="counter">{{news}}</span></h1>
+            <a href="{% url 'adminka-news' %}">
+                <h3>{% trans 'News' %}</h3>
+            </a>
+        </div>
+        <div class="col-md-3">
+            <h1><span class="counter ">{{cars}}</span></h1>
+            <a href="{% url 'adminka-cars' %}">
+                <h3>{% trans 'Cars' %}</h3>
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block js %}
+<script src="{% static 'adminka/js/jquery.waypoints.js' %}"></script>
+<script src="{% static 'adminka/js/jquery.counterup.js' %}"></script>
+<script>
+jQuery(document).ready(function($) {
+    $('.counter').counterUp({
+        delay: 30,
+        time: 800
+    });
+});
+</script>
+{% endblock %}

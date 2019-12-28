@@ -1,0 +1,263 @@
+{% load static i18n %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <title>OceanView Admin</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="{% static 'adminka/assets/plugins/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'adminka/assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css' %}" rel="stylesheet">
+    <!-- This page CSS -->
+    {% block head %}{% endblock %}
+    <!-- Custom CSS -->
+    <link href="{% static 'adminka/css/style.css' %}" rel="stylesheet">
+    <!-- You can change the theme colors from here -->
+    <link href="{% static 'adminka/css/colors/default.css' %}" id="theme" rel="stylesheet">
+    <link href="{% static 'adminka/css/new.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'main/fontisto-master/css/fontisto/fontisto.min.css' %}">
+
+</head>
+
+<body class="fix-header fix-sidebar card-no-border">
+<!-- ============================================================== -->
+<!-- Preloader - style you can find in spinners.css -->
+<!-- ============================================================== -->
+<div class="preloader">
+    <div class="loader">
+        <div class="loader__figure"></div>
+        <p class="loader__label">Ocean View Admin</p>
+    </div>
+</div>
+<!-- ============================================================== -->
+<!-- Main wrapper - style you can find in pages.scss -->
+<!-- ============================================================== -->
+<div id="main-wrapper">
+    <!-- ============================================================== -->
+    <!-- Topbar header - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+    <header class="topbar">
+        <nav class="navbar top-navbar navbar-expand-md navbar-light">
+            <!-- ============================================================== -->
+            <!-- Logo -->
+            <!-- ============================================================== -->
+            <div class="navbar-header">
+                <a class="navbar-brand" href="{% url 'adminka-index' %}">
+                    <!-- Logo icon -->
+                    <b>
+                        <!-- Dark Logo icon -->
+                        <img src="{% static 'adminka/assets/images/logo-icon.svg' %}" alt="homepage" class="logo"/>
+                    </b>
+                    <!--End Logo icon -->
+                    <!-- Logo text -->
+                    <span>
+                            <img src="{% static 'adminka/assets/images/logo-text.svg' %}" alt="homepage"
+                                 class="logo-text"/>
+                        </span>
+                </a>
+            </div>
+            <!-- ============================================================== -->
+            <!-- End Logo -->
+            <!-- ============================================================== -->
+            <div class="navbar-collapse">
+                <!-- ============================================================== -->
+                <!-- toggle and nav items -->
+                <!-- ============================================================== -->
+                <ul class="navbar-nav mr-auto">
+                    <!-- This is  -->
+                    <li class="nav-item"><a class="nav-link nav-toggler hidden-md-up waves-effect waves-dark"
+                                            href="javascript:void(0)"><i class="ti-menu"></i></a></li>
+                    <li class="nav-item"><a class="nav-link sidebartoggler hidden-sm-down waves-effect waves-dark"
+                                            href="javascript:void(0)"><i class="ti-menu"></i></a></li>
+                </ul>
+                <!-- ============================================================== -->
+                <!-- User profile and search -->
+                <!-- ============================================================== -->
+                <ul class="navbar-nav mr-2">
+                    <a class="btn btn-outline-success " target="_blank"
+                       href="{% url 'index' %}">{% trans 'View Website' %}</a>
+                </ul>
+                <ul class="navbar-nav my-lg-0">
+                    <!-- ============================================================== -->
+                    {% get_current_language as LANGUAGE_CODE %}
+                    <!-- ============================================================== -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle waves-effect waves-dark" href="#" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">
+                            <i class="flag-icon flag-icon-{% if LANGUAGE_CODE == 'en' %}us{% elif LANGUAGE_CODE == 'ru' %}ru{% endif %}"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right animated bounceInDown">
+                            <a class="dropdown-item {% if LANGUAGE_CODE == 'en' %}selected{% endif %}"
+                               href="{% if LANGUAGE_CODE == 'en' %}#{% else %}/en{{ request.get_full_path|slice:'3:' }}{% endif %}"><i
+                                    class="flag-icon flag-icon-us"></i> {% trans 'English' %}</a>
+                            <a class="dropdown-item {% if LANGUAGE_CODE == 'ru' %}selected{% endif %}"
+                               href="{% if LANGUAGE_CODE == 'ru' %}#{% else %}/ru{{ request.get_full_path|slice:'3:' }}{% endif %}"><i
+                                    class="flag-icon flag-icon-ru"></i> {% trans 'Russian' %}</a>
+                        </div>
+                    </li>
+                    <!-- ============================================================== -->
+                    <!-- Profile -->
+                    <!-- ============================================================== -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle waves-effect waves-dark" href="#" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false"><img
+                                src="{% static 'adminka/assets/images/profile.png' %}" alt="user" class="profile-pic"/></a>
+                        <div class="dropdown-menu dropdown-menu-right animated flipInY">
+                            <ul class="dropdown-user">
+                                <li>
+                                    <div class="dw-user-box">
+                                        <div class="u-img"><img src="{% static 'adminka/assets/images/profile.png' %}"
+                                                                alt="user">
+                                        </div>
+                                        <div class="u-text">
+                                            <h4>{{ request.user.username }}</h4>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="{% url 'adminka-profile' %}"><i
+                                        class="ti-user"></i> {{ request.user.username }}
+                                </a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="{% url 'adminka-logout' %}"><i
+                                        class="fa fa-power-off"></i> {% trans 'Logout' %}</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <!-- ============================================================== -->
+    <!-- End Topbar header -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Left Sidebar - style you can find in sidebar.scss  -->
+    <!-- ============================================================== -->
+    <aside class="left-sidebar">
+        <!-- Sidebar scroll-->
+        <div class="scroll-sidebar">
+            <!-- Sidebar navigation-->
+            <nav class="sidebar-nav">
+                <ul id="sidebarnav">
+                    <li class="user-profile"><a class="has-arrow waves-effect waves-dark" href="#"
+                                                aria-expanded="false"><img
+                            src="{% static 'adminka/assets/images/profile.png' %}" alt="user"/><span
+                            class="hide-menu">{% trans 'Admin' %} </span></a>
+                        <ul aria-expanded="false" class="collapse">
+                            <li><a href="{% url 'adminka-profile' %}">{% trans 'My profile' %}</a></li>
+                            <li><a href="{% url 'adminka-logout' %}">{% trans 'logout' %}</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-devider"></li>
+                    <li>
+                        <a href="{% url 'adminka-about' %}"><i class="mdi mdi-information-outline"></i> <span
+                                class="hide-menu">{% trans 'About' %}</span></a>
+                    </li>
+                    <li>
+                        <a href="{% url 'adminka-tours' %}"><i class="mdi mdi-routes"></i> <span
+                                class="hide-menu">{% trans 'Tours' %}</span></a>
+                    </li>
+                    <li>
+                        <a href="{% url 'adminka-sights' %}"><i class="mdi mdi-city"></i>
+                            <span class="hide-menu" style="{% if LANGUAGE_CODE == 'ru' %} font-size: 83%;{% endif %}">
+                                {% trans 'Sights' %}</span></a>
+                    </li>
+                    <li>
+                        <a href="{% url 'adminka-villas' %}"><i class="mdi mdi-hotel"></i> <span
+                                class="hide-menu">{% trans 'Villas' %}</span></a>
+                    </li>
+                    <li>
+                        <a href="{% url 'adminka-cars' %}"><i class="mdi mdi-car"></i> <span
+                                class="hide-menu">{% trans 'Cars' %}</span></a>
+                    </li>
+                    <li>
+                        <a href="{% url 'adminka-news' %}"><i class="mdi mdi-newspaper"></i> <span
+                                class="hide-menu">{% trans 'News' %}</span></a>
+                    </li>
+                    <li class="nav-devider"></li>
+                    <li>
+                        <a href="{% url 'tour-expenses' %}"><i class="mdi mdi-coin"></i> <span
+                                class="hide-menu">{% trans 'Tour Expenses' %}</span></a>
+                    </li>
+                    <li>
+                        <a href="{% url 'tour-facilities' %}"><i class="mdi mdi-tooltip-text"></i> <span
+                                class="hide-menu">{% trans 'Tour Facilities' %}</span></a>
+                    </li>
+                    <li>
+                        <a href="{% url 'sight-categories' %}"><i class="mdi mdi-notification-clear-all"></i> <span
+                                class="hide-menu">{% trans 'Sight Categories' %}</span></a>
+                    </li>
+                    <li>
+                        <a href="{% url 'villa-services' %}"><i class="mdi mdi-menu"></i> <span
+                                class="hide-menu">{% trans 'Villa Services' %}</span></a>
+                    </li>
+                    <li>
+                        <a href="{% url 'villa-service-categories' %}"><i class="mdi mdi-message-bulleted"></i> <span
+                                class="hide-menu">{% trans 'Villa Service Categories' %}</span></a>
+                    </li>
+                </ul>
+            </nav>
+            <!-- End Sidebar navigation -->
+        </div>
+        <!-- End Sidebar scroll-->
+    </aside>
+    <!-- ============================================================== -->
+    <!-- End Left Sidebar - style you can find in sidebar.scss  -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Page wrapper  -->
+    <!-- ============================================================== -->
+    <div class="page-wrapper">
+        <!-- ============================================================== -->
+        <!-- Container fluid  -->
+        <!-- ============================================================== -->
+        {% block body %}
+        {% endblock %}
+        <!-- ============================================================== -->
+        <!-- End Container fluid  -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- footer -->
+        <!-- ============================================================== -->
+        <footer class="footer"> © 2019 Ocean View Admin Site</footer>
+        <!-- ============================================================== -->
+        <!-- End footer -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Page wrapper  -->
+    <!-- ============================================================== -->
+</div>
+<!-- ============================================================== -->
+<!-- End Wrapper -->
+<!-- ============================================================== -->
+<!-- ============================================================== -->
+<!-- All Jquery -->
+<!-- ============================================================== -->
+<script src="{% static 'adminka/assets/plugins/jquery/jquery.min.js' %}"></script>
+<!-- Bootstrap popper Core JavaScript -->
+<script src="{% static 'adminka/assets/plugins/bootstrap/js/popper.min.js' %}"></script>
+<script src="{% static 'adminka/assets/plugins/bootstrap/js/bootstrap.min.js' %}"></script>
+<!-- slimscrollbar scrollbar JavaScript -->
+<script src="{% static 'adminka/js/perfect-scrollbar.jquery.min.js' %}"></script>
+<!--Wave Effects -->
+<script src="{% static 'adminka/js/waves.js' %}"></script>
+<!--Menu sidebar -->
+<script src="{% static 'adminka/js/sidebarmenu.js' %}"></script>
+<!--Custom JavaScript -->
+<script src="{% static 'adminka/js/custom.min.js' %}"></script>
+<script src="{% static 'adminka/js/new.js' %}"></script>
+<!-- ============================================================== -->
+<!-- This page plugins -->
+<!-- ============================================================== -->
+{% block js %}{% endblock %}
+</body>
+
+</html>
