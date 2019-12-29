@@ -9,7 +9,7 @@ from adminka.tours.get_icons import Icons
 
 class RoomImage(models.Model):
     image = models.ImageField(upload_to='villas', null=True, blank=True)
-    villa = models.ForeignKey('Villa', on_delete=models.CASCADE)
+    villa = models.ForeignKey('Room', on_delete=models.CASCADE)
 
     class Meta:
         db_table = 'villa_images'
@@ -51,16 +51,11 @@ STATUS = (
 
 class Room(models.Model):
     title = JSONField()
-    address = JSONField(null=True)
     description = JSONField(null=True)
     slug = models.SlugField(max_length=255)
-    phone = models.CharField(max_length=255, null=True, blank=True)
     bedroom = models.PositiveIntegerField(null=True, blank=True)
     square_meter = models.PositiveIntegerField(null=True, blank=True)
     status = models.IntegerField(choices=STATUS, null=True, blank=True)
-    d_center = models.PositiveIntegerField(null=True, blank=True)
-    d_airways = models.PositiveIntegerField(null=True, blank=True)
-    d_railways = models.PositiveIntegerField(null=True, blank=True)
 
     class Meta:
         db_table = 'villas'
