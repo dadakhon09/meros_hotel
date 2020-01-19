@@ -12,7 +12,7 @@ from adminka.tours.views import AdminToursView, ToursCreateView, ToursUpdateView
     AdminToursExpensesView, AdminToursFacilitiesView, AdminToursExpensesUpdateView, AdminToursExpensesDeleteView, \
     AdminToursFacilitiesUpdateView, AdminToursFacilitiesDeleteView, AdminToursExpensesCreateView, \
     AdminToursFacilitiesCreateView, tour_image_delete
-from adminka.villas.views import AdminVillasView, VillasCreateView, VillasUpdateView, VillasDeleteView, \
+from adminka.rooms.views import AdminVillasView, VillasCreateView, VillasUpdateView, VillasDeleteView, \
     VillaServicesView, VillaServicesCreateView, VillaServicesUpdateView, VillaServicesDeleteView, \
     VillaServiceCategoriesView, VillaServiceCategoriesCreateView, VillaServiceCategoriesUpdateView, \
     VillaServiceCategoriesDeleteView, villa_image_delete
@@ -58,11 +58,11 @@ urlpatterns = [
     path('tour_facilities/update/<int:id>/', AdminToursFacilitiesUpdateView.as_view(), name='tour-facilities-update'),
     path('tour_facilities/delete/<int:id>/', AdminToursFacilitiesDeleteView.as_view(), name='tour-facilities-delete'),
 
-    path('villas/', AdminVillasView.as_view(), name='adminka-villas'),
-    path('villas/image/delete/', villa_image_delete, name='villa-image-delete'),
-    path('villas/create/', VillasCreateView.as_view(), name='villas-create'),
-    path('villas/update/<int:id>/', VillasUpdateView.as_view(), name='villas-update'),
-    path('villas/delete/<int:id>/', VillasDeleteView.as_view(), name='villas-delete'),
+    path('rooms/', AdminVillasView.as_view(), name='adminka-rooms'),
+    path('rooms/image/delete/', villa_image_delete, name='villa-image-delete'),
+    path('rooms/create/', VillasCreateView.as_view(), name='rooms-create'),
+    path('rooms/update/<int:id>/', VillasUpdateView.as_view(), name='rooms-update'),
+    path('rooms/delete/<int:id>/', VillasDeleteView.as_view(), name='rooms-delete'),
     path('villa_services/', VillaServicesView.as_view(), name='villa-services'),
     path('villa_services/create/', VillaServicesCreateView.as_view(), name='villa-services-create'),
     path('villa_services/update/<int:id>/', VillaServicesUpdateView.as_view(), name='villa-services-update'),

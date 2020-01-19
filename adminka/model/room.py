@@ -4,11 +4,9 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.utils.text import slugify
 
-from adminka.tours.get_icons import Icons
-
 
 class RoomImage(models.Model):
-    image = models.ImageField(upload_to='villas', null=True, blank=True)
+    image = models.ImageField(upload_to='rooms', null=True, blank=True)
     villa = models.ForeignKey('Room', on_delete=models.CASCADE)
 
     class Meta:
@@ -33,7 +31,7 @@ class RoomImage(models.Model):
 # class VillaService(models.Model):
 #     title = JSONField()
 #     category = models.ForeignKey(VillaServiceCategory, on_delete=models.SET_NULL, null=True)
-#     villas = models.ManyToManyField('Villa', related_name='v_services')
+#     rooms = models.ManyToManyField('Villa', related_name='v_services')
 #
 #     class Meta:
 #         db_table = 'villa_services'
@@ -58,7 +56,7 @@ class Room(models.Model):
     status = models.IntegerField(choices=STATUS, null=True, blank=True)
 
     class Meta:
-        db_table = 'villas'
+        db_table = 'rooms'
         ordering = ['-id']
 
     def __str__(self):

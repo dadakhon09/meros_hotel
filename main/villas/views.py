@@ -8,7 +8,7 @@ class VillasView(View):
     def get(self, request):
         villas = Villa.objects.all()
 
-        return render(request, 'main/villas.html', {'villas': villas})
+        return render(request, 'main/rooms.html', {'rooms': villas})
 
 
 class VillaView(View):

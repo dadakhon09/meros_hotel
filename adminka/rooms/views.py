@@ -5,41 +5,38 @@ from django.urls import reverse
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.views.decorators.csrf import csrf_exempt
 
-from adminka.model.room import Villa, VillaService, VillaServiceCategory, VillaImage
+from adminka.model.room import Room, RoomImage
 
 
-class AdminVillasView(View):
+class AdminRoomsView(View):
     def get(self, request):
         if request.GET.get('q'):
             search_term = request.GET.get('q')
             if request.LANGUAGE_CODE == 'en':
-                search_result = Villa.objects.all().filter(title__title_en__icontains=search_term)
+                search_result = Room.objects.all().filter(title__title_en__icontains=search_term)
             else:
-                search_result = Villa.objects.all().filter(title__title_ru__icontains=search_term)
+                search_result = Room.objects.all().filter(title__title_ru__icontains=search_term)
 
-            return render(request, 'adminka/villas/villas.html', {'villas': search_result})
+            return render(request, 'adminka/rooms/rooms.html', {'rooms': search_result})
 
-        villas = Villa.objects.all()
+        rooms = Room.objects.all()
 
         page = request.GET.get('page', 1)
 
-        paginator = Paginator(villas, 15)
+        paginator = Paginator(rooms, 15)
         try:
-            villas = paginator.page(page)
+            rooms = paginator.page(page)
         except PageNotAnInteger:
-            villas = paginator.page(1)
+            rooms = paginator.page(1)
         except EmptyPage:
-            villas = paginator.page(paginator.num_pages)
+            rooms = paginator.page(paginator.num_pages)
 
-        return render(request, 'adminka/villas/villas.html', {'villas': villas})
+        return render(request, 'adminka/rooms/rooms.html', {'rooms': rooms})
 
 
-class VillasCreateView(View):
+class RoomsCreateView(View):
     def get(self, request):
-        v_services = VillaService.objects.all()
-        v_service_categories = VillaServiceCategory.objects.all()
-        return render(request, 'adminka/villas/villas_create.html',
-                      {'v_service_categories': v_service_categories, 'v_services': v_services})
+        return render(request, 'adminka/rooms/rooms_create.html')
 
     def post(self, request):
         post = self.request.POST
@@ -134,7 +131,7 @@ class VillasCreateView(View):
         for i in images:
             VillaImage.objects.create(image=i, villa=villa)
 
-        return HttpResponseRedirect(reverse('adminka-villas'))
+        return HttpResponseRedirect(reverse('adminka-rooms'))
 
 
 class VillasUpdateView(View):
@@ -250,14 +247,14 @@ class VillasUpdateView(View):
         for i in images:
             vi, _ = VillaImage.objects.get_or_create(image=i, villa=villa)
 
-        return HttpResponseRedirect(reverse('adminka-villas'))
+        return HttpResponseRedirect(reverse('adminka-rooms'))
 
 
 class VillasDeleteView(View):
     def get(self, request, id):
         v = Villa.objects.get(id=id)
         v.delete()
-        return HttpResponseRedirect(reverse('adminka-villas'))
+        return HttpResponseRedirect(reverse('adminka-rooms'))
 
 
 class VillaServicesView(View):
