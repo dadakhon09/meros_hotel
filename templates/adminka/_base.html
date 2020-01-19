@@ -21,7 +21,6 @@
     <!-- You can change the theme colors from here -->
     <link href="{% static 'adminka/css/colors/default.css' %}" id="theme" rel="stylesheet">
     <link href="{% static 'adminka/css/new.css' %}" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'main/fontisto-master/css/fontisto/fontisto.min.css' %}">
 
 </head>
 
@@ -161,46 +160,8 @@
                                 class="hide-menu">{% trans 'About' %}</span></a>
                     </li>
                     <li>
-                        <a href="{% url 'adminka-tours' %}"><i class="mdi mdi-routes"></i> <span
-                                class="hide-menu">{% trans 'Tours' %}</span></a>
-                    </li>
-                    <li>
-                        <a href="{% url 'adminka-sights' %}"><i class="mdi mdi-city"></i>
-                            <span class="hide-menu" style="{% if LANGUAGE_CODE == 'ru' %} font-size: 83%;{% endif %}">
-                                {% trans 'Sights' %}</span></a>
-                    </li>
-                    <li>
-                        <a href="{% url 'adminka-villas' %}"><i class="mdi mdi-hotel"></i> <span
+                        <a href="{% url 'adminka-rooms' %}"><i class="mdi mdi-hotel"></i> <span
                                 class="hide-menu">{% trans 'Villas' %}</span></a>
-                    </li>
-                    <li>
-                        <a href="{% url 'adminka-cars' %}"><i class="mdi mdi-car"></i> <span
-                                class="hide-menu">{% trans 'Cars' %}</span></a>
-                    </li>
-                    <li>
-                        <a href="{% url 'adminka-news' %}"><i class="mdi mdi-newspaper"></i> <span
-                                class="hide-menu">{% trans 'News' %}</span></a>
-                    </li>
-                    <li class="nav-devider"></li>
-                    <li>
-                        <a href="{% url 'tour-expenses' %}"><i class="mdi mdi-coin"></i> <span
-                                class="hide-menu">{% trans 'Tour Expenses' %}</span></a>
-                    </li>
-                    <li>
-                        <a href="{% url 'tour-facilities' %}"><i class="mdi mdi-tooltip-text"></i> <span
-                                class="hide-menu">{% trans 'Tour Facilities' %}</span></a>
-                    </li>
-                    <li>
-                        <a href="{% url 'sight-categories' %}"><i class="mdi mdi-notification-clear-all"></i> <span
-                                class="hide-menu">{% trans 'Sight Categories' %}</span></a>
-                    </li>
-                    <li>
-                        <a href="{% url 'villa-services' %}"><i class="mdi mdi-menu"></i> <span
-                                class="hide-menu">{% trans 'Villa Services' %}</span></a>
-                    </li>
-                    <li>
-                        <a href="{% url 'villa-service-categories' %}"><i class="mdi mdi-message-bulleted"></i> <span
-                                class="hide-menu">{% trans 'Villa Service Categories' %}</span></a>
                     </li>
                 </ul>
             </nav>
@@ -226,7 +187,7 @@
         <!-- ============================================================== -->
         <!-- footer -->
         <!-- ============================================================== -->
-        <footer class="footer"> © 2019 Ocean View Admin Site</footer>
+        <footer class="footer"> © 2020 Meros Hotel Admin Site</footer>
         <!-- ============================================================== -->
         <!-- End footer -->
         <!-- ============================================================== -->

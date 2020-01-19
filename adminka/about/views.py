@@ -19,19 +19,11 @@ class AdminAboutView(View):
         post = self.request.POST
 
         text_en = post.get('text_en')
-        text_ar = post.get('text_ar')
-        text_fa = post.get('text_fa')
-        text_hi = post.get('text_hi')
         text_ru = post.get('text_ru')
-        text_zh = post.get('text_zh')
 
         text = {
             'text_en': text_en,
-            'text_ar': text_ar,
-            'text_fa': text_fa,
-            'text_hi': text_hi,
-            'text_ru': text_ru,
-            'text_zh': text_zh,
+            'text_ru': text_ru
         }
 
         about.text = text

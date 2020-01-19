@@ -23,21 +23,11 @@
                                                         role="tab"><span class="hidden-sm-up"><i
                                         class="ti-home"></i></span> <span
                                         class="hidden-xs-down">{% trans 'English' %}</span></a></li>
+
                                 <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#2tab" role="tab"><span
                                         class="hidden-sm-up"><i class="ti-email"></i></span> <span
-                                        class="hidden-xs-down">{% trans 'Arabic' %}</span></a></li>
-                                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#3tab" role="tab"><span
-                                        class="hidden-sm-up"><i class="ti-email"></i></span> <span
-                                        class="hidden-xs-down">{% trans 'Persian' %}</span></a></li>
-                                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#4tab" role="tab"><span
-                                        class="hidden-sm-up"><i class="ti-email"></i></span> <span
-                                        class="hidden-xs-down">{% trans 'Indian' %}</span></a></li>
-                                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#5tab" role="tab"><span
-                                        class="hidden-sm-up"><i class="ti-email"></i></span> <span
                                         class="hidden-xs-down">{% trans 'Russian' %}</span></a></li>
-                                <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#6tab" role="tab"><span
-                                        class="hidden-sm-up"><i class="ti-email"></i></span> <span
-                                        class="hidden-xs-down">{% trans 'Chinese' %}</span></a></li>
+
                             </ul>
                             <!-- Tab panes -->
                             <div class="tab-content tabcontent-border">
@@ -62,51 +52,6 @@
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col-md-3 text-right">
-                                                <label for="text_ar"
-                                                       class="control-label">{% trans 'Text' %}(ar)</label>
-                                            </div>
-                                            <div class="col-md-9">
-                                                <textarea type="text" rows="10" id="text_ar" class="form-control"
-                                                          name="text_ar"
-                                                          placeholder="" autocomplete="off"></textarea>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tab-pane p-20" id="3tab" role="tabpanel">
-                                    <div class="form-group">
-                                        <div class="row">
-                                            <div class="col-md-3 text-right">
-                                                <label for="text_fa"
-                                                       class="control-label">{% trans 'Text' %}(fa)</label>
-                                            </div>
-                                            <div class="col-md-9">
-                                                <textarea type="text" rows="10" id="text_fa" class="form-control"
-                                                          name="text_fa"
-                                                          placeholder="" autocomplete="off"></textarea>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tab-pane p-20" id="4tab" role="tabpanel">
-                                    <div class="form-group">
-                                        <div class="row">
-                                            <div class="col-md-3 text-right">
-                                                <label for="text_hi"
-                                                       class="control-label">{% trans 'Text' %}(hi)</label>
-                                            </div>
-                                            <div class="col-md-9">
-                                                <textarea type="text" rows="10" id="text_hi" class="form-control"
-                                                          name="text_hi"
-                                                          placeholder="" autocomplete="off"></textarea>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tab-pane p-20" id="5tab" role="tabpanel">
-                                    <div class="form-group">
-                                        <div class="row">
-                                            <div class="col-md-3 text-right">
                                                 <label for="text_ru"
                                                        class="control-label">{% trans 'Text' %}(ru)</label>
                                             </div>
@@ -118,21 +63,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="tab-pane p-20" id="6tab" role="tabpanel">
-                                    <div class="form-group">
-                                        <div class="row">
-                                            <div class="col-md-3 text-right">
-                                                <label for="text_zh"
-                                                       class="control-label">{% trans 'Text' %}(zh)</label>
-                                            </div>
-                                            <div class="col-md-9">
-                                                <textarea type="text" rows="10" id="text_zh" class="form-control"
-                                                          name="text_zh"
-                                                          placeholder="" autocomplete="off"></textarea>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+
                             </div>
                             <div class="p-20">
                                 <div class="form-group">
@@ -187,11 +118,7 @@
 {% block js %}
     <script>
         document.getElementById("text_en").value = "{{ about.text.text_en }}";
-        document.getElementById("text_ar").value = "{{ about.text.text_ar }}";
-        document.getElementById("text_fa").value = "{{ about.text.text_fa }}";
-        document.getElementById("text_hi").value = "{{ about.text.text_hi }}";
         document.getElementById("text_ru").value = "{{ about.text.text_ru }}";
-        document.getElementById("text_zh").value = "{{ about.text.text_zh }}";
 
     </script>
     <script>

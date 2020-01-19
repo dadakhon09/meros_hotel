@@ -18,7 +18,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <form action="{% url 'villas-create' %}" method="post"
+                        <form action="{% url 'rooms-update' villa.id %}" method="post"
                               enctype="multipart/form-data">{% csrf_token %}
                             <ul class="nav nav-tabs" role="tablist">
                                 <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#1tab"
@@ -53,7 +53,8 @@
                                                 </div>
                                                 <div class="col-md-9">
                                                     <input type="text" id="title_en" class="form-control"
-                                                           name="title_en" placeholder="" autocomplete="off" required>
+                                                           name="title_en" placeholder="" autocomplete="off"
+                                                           value="{{ villa.title.title_en }}" required>
                                                 </div>
                                             </div>
                                         </div>
@@ -64,9 +65,9 @@
                                                            class="control-label">{% trans 'Description' %}(en)</label>
                                                 </div>
                                                 <div class="col-md-9">
-                                                    <textarea type="text" rows="10" class="form-control"
-                                                              id="description_en"
-                                                              name="description_en" autocomplete="off"></textarea>
+                                                    <input type="text" class="form-control" id="description_en"
+                                                           name="description_en" autocomplete="off"
+                                                    >
                                                 </div>
                                             </div>
                                         </div>
@@ -77,7 +78,8 @@
                                                 </div>
                                                 <div class="col-md-9">
                                                     <input type="text" class="form-control" id="address_en"
-                                                           name="address_en" autocomplete="off">
+                                                           name="address_en" autocomplete="off"
+                                                           value="{{ villa.address.address_en }}">
                                                 </div>
                                             </div>
                                         </div>
@@ -92,7 +94,8 @@
                                             </div>
                                             <div class="col-md-9">
                                                 <input type="text" id="title_ar" class="form-control" name="title_ar"
-                                                       placeholder="" autocomplete="off">
+                                                       placeholder="" autocomplete="off"
+                                                       value="{{ villa.title.title_ar }}">
                                             </div>
                                         </div>
                                     </div>
@@ -103,8 +106,9 @@
                                                        class="control-label">{% trans 'Description' %}(ar)</label>
                                             </div>
                                             <div class="col-md-9">
-                                                <textarea type="text" rows="10" class="form-control" id="description_ar"
-                                                          name="description_ar" autocomplete="off"></textarea>
+                                                <input type="text" class="form-control" id="description_ar"
+                                                       name="description_ar" autocomplete="off"
+                                                >
                                             </div>
                                         </div>
                                     </div>
@@ -116,7 +120,8 @@
                                             </div>
                                             <div class="col-md-9">
                                                 <input type="text" class="form-control" id="address_ar"
-                                                       name="address_ar" autocomplete="off">
+                                                       name="address_ar" autocomplete="off"
+                                                       value="{{ villa.address.address_ar }}">
                                             </div>
                                         </div>
                                     </div>
@@ -130,7 +135,8 @@
                                             </div>
                                             <div class="col-md-9">
                                                 <input type="text" id="title_fa" class="form-control" name="title_fa"
-                                                       placeholder="" autocomplete="off">
+                                                       placeholder="" autocomplete="off"
+                                                       value="{{ villa.title.title_fa }}">
                                             </div>
                                         </div>
                                     </div>
@@ -141,8 +147,9 @@
                                                        class="control-label">{% trans 'Description' %}(fa)</label>
                                             </div>
                                             <div class="col-md-9">
-                                                <textarea type="text" rows="10" class="form-control" id="description_fa"
-                                                          name="description_fa" autocomplete="off"></textarea>
+                                                <input type="text" class="form-control" id="description_fa"
+                                                       name="description_fa" autocomplete="off"
+                                                >
                                             </div>
                                         </div>
                                     </div>
@@ -154,7 +161,8 @@
                                             </div>
                                             <div class="col-md-9">
                                                 <input type="text" class="form-control" id="address_fa"
-                                                       name="address_fa" autocomplete="off">
+                                                       name="address_fa" autocomplete="off"
+                                                       value="{{ villa.address.address_fa }}">
                                             </div>
                                         </div>
                                     </div>
@@ -168,7 +176,8 @@
                                             </div>
                                             <div class="col-md-9">
                                                 <input type="text" id="title_hi" class="form-control" name="title_hi"
-                                                       placeholder="" autocomplete="off">
+                                                       placeholder="" autocomplete="off"
+                                                       value="{{ villa.title.title_hi }}">
                                             </div>
                                         </div>
                                     </div>
@@ -179,8 +188,9 @@
                                                        class="control-label">{% trans 'Description' %}(hi)</label>
                                             </div>
                                             <div class="col-md-9">
-                                                <textarea type="text" rows="10" class="form-control" id="description_hi"
-                                                          name="description_hi" autocomplete="off"></textarea>
+                                                <input type="text" class="form-control" id="description_hi"
+                                                       name="description_hi" autocomplete="off"
+                                                >
                                             </div>
                                         </div>
                                     </div>
@@ -192,7 +202,8 @@
                                             </div>
                                             <div class="col-md-9">
                                                 <input type="text" class="form-control" id="address_hi"
-                                                       name="address_hi" autocomplete="off">
+                                                       name="address_hi" autocomplete="off"
+                                                       value="{{ villa.address.address_hi }}">
                                             </div>
                                         </div>
                                     </div>
@@ -206,7 +217,8 @@
                                             </div>
                                             <div class="col-md-9">
                                                 <input type="text" id="title_ru" class="form-control" name="title_ru"
-                                                       placeholder="" autocomplete="off">
+                                                       placeholder="" autocomplete="off"
+                                                       value="{{ villa.title.title_ru }}">
                                             </div>
                                         </div>
                                     </div>
@@ -217,8 +229,9 @@
                                                        class="control-label">{% trans 'Description' %}(ru)</label>
                                             </div>
                                             <div class="col-md-9">
-                                                <textarea type="text" rows="10" class="form-control" id="description_ru"
-                                                          name="description_ru" autocomplete="off"></textarea>
+                                                <input type="text" class="form-control" id="description_ru"
+                                                       name="description_ru" autocomplete="off"
+                                                >
                                             </div>
                                         </div>
                                     </div>
@@ -230,7 +243,8 @@
                                             </div>
                                             <div class="col-md-9">
                                                 <input type="text" class="form-control" id="address_ru"
-                                                       name="address_ru" autocomplete="off">
+                                                       name="address_ru" autocomplete="off"
+                                                       value="{{ villa.address.address_ru }}">
                                             </div>
                                         </div>
                                     </div>
@@ -244,7 +258,8 @@
                                             </div>
                                             <div class="col-md-9">
                                                 <input type="text" id="title_zh" class="form-control" name="title_zh"
-                                                       placeholder="" autocomplete="off">
+                                                       placeholder="" autocomplete="off"
+                                                       value="{{ villa.title.title_zh }}">
                                             </div>
                                         </div>
                                     </div>
@@ -256,7 +271,9 @@
                                             </div>
                                             <div class="col-md-9">
                                                 <textarea type="text" rows="10" class="form-control" id="description_zh"
-                                                          name="description_zh" autocomplete="off"></textarea>
+                                                          name="description_zh" autocomplete="off"
+                                                >
+                                                </textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -268,7 +285,8 @@
                                             </div>
                                             <div class="col-md-9">
                                                 <input type="text" class="form-control" id="address_zh"
-                                                       name="address_zh" autocomplete="off">
+                                                       name="address_zh" autocomplete="off"
+                                                       value="{{ villa.address.address_zh }}">
                                             </div>
                                         </div>
                                     </div>
@@ -294,7 +312,9 @@
                                         </div>
                                         <div class="col-md-9">
                                             <input type="text" class="form-control" id="phone" name="phone"
-                                                   autocomplete="off">
+                                                   autocomplete="off" {% if villa.phone %}
+                                                   value="{{ villa.phone }}" {% else %}
+                                                   placeholder="{{ villa.phone }}" {% endif %}>
                                         </div>
                                     </div>
                                 </div>
@@ -305,9 +325,10 @@
                                                    class="control-label">{% trans 'Number of bedrooms' %}</label>
                                         </div>
                                         <div class="col-md-9">
-                                            <input type="number" min="0" oninput="validity.valid||(value='');"
-                                                   class="form-control" id="bedroom" name="bedroom"
-                                                   autocomplete="off">
+                                            <input type="number" class="form-control" id="bedroom" name="bedroom"
+                                                   autocomplete="off" {% if villa.bedroom %}
+                                                   value="{{ villa.bedroom }}" {% else %}
+                                                   placeholder="{{ villa.bedroom }}" {% endif %}>
                                         </div>
                                     </div>
                                 </div>
@@ -315,12 +336,13 @@
                                     <div class="row">
                                         <div class="col-md-3 text-right">
                                             <label for="square_meter"
-                                                   class="control-label">{% trans 'Square meter(in km2)' %}</label>
+                                                   class="control-label">{% trans 'Square meter(in  km2)' %}</label>
                                         </div>
                                         <div class="col-md-9">
-                                            <input type="number" min="0" oninput="validity.valid||(value='');"
-                                                   class="form-control" id="square_meter"
-                                                   name="square_meter" autocomplete="off">
+                                            <input type="number" class="form-control" id="square_meter"
+                                                   name="square_meter" autocomplete="off" {% if villa.square_meter %}
+                                                   value="{{ villa.square_meter }}" {% else %}
+                                                   placeholder="{{ villa.square_meter }}" {% endif %}>
                                         </div>
                                     </div>
                                 </div>
@@ -331,12 +353,21 @@
                                         </div>
                                         <div class="col-md-9">
                                             <select name="status" id="status" class="form-control custom-select">
-                                                <option name="status"
-                                                        value="0">Signature villa
-                                                </option>
-                                                <option name="status"
-                                                        value="1">Garden home villa
-                                                </option>
+                                                {% if villa.status == 0 %}
+                                                    <option name="status"
+                                                            value="0">Signature villa
+                                                    </option>
+                                                    <option name="status"
+                                                            value="1">Garden home villa
+                                                    </option>
+                                                {% elif villa.status == 1 %}
+                                                    <option name="status"
+                                                            value="1">Garden home villa
+                                                    </option>
+                                                    <option name="status"
+                                                            value="0">Signature villa
+                                                    </option>
+                                                {% endif %}
                                             </select>
                                         </div>
                                     </div>
@@ -350,7 +381,9 @@
                                         <div class="col-md-9">
                                             <input type="number" min="0" oninput="validity.valid||(value='');"
                                                    class="form-control" id="d_railways" name="d_railways"
-                                                   autocomplete="off">
+                                                   autocomplete="off" {% if villa.d_railways %}
+                                                   value="{{ villa.d_railways }}" {% else %}
+                                                   placeholder="{{ villa.d_railways }}" {% endif %}>
                                         </div>
                                     </div>
                                 </div>
@@ -363,7 +396,9 @@
                                         <div class="col-md-9">
                                             <input type="number" min="0" oninput="validity.valid||(value='');"
                                                    class="form-control" id="d_center" name="d_center"
-                                                   autocomplete="off">
+                                                   autocomplete="off" {% if villa.d_center %}
+                                                   value="{{ villa.d_center }}" {% else %}
+                                                   placeholder="{{ villa.d_center }}" {% endif %}>
                                         </div>
                                     </div>
                                 </div>
@@ -376,7 +411,9 @@
                                         <div class="col-md-9">
                                             <input type="number" min="0" oninput="validity.valid||(value='');"
                                                    class="form-control" id="d_airways" name="d_airways"
-                                                   autocomplete="off">
+                                                   autocomplete="off" {% if villa.d_airways %}
+                                                   value="{{ villa.d_airways }}" {% else %}
+                                                   placeholder="{{ villa.d_airways }}" {% endif %}>
                                         </div>
                                     </div>
                                 </div>
@@ -393,13 +430,14 @@
                                                         {% for f in v_services %}
                                                             {% if f.category == c %}
                                                                 <div class="my-2 pretty p-default">
-                                                                    <input type="checkbox" id="v_service{{ f.id }}"
-                                                                           name="v_services"
-                                                                           value="{{ f.id }}">
+                                                                    <input type="checkbox" class=""
+                                                                           id="v_service{{ f.id }}" name="v_services"
+                                                                           value="{{ f.id }}"
+                                                                            {% if villa in f.villas.all %}
+                                                                           checked{% endif %}>
                                                                     <div class="state p-primary"><label
                                                                             for="v_service{{ f.id }}">{{ f.title.title_en }}</label>
                                                                     </div>
-
                                                                 </div>
                                                             {% endif %}
                                                         {% endfor %}<br>
@@ -434,7 +472,7 @@
             <div class="modal-content-custom">
                 <span class="close">&times;</span>
                 <h2>{% trans 'Are you sure you want to cancel?' %}</h2>
-                <a href="{% url 'adminka-villas' %}">
+                <a href="{% url 'adminka-rooms' %}">
                     <button type="button" class="btn btn-success">
                         Yes
                     </button>
@@ -467,6 +505,7 @@
             menubar: false
         });
     </script>
+
     <script src="{% static 'adminka/assets/plugins/uploader/js/plugins/piexif.js' %}" type="text/javascript"></script>
     <script src="{% static 'adminka/assets/plugins/uploader/js/plugins/sortable.js' %}" type="text/javascript"></script>
     <script src="{% static 'adminka/assets/plugins/uploader/js/fileinput.js' %}" type="text/javascript"></script>
@@ -475,6 +514,15 @@
     <script src="{% static 'adminka/assets/plugins/uploader/themes/fas/theme.js' %}" type="text/javascript"></script>
     <script src="{% static 'adminka/assets/plugins/uploader/themes/explorer-fas/theme.js' %}"
             type="text/javascript"></script>
+    <script>
+        document.getElementById("description_en").value = "{{ villa.description.description_en }}";
+        document.getElementById("description_ar").value = "{{ villa.description.description_ar }}";
+        document.getElementById("description_fa").value = "{{ villa.description.description_fa }}";
+        document.getElementById("description_hi").value = "{{ villa.description.description_hi }}";
+        document.getElementById("description_ru").value = "{{ villa.description.description_ru }}";
+        document.getElementById("description_zh").value = "{{ villa.description.description_zh }}";
+
+    </script>
     <script>
         $(document).ready(function () {
             $("#kv-explorer").fileinput({
@@ -486,14 +534,19 @@
                 overwriteInitial: false,
                 initialPreviewAsData: true,
                 initialPreview: [
-                    /*"http://lorempixel.com/1920/1080/nature/1",
-                    "http://lorempixel.com/1920/1080/nature/2",
-                    "http://lorempixel.com/1920/1080/nature/3"*/
+                    {% for i in v_images %}
+                        "{{i.image.url}}",
+                    {% endfor %}
                 ],
                 initialPreviewConfig: [
-                    /*{caption: "nature-1.jpg", size: 329892, width: "120px", url: "{$url}", key: 1},
-                    {caption: "nature-2.jpg", size: 872378, width: "120px", url: "{$url}", key: 2},
-                    {caption: "nature-3.jpg", size: 632762, width: "120px", url: "{$url}", key: 3}*/
+                    {% for i in v_images %} {
+                        caption: "{{i.image.name}}",
+                        size: {{ i.image.size }},
+                        width: "120px",
+                        url: '{% url 'villa-image-delete' %}',
+                        key: {{ i.id }}
+                    },
+                    {% endfor %}
                 ]
             });
         });
