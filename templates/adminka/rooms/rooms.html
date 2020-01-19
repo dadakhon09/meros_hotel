@@ -13,8 +13,8 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="card-main__title main-title">
-                            <h2>{% trans 'Villas' %}</h2>
-                            {% if villas %}
+                            <h2>{% trans 'Rooms' %}</h2>
+                            {% if rooms %}
                             <div class="custom-search">
                                 <svg style="display: none">
                                   <symbol id="magnify" viewBox="0 0 18 18" height="100%" width="100%">
@@ -38,17 +38,17 @@
                             </div>
                             {% endif %}
                             <div>
-                                {% if villas.has_other_pages %}
+                                {% if rooms.has_other_pages %}
                                     <ul class="pagination">
-                                        {% if villas.has_previous %}
+                                        {% if rooms.has_previous %}
                                             <li class="page-item"><a class="page-link"
-                                                                     href="?page={{ villas.previous_page_number }}">&laquo;</a>
+                                                                     href="?page={{ rooms.previous_page_number }}">&laquo;</a>
                                             </li>
                                         {% else %}
                                             <li class="page-item disabled"><span class="page-link">&laquo;</span></li>
                                         {% endif %}
-                                        {% for i in villas.paginator.page_range %}
-                                            {% if villas.number == i %}
+                                        {% for i in rooms.paginator.page_range %}
+                                            {% if rooms.number == i %}
                                                 <li class="page-item active"><span class="page-link">{{ i }} <span
                                                         class="sr-only">(current)</span></span></li>
                                             {% else %}
@@ -56,9 +56,9 @@
                                                                          href="?page={{ i }}">{{ i }}</a></li>
                                             {% endif %}
                                         {% endfor %}
-                                        {% if villas.has_next %}
+                                        {% if rooms.has_next %}
                                             <li class="page-item"><a class="page-link"
-                                                                     href="?page={{ villas.next_page_number }}">&raquo;</a>
+                                                                     href="?page={{ rooms.next_page_number }}">&raquo;</a>
                                             </li>
                                         {% else %}
                                             <li class="page-item disabled"><span class="page-link">&raquo;</span></li>
@@ -83,24 +83,24 @@
 
                                 </tr>
                                 <tbody>
-                                {% for villa in villas %}
+                                {% for room in rooms %}
                                     <tr>
-                                        <td>{{ villa.id }}</td>
-                                        <td>{{ villa.get_status_display }}</td>
+                                        <td>{{ room.id }}</td>
+                                        <td>{{ room.get_status_display }}</td>
                                         <td>
-                                            <a href="{% url 'rooms-update' villa.id %}">
+                                            <a href="{% url 'rooms-update' room.id %}">
                                                 <div>
                                                     {% if LANGUAGE_CODE == 'en' %}
-                                                        <span>{{ villa.title.title_en }}</span>
+                                                        <span>{{ room.title.title_en }}</span>
                                                     {% elif LANGUAGE_CODE == 'ru' %}
-                                                        <span>{{ villa.title.title_ru }}</span>
+                                                        <span>{{ room.title.title_ru }}</span>
                                                     {% endif %}
                                                 </div>
                                             </a>
                                         </td>
-                                        <td><a href="{% url 'rooms-update' villa.id %}" class="label label-info"><i
+                                        <td><a href="{% url 'rooms-update' room.id %}" class="label label-info"><i
                                                 class="fas fa-edit"></i>{% trans 'Edit' %}</a></td>
-                                        <td><a href="#" data-id="{{ villa.id }}" id=""
+                                        <td><a href="#" data-id="{{ room.id }}" id=""
                                                class="removeButton label label-danger"><i class="fas fa-trash"></i></a></td>
                                     </tr>
                                 {% endfor %}

@@ -7,10 +7,10 @@ from django.utils.text import slugify
 
 class RoomImage(models.Model):
     image = models.ImageField(upload_to='rooms', null=True, blank=True)
-    villa = models.ForeignKey('Room', on_delete=models.CASCADE)
+    room = models.ForeignKey('Room', on_delete=models.CASCADE)
 
     class Meta:
-        db_table = 'villa_images'
+        db_table = 'room_images'
         ordering = ['-id']
 
     def __str__(self):
@@ -52,7 +52,7 @@ class Room(models.Model):
     description = JSONField(null=True)
     slug = models.SlugField(max_length=255)
     bedroom = models.PositiveIntegerField(null=True, blank=True)
-    square_meter = models.PositiveIntegerField(null=True, blank=True)
+    square_meter = models.FloatField(null=True, blank=True)
     status = models.IntegerField(choices=STATUS, null=True, blank=True)
 
     class Meta:
