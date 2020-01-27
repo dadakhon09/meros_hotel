@@ -1,5 +1,5 @@
-from .about import About, AboutImage
+from .about import About
 from .room import Room, RoomImage
 
-__all__ = ['AboutImage', 'About', 'RoomImage', 'Room']
+__all__ = ['About', 'RoomImage', 'Room']
 

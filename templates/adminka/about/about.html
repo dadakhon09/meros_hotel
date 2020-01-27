@@ -69,11 +69,11 @@
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-md-3 text-right">
-                                            <label for="file" class="control-label">{% trans 'Images' %}</label>
+                                            <label for="file" class="control-label">{% trans 'Image' %}</label>
                                         </div>
                                         <div class="col-md-9">
                                             <div class="file-loading">
-                                                <input id="kv-explorer" type="file" name="image" multiple>
+                                                <input id="kv-explorer" type="file" name="image">
                                             </div>
                                         </div>
                                     </div>
@@ -144,20 +144,22 @@
                 overwriteInitial: false,
                 initialPreviewAsData: true,
                 initialPreview: [
-                    {% for i in a_images %}
-                        "{{i.image.url}}",
-                    {% endfor %}
+                    {% if about.image %}
+                        "{{about.image.url}}",
+                    {% endif %}
                 ],
 
                 initialPreviewConfig: [
-                    {% for i in a_images %} {
-                        caption: "{{i.image.name}}",
-                        size: {{ i.image.size }},
-                        width: "120px",
-                        url: '{% url 'about-image-delete' %}',
-                        key: {{ i.id }}
+                    {
+                        {% if about.image %}
+                            caption: "{{about.image.name}}",
+                            size: {{ about.image.size }},
+                            width: "120px",
+                            url: '{% url 'about-image-delete' %}',
+                            key: {{ about.id }}
+                        {% endif %}
                     },
-                    {% endfor %}
+
                 ]
             });
         });

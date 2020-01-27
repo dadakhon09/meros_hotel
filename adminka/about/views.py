@@ -4,14 +4,13 @@ from django.urls import reverse
 from django.views import View
 from django.views.decorators.csrf import csrf_exempt
 
-from adminka.model.about import About, AboutImage
+from adminka.model.about import About
 
 
 class AdminAboutView(View):
     def get(self, request):
         about = About.objects.get(id=1)
-        a_images = AboutImage.objects.filter(about=about)
-        return render(request, 'adminka/about/about.html', {'about': about, 'a_images': a_images})
+        return render(request, 'adminka/about/about.html', {'about': about})
 
     def post(self, request):
         about = About.objects.get(id=1)
@@ -26,20 +25,20 @@ class AdminAboutView(View):
             'text_ru': text_ru
         }
 
+        image = self.request.FILES.get('image')
+
         about.text = text
+        about.image = image
         about.save()
 
-        images = self.request.FILES.getlist('image')
-
-        for i in images:
-            ai, _ = AboutImage.objects.get_or_create(image=i, about=about)
+        # for i in images:
+        #     ai, _ = AboutImage.objects.get_or_create(image=i, about=about)
 
         return HttpResponseRedirect(reverse('adminka-index'))
 
 
 @csrf_exempt
 def about_image_delete(self):
-    image = AboutImage.objects.get(id=self.POST.get('key'))
-    image.image.delete()
-    image.delete()
+    about = About.objects.get(id=1)
+    about.image.delete()
     return HttpResponse('image deleted')

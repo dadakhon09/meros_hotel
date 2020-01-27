@@ -1,4 +1,6 @@
 {% load i18n static %}
+{% get_current_language as LANGUAGE_CODE %}
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -27,7 +29,7 @@
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light">
             <!-- Brand and toggle get grouped for better mobile display -->
-            <a class="navbar-brand logo_h" href="index.html"><img src="{% static 'main/image/Logo.png' %}" alt=""></a>
+            <a class="navbar-brand logo_h" href="#"><img src="{% static 'main/image/Logo.png' %}" alt=""></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="icon-bar"></span>
@@ -42,6 +44,41 @@
                     <li class="nav-item"><a class="nav-link" href="#">Accomodation</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Gallery</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+                    {% if LANGUAGE_CODE == 'en' %}
+                        <li class="nav-item submenu dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
+                               aria-haspopup="true" aria-expanded="false">EN</a>
+                            <ul class="dropdown-menu">
+                                <li class="nav-item"><a class="nav-link"
+                                                        href="/ru{{ request.get_full_path|slice:'3:' }}">RU</a></li>
+                            </ul>
+                        </li>
+                    {% else %}
+                        <li class="nav-item submenu dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
+                               aria-haspopup="true" aria-expanded="false">RU</a>
+                            <ul class="dropdown-menu">
+                                <li class="nav-item"><a class="nav-link"
+                                                        href="/en{{ request.get_full_path|slice:'3:' }}">EN</a></li>
+                            </ul>
+                        </li>
+                    {% endif %}
+                    {#                    {% get_current_language as LANGUAGE_CODE %}#}
+                    {#                    <!-- ============================================================== -->#}
+                    {#                    <li class="nav-item dropdown">#}
+                    {#                        <a class="nav-link dropdown-toggle waves-effect waves-dark" href="#" data-toggle="dropdown"#}
+                    {#                           aria-haspopup="true" aria-expanded="false">#}
+                    {#                            <i class="flag-icon flag-icon-{% if LANGUAGE_CODE == 'en' %}us{% elif LANGUAGE_CODE == 'ru' %}ru{% endif %}"></i>#}
+                    {#                        </a>#}
+                    {#                        <div class="dropdown-menu dropdown-menu-right animated bounceInDown">#}
+                    {#                            <a class="dropdown-item {% if LANGUAGE_CODE == 'en' %}selected{% endif %}"#}
+                    {#                               href="{% if LANGUAGE_CODE == 'en' %}#{% else %}/en{{ request.get_full_path|slice:'3:' }}{% endif %}"><i#}
+                    {#                                    class="flag-icon flag-icon-us"></i> {% trans 'English' %}</a>#}
+                    {#                            <a class="dropdown-item {% if LANGUAGE_CODE == 'ru' %}selected{% endif %}"#}
+                    {#                               href="{% if LANGUAGE_CODE == 'ru' %}#{% else %}/ru{{ request.get_full_path|slice:'3:' }}{% endif %}"><i#}
+                    {#                                    class="flag-icon flag-icon-ru"></i> {% trans 'Russian' %}</a>#}
+                    {#                        </div>#}
+                    {#                    </li>#}
                 </ul>
             </div>
         </nav>
