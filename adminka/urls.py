@@ -2,6 +2,7 @@ from django.urls import path
 
 from adminka.about.views import AdminAboutView, about_image_delete
 from adminka.core.views import AdminIndexView
+from adminka.gallery.views import AdminGalleryView, gallery_image_delete
 from adminka.rooms.views import room_image_delete, RoomsDeleteView, RoomsUpdateView, RoomsCreateView, AdminRoomsView
 from adminka.users.views import AdminLoginView, ProfileView, AdminLogoutView, ProfileUpdateView
 
@@ -10,6 +11,9 @@ urlpatterns = [
 
     path('about/', AdminAboutView.as_view(), name='adminka-about'),
     path('about/image/delete/', about_image_delete, name='about-image-delete'),
+
+    path('gallery/', AdminGalleryView.as_view(), name='adminka-gallery'),
+    path('gallery/image/delete/', gallery_image_delete, name='gallery-image-delete'),
 
     path('rooms/', AdminRoomsView.as_view(), name='adminka-rooms'),
     path('rooms/image/delete/', room_image_delete, name='room-image-delete'),
