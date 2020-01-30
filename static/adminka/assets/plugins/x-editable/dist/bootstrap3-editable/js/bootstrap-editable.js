@@ -993,7 +993,7 @@ Applied as jQuery method.
                 throw new Error(this.containerName + ' not found. Have you included corresponding js file?');   
             }
             
-            //keys defined in container defaults go to container, others go to form
+            //keys defined in container defaults go to container, core go to form
             for(var k in this.options) {
               if(k in this.defaults) {
                  this.containerOptions[k] = this.options[k];

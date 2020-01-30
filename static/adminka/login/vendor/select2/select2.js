@@ -1422,7 +1422,7 @@ S2.define('select2/selection/base',[
     var self = this;
 
     // This needs to be delayed as the active element is the body when the tab
-    // key is pressed, possibly along with others.
+    // key is pressed, possibly along with core.
     window.setTimeout(function () {
       // Don't trigger `blur` if the focus is still in the selection
       if (

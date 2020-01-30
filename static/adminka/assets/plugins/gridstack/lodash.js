@@ -7572,9 +7572,9 @@
      * @example
      *
      * var objects = [{ 'x': 1, 'y': 2 }, { 'x': 2, 'y': 1 }];
-     * var others = [{ 'x': 1, 'y': 1 }, { 'x': 1, 'y': 2 }];
+     * var core = [{ 'x': 1, 'y': 1 }, { 'x': 1, 'y': 2 }];
      *
-     * _.intersectionWith(objects, others, _.isEqual);
+     * _.intersectionWith(objects, core, _.isEqual);
      * // => [{ 'x': 1, 'y': 2 }]
      */
     var intersectionWith = baseRest(function(arrays) {
@@ -8375,9 +8375,9 @@
      * @example
      *
      * var objects = [{ 'x': 1, 'y': 2 }, { 'x': 2, 'y': 1 }];
-     * var others = [{ 'x': 1, 'y': 1 }, { 'x': 1, 'y': 2 }];
+     * var core = [{ 'x': 1, 'y': 1 }, { 'x': 1, 'y': 2 }];
      *
-     * _.unionWith(objects, others, _.isEqual);
+     * _.unionWith(objects, core, _.isEqual);
      * // => [{ 'x': 1, 'y': 2 }, { 'x': 2, 'y': 1 }, { 'x': 1, 'y': 1 }]
      */
     var unionWith = baseRest(function(arrays) {
@@ -8624,9 +8624,9 @@
      * @example
      *
      * var objects = [{ 'x': 1, 'y': 2 }, { 'x': 2, 'y': 1 }];
-     * var others = [{ 'x': 1, 'y': 1 }, { 'x': 1, 'y': 2 }];
+     * var core = [{ 'x': 1, 'y': 1 }, { 'x': 1, 'y': 2 }];
      *
-     * _.xorWith(objects, others, _.isEqual);
+     * _.xorWith(objects, core, _.isEqual);
      * // => [{ 'x': 2, 'y': 1 }, { 'x': 1, 'y': 1 }]
      */
     var xorWith = baseRest(function(arrays) {
