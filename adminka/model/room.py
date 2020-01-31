@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.contrib.postgres.fields import JSONField
 from django.db import models
 from django.db.models.signals import post_save
@@ -17,43 +18,19 @@ class RoomImage(models.Model):
         return self.image.name or 'asd'
 
 
-# class RoomServiceCategory(models.Model):
-#     title = JSONField()
-#
-#     class Meta:
-#         db_table = 'villa_service_categories'
-#         ordering = ['-id']
-#
-#     def __str__(self):
-#         return self.title['title_en'] or 'asd'
-
-
-# class VillaService(models.Model):
-#     title = JSONField()
-#     category = models.ForeignKey(VillaServiceCategory, on_delete=models.SET_NULL, null=True)
-#     rooms = models.ManyToManyField('Villa', related_name='v_services')
-#
-#     class Meta:
-#         db_table = 'villa_services'
-#         ordering = ['-id']
-#
-#     def __str__(self):
-#         return self.title['title_en'] or 'asd'
-
-
-STATUS = (
-    (0, 'Signature villa'),
-    (1, 'Garden home villa')
+ROOM_TYPE = (
+    (0, 'Double/Twin room '),
+    (1, 'Triple room ')
 )
 
 
 class Room(models.Model):
     title = JSONField()
-    description = JSONField(null=True)
+    description = JSONField(null=True, blank=True)
     slug = models.SlugField(max_length=255)
-    bedroom = models.PositiveIntegerField(null=True, blank=True)
+    price = models.PositiveIntegerField(null=True, blank=True)
     square_meter = models.FloatField(null=True, blank=True)
-    status = models.IntegerField(choices=STATUS, null=True, blank=True)
+    room_type = models.IntegerField(choices=ROOM_TYPE, null=True, blank=True)
 
     class Meta:
         db_table = 'rooms'
@@ -63,8 +40,16 @@ class Room(models.Model):
         return self.title['title_en'] or 'asd'
 
 
+class RoomAvailability(models.Model):
+    room = models.ForeignKey(Room, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    start_date = models.DateTimeField(null=True, blank=True)
+    end_date = models.DateTimeField(null=True, blank=True)
+    availability = models.BooleanField(default=True, null=True, blank=True)
+
+
 @receiver(post_save, sender=Room)
-def get_slug3(sender, instance, created, **kwargs):
+def get_slug(sender, instance, created, **kwargs):
     if created:
         slug = slugify(instance.title['title_en'])
         instance.slug = slug

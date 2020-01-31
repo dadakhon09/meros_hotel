@@ -110,12 +110,12 @@
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-md-3 text-right">
-                                            <label for="bedroom"
-                                                   class="control-label">{% trans 'Number of bedrooms' %}</label>
+                                            <label for="price"
+                                                   class="control-label">{% trans 'Price' %}</label>
                                         </div>
                                         <div class="col-md-9">
                                             <input type="number" min="0" oninput="validity.valid||(value='');"
-                                                   class="form-control" id="bedroom" name="bedroom"
+                                                   class="form-control" id="price" name="price"
                                                    autocomplete="off">
                                         </div>
                                     </div>
@@ -136,15 +136,15 @@
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-md-3 text-right">
-                                            <label for="status" class="control-label">{% trans 'Status' %}</label>
+                                            <label for="room_type" class="control-label">{% trans 'Type' %}</label>
                                         </div>
                                         <div class="col-md-9">
-                                            <select name="status" id="status" class="form-control custom-select">
-                                                <option name="status"
-                                                        value="0">Signature villa
+                                            <select name="room_type" id="room_type" class="form-control custom-select">
+                                                <option name="room_type"
+                                                        value="0">Double/Twin room
                                                 </option>
-                                                <option name="status"
-                                                        value="1">Garden home villa
+                                                <option name="room_type"
+                                                        value="1">Triple room
                                                 </option>
                                             </select>
                                         </div>

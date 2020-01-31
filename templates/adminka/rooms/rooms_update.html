@@ -113,14 +113,14 @@
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-md-3 text-right">
-                                            <label for="bedroom"
-                                                   class="control-label">{% trans 'Number of bedrooms' %}</label>
+                                            <label for="price"
+                                                   class="control-label">{% trans 'Price' %}</label>
                                         </div>
                                         <div class="col-md-9">
-                                            <input type="number" class="form-control" id="bedroom" name="bedroom"
-                                                   autocomplete="off" {% if room.bedroom %}
-                                                   value="{{ room.bedroom }}" {% else %}
-                                                   placeholder="{{ room.bedroom }}" {% endif %}>
+                                            <input type="number" class="form-control" id="price" name="price"
+                                                   autocomplete="off" {% if room.price %}
+                                                   value="{{ room.price }}" {% else %}
+                                                   placeholder="{{ room.price }}" {% endif %}>
                                         </div>
                                     </div>
                                 </div>
@@ -141,23 +141,23 @@
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-md-3 text-right">
-                                            <label for="status" class="control-label">{% trans 'Status' %}</label>
+                                            <label for="room_type" class="control-label">{% trans 'Type' %}</label>
                                         </div>
                                         <div class="col-md-9">
-                                            <select name="status" id="status" class="form-control custom-select">
-                                                {% if room.status == 0 %}
-                                                    <option name="status"
-                                                            value="0">Signature room
+                                            <select name="room_type" id="room_type" class="form-control custom-select">
+                                                {% if room.room_type == 0 %}
+                                                    <option name="room_type"
+                                                            value="0">Double/Twin room
                                                     </option>
-                                                    <option name="status"
-                                                            value="1">Garden home room
+                                                    <option name="room_type"
+                                                            value="1">Triple room
                                                     </option>
-                                                {% elif room.status == 1 %}
-                                                    <option name="status"
-                                                            value="1">Garden home room
+                                                {% elif room.room_type == 1 %}
+                                                    <option name="room_type"
+                                                            value="1">Triple room
                                                     </option>
-                                                    <option name="status"
-                                                            value="0">Signature room
+                                                    <option name="room_type"
+                                                            value="0">Double/Twin room
                                                     </option>
                                                 {% endif %}
                                             </select>

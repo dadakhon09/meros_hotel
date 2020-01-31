@@ -57,11 +57,11 @@ class RoomsCreateView(View):
             'description_ru': description_ru
         }
 
-        status = post.get('status')
+        room_type = post.get('room_type')
 
-        bedroom = post.get('bedroom')
-        if not bedroom:
-            bedroom = None
+        price = post.get('price')
+        if not price:
+            price = None
 
         square_meter = post.get('square_meter')
         if not square_meter:
@@ -69,8 +69,8 @@ class RoomsCreateView(View):
 
         images = self.request.FILES.getlist('image')
 
-        room = Room.objects.create(title=title, description=description, status=status,
-                                     bedroom=bedroom, square_meter=square_meter)
+        room = Room.objects.create(title=title, description=description, room_type=room_type,
+                                     price=price, square_meter=square_meter)
 
         room.save()
 
@@ -107,13 +107,13 @@ class RoomsUpdateView(View):
             'description_ru': description_ru,
         }
 
-        status = post.get('status')
+        room_type = post.get('room_type')
 
         images = self.request.FILES.getlist('image')
 
-        bedroom = post.get('bedroom')
-        if not bedroom:
-            bedroom = None
+        price = post.get('price')
+        if not price:
+            price = None
 
         square_meter = post.get('square_meter')
         if not square_meter:
@@ -121,8 +121,8 @@ class RoomsUpdateView(View):
 
         room.title = title
         room.description = description
-        room.status = status
-        room.bedroom = bedroom
+        room.room_type = room_type
+        room.price = price
         room.square_meter = square_meter
 
         room.save()
