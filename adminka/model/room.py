@@ -31,6 +31,7 @@ class Room(models.Model):
     price = models.PositiveIntegerField(null=True, blank=True)
     square_meter = models.FloatField(null=True, blank=True)
     room_type = models.IntegerField(choices=ROOM_TYPE, null=True, blank=True)
+    availability = models.BooleanField(default=True, null=True, blank=True)
 
     class Meta:
         db_table = 'rooms'
@@ -38,14 +39,6 @@ class Room(models.Model):
 
     def __str__(self):
         return self.title['title_en'] or 'asd'
-
-
-class RoomAvailability(models.Model):
-    room = models.ForeignKey(Room, on_delete=models.CASCADE)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    start_date = models.DateTimeField(null=True, blank=True)
-    end_date = models.DateTimeField(null=True, blank=True)
-    availability = models.BooleanField(default=True, null=True, blank=True)
 
 
 @receiver(post_save, sender=Room)
