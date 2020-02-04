@@ -5,6 +5,8 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.utils.text import slugify
 
+from adminka.model import Reservation
+
 
 class RoomImage(models.Model):
     image = models.ImageField(upload_to='rooms', null=True, blank=True)
@@ -31,11 +33,20 @@ class Room(models.Model):
     price = models.PositiveIntegerField(null=True, blank=True)
     square_meter = models.FloatField(null=True, blank=True)
     room_type = models.IntegerField(choices=ROOM_TYPE, null=True, blank=True)
+    reservation = models.ForeignKey(Reservation, on_delete=models.SET_NULL)
     availability = models.BooleanField(default=True, null=True, blank=True)
 
     class Meta:
         db_table = 'rooms'
         ordering = ['-id']
+
+    def save(self, *args, **kwargs):  # Overriding default behaviour of save
+        if self.reservation:  # If it is reserved, than it should not be available
+            self.availability = 0
+        else:
+            self.availability = 1
+
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return self.title['title_en'] or 'asd'
