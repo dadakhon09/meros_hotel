@@ -9,7 +9,7 @@ from adminka.model.reservation import Reservation
 
 class RoomImage(models.Model):
     image = models.ImageField(upload_to='rooms', null=True, blank=True)
-    room = models.ForeignKey('Room', on_delete=models.CASCADE)
+    room = models.ForeignKey('Room', on_delete=models.CASCADE, related_name='images')
 
     class Meta:
         db_table = 'room_images'
