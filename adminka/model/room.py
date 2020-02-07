@@ -5,7 +5,7 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.utils.text import slugify
 
-from adminka.model import Reservation
+from adminka.model.reservation import Reservation
 
 
 class RoomImage(models.Model):
@@ -33,7 +33,7 @@ class Room(models.Model):
     price = models.PositiveIntegerField(null=True, blank=True)
     square_meter = models.FloatField(null=True, blank=True)
     room_type = models.IntegerField(choices=ROOM_TYPE, null=True, blank=True)
-    reservation = models.ForeignKey(Reservation, on_delete=models.SET_NULL)
+    reservation = models.ForeignKey(Reservation, on_delete=models.SET_NULL, null=True)
     availability = models.BooleanField(default=True, null=True, blank=True)
 
     class Meta:
