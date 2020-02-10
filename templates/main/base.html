@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="{% static 'main/vendors/linericon/style.css' %}">
     <link rel="stylesheet" href="{% static 'main/css/font-awesome.min.css' %}">
     <link rel="stylesheet" href="{% static 'main/vendors/owl-carousel/owl.carousel.min.css' %}">
-    <link rel="stylesheet" href="{% static 'main/vendors/bootstrap-datepicker/bootstrap-datetimepicker.min.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
     <link rel="stylesheet" href="{% static 'main/vendors/nice-select/css/nice-select.css' %}">
     <link rel="stylesheet" href="{% static 'main/vendors/owl-carousel/owl.carousel.min.css' %}">
     <!-- main css -->
@@ -39,7 +39,7 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
                 <ul class="nav navbar-nav menu_nav ml-auto">
-                    <li class="nav-item active"><a class="nav-link" href="{% url 'index' %}">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'index' %}">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">About us</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'rooms' %}">Accomodation</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'gallery' %}">Gallery</a></li>
@@ -158,6 +158,10 @@
 </footer>
 <!--================ End footer Area  =================-->
 
+<script>
+
+</script>
+
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -167,7 +171,7 @@
 <script src="{% static 'main/vendors/owl-carousel/owl.carousel.min.js' %}"></script>
 <script src="{% static 'main/js/jquery.ajaxchimp.min.js' %}"></script>
 <script src="{% static 'main/js/mail-script.js' %}"></script>
-<script src="{% static 'main/vendors/bootstrap-datepicker/bootstrap-datetimepicker.min.js' %}"></script>
+<script src="{% static 'main/vendors/bootstrap-datepicker/bootstrap-datepicker.js' %}"></script>
 <script src="{% static 'main/vendors/nice-select/js/jquery.nice-select.js' %}"></script>
 <script src="{% static 'main/js/mail-script.js' %}"></script>
 <script src="{% static 'main/js/stellar.js' %}"></script>

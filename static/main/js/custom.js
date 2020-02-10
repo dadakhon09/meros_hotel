@@ -60,8 +60,8 @@
     
     
     $('select').niceSelect();
-    $('#datetimepicker11,#datetimepicker1').datetimepicker({
-        daysOfWeekDisabled: [0, 6]
+    $('#datetimepicker11,#datetimepicker1').datepicker({
+        // daysOfWeekDisabled: [0, 6]
     });
     
      /*---------gallery isotope js-----------*/
@@ -300,3 +300,20 @@
     }
 
 })(jQuery)
+let Path = location.pathname.split('/').slice(2, 3);
+    Path = Path.join('/');
+    $('.nav .nav-item').map(function () {
+        found_path = $(this).find('a').attr('href').slice(3,);
+        console.log(found_path, Path, this);
+        if (found_path === '/'+ Path) {
+            $(this).addClass("active");
+        }
+
+        else if (found_path === '/' + Path + '/') {
+            $(this).addClass("active");
+        }
+
+        else {
+            $(this).removeClass("active");
+        }
+    }).get();
