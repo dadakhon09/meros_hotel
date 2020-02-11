@@ -1,5 +1,8 @@
 {% extends 'main/base.html' %}
 {% load static i18n %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'main/js/fancybox/jquery.fancybox.min.css' %}">
+{% endblock %}
 {% block body %}
     <!--================Breadcrumb Area =================-->
     <section class="breadcrumb_area">
@@ -29,24 +32,19 @@
 
                     <div class="col-md-4 gallery_item">
                         <div class="gallery_img">
-                            <img src="{{ g_image.image.url }}" alt="">
-                            <div class="hover">
-                                <a class="light" href="{{ g_image.image.url }}"><i
-                                        class="fa fa-expand"></i></a>
-                            </div>
+                            <a href="{{ g_image.image.url }}" data-fancybox="'gallery" data-caption="{{ g_image.image.name }} ">
+                            <img width="350" height="350" src="{{ g_image.image.url }}" alt="">
+                                </a>
                         </div>
                     </div>
                 {% endfor %}
                 {% for r_image in r_images %}
 
-
                     <div class="col-md-4 gallery_item">
                         <div class="gallery_img">
-                            <img src="{{ r_image.image.url }}" alt="">
-                            <div class="hover">
-                                <a class="light" href="{{ r_image.image.url }}"><i
-                                        class="fa fa-expand"></i></a>
-                            </div>
+                            <a href="{{ r_image.image.url }}" data-fancybox="'gallery" data-caption="{{ r_image.image.name }}">
+                            <img width="350" height="350" src="{{ r_image.image.url }}" alt="">
+                                </a>
                         </div>
                     </div>
                 {% endfor %}
@@ -57,5 +55,5 @@
     <!--================Breadcrumb Area =================-->
 {% endblock %}
 {% block js %}
-
+    <script src="{% static 'main/js/fancybox/jquery.fancybox.min.js' %}"></script>
 {% endblock %}

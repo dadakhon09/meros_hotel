@@ -10,8 +10,8 @@ urlpatterns = [
     path('', IndexView.as_view(), name='index'),
     path('about/', AboutView.as_view(), name='about'),
     path('contact/', ContactView.as_view(), name='contact'),
-    path('rooms/', RoomsView.as_view(), name='rooms'),
-    path('rooms/<str:slug>/', RoomView.as_view(), name='room-view'),
+    path('accommodation/', RoomsView.as_view(), name='rooms'),
+    path('accommodation/<str:slug>/', RoomView.as_view(), name='room-view'),
     path('gallery/', GalleryView.as_view(), name='gallery'),
 ]
 

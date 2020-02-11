@@ -4,7 +4,7 @@ from django.db import models
 
 class About(models.Model):
     text = JSONField()
-    image = models.ImageField(upload_to='about', null=True, blank=True)
+    image = models.ImageField(null=True, blank=True)
 
     class Meta:
         db_table = 'about'
