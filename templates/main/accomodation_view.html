@@ -1,0 +1,153 @@
+{% extends 'main/base.html' %}
+{% load static i18n %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'main/js/fancybox/jquery.fancybox.min.css' %}">
+{% endblock %}
+{% block body %}
+    {% get_current_language as LANGUAGE_CODE %}
+
+    <!--================Breadcrumb Area =================-->
+    <section class="breadcrumb_area">
+        <div class="overlay bg-parallax" data-stellar-ratio="0.8" data-stellar-vertical-offset="0"
+             data-background=""></div>
+        <div class="container">
+            <div class="page-cover text-center">
+                <h2 class="page-cover-tittle">Single View</h2>
+                <ol class="breadcrumb">
+                    <li><a href="{% url 'index' %}">Home</a></li>
+                    <li class="active">Single View</li>
+                </ol>
+            </div>
+        </div>
+    </section>
+    <!--================Breadcrumb Area =================-->
+
+    <!--================ About History Area  =================-->
+    <section class="about_history_area section_gap">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 d_flex align-items-center">
+                    <div class="about_content ">
+                        {% if LANGUAGE_CODE == 'en' %}
+                            <h2 class="title title_color"> {{ room.title.title_en }}</h2>
+                            <p>{{ room.description.description_en }}</p>
+                        {% else %}
+                            <h2 class="title title_color"> {{ room.title.title_ru }}</h2>
+                            <p>{{ room.description.description_ru }}</p>
+                        {% endif %}
+                        <p><b>{% trans 'Square meter' %}:</b> {{ room.square_meter }}</p>
+                        <p><b>{% trans 'Room type' %}:</b> {{ room.get_room_type_display }}</p>
+                        <p><b>{% trans 'Price' %}:</b> ${{ room.price }}</p>
+                    </div>
+
+                </div>
+                <div class="col-md-6">
+                    <div class="row imageGallery1" id="gallery">
+                        {% for r_image in r_images %}
+                            <div class="col-md-6 gallery_item">
+                                <div class="gallery_img">
+                                    <a href="{{ r_image.image.url }}" data-fancybox="gallery"
+                                       data-caption="{{ r_image.image.name }}">
+                                        <img src="{{ r_image.image.url }}" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                        {% endfor %}
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        </div>
+    </section>
+    <!--================ About History Area  =================-->
+    <!--================Booking Tabel Area =================-->
+    <section class="hotel_booking_area">
+        <div class="container">
+            <div class="row hotel_booking_table">
+                <div class="col-md-3">
+                    <h2>Book<br> This Room</h2>
+                </div>
+                <div class="col-md-9">
+                    <div class="boking_table">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="book_tabel_item">
+                                    <div class="form-group">
+                                        <div class='input-group date' id='datetimepicker11'>
+                                            <input type='text' class="form-control" placeholder="Arrival Date"/>
+                                            <span class="input-group-addon">
+                                                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                                                </span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class='input-group date' id='datetimepicker1'>
+                                            <input type='text' class="form-control" placeholder="Departure Date"/>
+                                            <span class="input-group-addon">
+                                                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                                                </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="book_tabel_item">
+                                    <div class="input-group">
+                                        <select class="wide">
+                                            <option data-display="Number of people">Number of people</option>
+                                            {% if room.room_type == 0 %}
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                            {% elif room.room_type == 1 %}
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                            {% endif %}
+                                        </select>
+                                    </div>
+                                    <div class="input-group">
+                                        <select class="wide">
+                                            <option data-display="Number of children">Number of children</option>
+                                            <option value="0">0</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                        </select>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="book_tabel_item">
+                                    <div class="form-group">
+                                        <div class='input-group'>
+                                            <input type='text' class="form-control" placeholder="Your name" required/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class='input-group'>
+                                            <input type='email' class="form-control" placeholder="Your email" required/>
+                                        </div>
+                                    </div>
+                                    <a class="book_now_btn button_hover" href="#">Book Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--================Booking Tabel Area  =================-->
+
+
+    {% include 'main/facilities.html' %}
+
+{% endblock %}
+
+{% block js %}
+    <script src="{% static 'main/js/fancybox/jquery.fancybox.min.js' %}"></script>
+{% endblock %}

@@ -55,9 +55,9 @@
                                                            class="control-label">{% trans 'Description' %}(en)</label>
                                                 </div>
                                                 <div class="col-md-9">
-                                                    <input type="text" class="form-control" id="description_en"
+                                                    <textarea type="text" rows="10" class="form-control" id="description_en"
                                                            name="description_en" autocomplete="off"
-                                                    >
+                                                    ></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -86,9 +86,9 @@
                                                        class="control-label">{% trans 'Description' %}(ru)</label>
                                             </div>
                                             <div class="col-md-9">
-                                                <input type="text" class="form-control" id="description_ru"
+                                                <textarea type="text" rows="10"  class="form-control" id="description_ru"
                                                        name="description_ru" autocomplete="off"
-                                                >
+                                                ></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -234,11 +234,7 @@
             type="text/javascript"></script>
     <script>
         document.getElementById("description_en").value = "{{ room.description.description_en }}";
-        document.getElementById("description_ar").value = "{{ room.description.description_ar }}";
-        document.getElementById("description_fa").value = "{{ room.description.description_fa }}";
-        document.getElementById("description_hi").value = "{{ room.description.description_hi }}";
         document.getElementById("description_ru").value = "{{ room.description.description_ru }}";
-        document.getElementById("description_zh").value = "{{ room.description.description_zh }}";
 
     </script>
     <script>
@@ -252,12 +248,12 @@
                 overwriteInitial: false,
                 initialPreviewAsData: true,
                 initialPreview: [
-                    {% for i in v_images %}
+                    {% for i in r_images %}
                         "{{i.image.url}}",
                     {% endfor %}
                 ],
                 initialPreviewConfig: [
-                    {% for i in v_images %} {
+                    {% for i in r_images %} {
                         caption: "{{i.image.name}}",
                         size: {{ i.image.size }},
                         width: "120px",
