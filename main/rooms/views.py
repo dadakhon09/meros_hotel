@@ -16,3 +16,8 @@ class RoomView(View):
         room = Room.objects.get(slug=slug)
         r_images = RoomImage.objects.filter(room=room)
         return render(request, 'main/accomodation_view.html', {'room': room, 'r_images': r_images})
+
+
+class AvailableRoomsView(View):
+    def get(self, request, start_date, end_date):
+        rooms = Room.objects.filter(availability=True)
