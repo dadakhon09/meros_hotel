@@ -1,38 +1,47 @@
 {% extends 'adminka/_base.html' %}
 {% load static i18n %}
 {% block head %}
-<style>
-.sss {
-    margin-top: 30vh;
+    <style>
+        .sss {
+            margin-top: 30vh;
 
-}
-.counter {
-    font-size: 100px;
-}
-</style>
+        }
+
+        .counter {
+            font-size: 100px;
+        }
+    </style>
 {% endblock %}
 {% block body %}
-{% get_current_language as LANGUAGE_CODE %}
-<div class="container text-center">
-    <div class="row sss">
-        <div class="col-md-6">
-            <h1><span class="counter">{{ rooms }}</span></h1>
-            <a href="{% url 'adminka-rooms' %}">
+    {% get_current_language as LANGUAGE_CODE %}
+    <div class="container text-center">
+        <div class="row sss">
+            <div class="col-md-4">
+                <h1><span class="counter">{{ total_rooms }}</span></h1>
                 <h3>{% trans 'Rooms' %}</h3>
-            </a>
+            </div>
+            <div class="col-md-4">
+                <h1><span class="counter">{{ available_rooms }}</span></h1>
+                <h3>{% trans 'Available Rooms' %}</h3>
+            </div>
+            <div class="col-md-4">
+
+                <h1><span class="counter">{{ reserved_rooms }}</span></h1>
+                <h3>{% trans 'Reserved Rooms' %}</h3>
+            </div>
         </div>
     </div>
-</div>
+    </div>
 {% endblock %}
 {% block js %}
-<script src="{% static 'adminka/js/jquery.waypoints.js' %}"></script>
-<script src="{% static 'adminka/js/jquery.counterup.js' %}"></script>
-<script>
-jQuery(document).ready(function($) {
-    $('.counter').counterUp({
-        delay: 30,
-        time: 800
-    });
-});
-</script>
+    <script src="{% static 'adminka/js/jquery.waypoints.js' %}"></script>
+    <script src="{% static 'adminka/js/jquery.counterup.js' %}"></script>
+    <script>
+        jQuery(document).ready(function ($) {
+            $('.counter').counterUp({
+                delay: 30,
+                time: 800
+            });
+        });
+    </script>
 {% endblock %}
