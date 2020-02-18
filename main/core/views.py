@@ -3,10 +3,18 @@ from django.shortcuts import render
 from django.urls import reverse
 from django.views import View
 
+from adminka.model import About
+
 
 class IndexView(View):
     def get(self, request):
-        return render(request, 'main/index.html')
+        about = About.objects.get(id=1)
+
+        context = {
+            'about': about,
+        }
+
+        return render(request, 'main/index.html', context)
 
     def post(self, request):
         start_date = self.request.POST.get('start_date')

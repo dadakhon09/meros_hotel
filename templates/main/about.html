@@ -26,7 +26,8 @@
                 <div class="col-md-6 d_flex align-items-center">
                     <div class="about_content ">
                         <h2 class="title title_color">About Us <br>Our History<br>Mission & Vision</h2>
-                        {% if LANGUAGE_CODE == 'en' %}<p>{{ about.text.text_en }}</p>{% else %}<p>{{ about.text.text_ru }}</p>{% endif %}
+                        {% if LANGUAGE_CODE == 'en' %}<p>{{ about.text.text_en }}</p>{% else %}
+                            <p>{{ about.text.text_ru }}</p>{% endif %}
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -37,84 +38,8 @@
     </section>
     <!--================ About History Area  =================-->
 
-{% include 'main/facilities.html' %}
+    {% include 'main/facilities.html' %}
 
+    {% include 'main/testimonials.html' %}
 
-    <!--================ Testimonial Area  =================-->
-    <section class="testimonial_area section_gap">
-        <div class="container">
-            <div class="section_title text-center">
-                <h2 class="title_color">Testimonial from our Clients</h2>
-                <p>The French Revolution constituted for the conscience of the dominant aristocratic class a fall
-                    from </p>
-            </div>
-            <div class="testimonial_slider owl-carousel">
-                <div class="media testimonial_item">
-                    <img class="rounded-circle" src="{% static 'main/image/testtimonial-1.jpg' %}" alt="">
-                    <div class="media-body">
-                        <p>As conscious traveling Paupers we must always be concerned about our dear Mother Earth. If
-                            you
-                            think about it, you travel across her face, and She is the </p>
-                        <a href="#"><h4 class="sec_h4">Fanny Spencer</h4></a>
-                        <div class="star">
-                            <a href="#"><i class="fa fa-star"></i></a>
-                            <a href="#"><i class="fa fa-star"></i></a>
-                            <a href="#"><i class="fa fa-star"></i></a>
-                            <a href="#"><i class="fa fa-star"></i></a>
-                            <a href="#"><i class="fa fa-star-half-o"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="media testimonial_item">
-                    <img class="rounded-circle" src="{% static 'main/image/testtimonial-1.jpg' %}" alt="">
-                    <div class="media-body">
-                        <p>As conscious traveling Paupers we must always be concerned about our dear Mother Earth. If
-                            you
-                            think about it, you travel across her face, and She is the </p>
-                        <a href="#"><h4 class="sec_h4">Fanny Spencer</h4></a>
-                        <div class="star">
-                            <a href="#"><i class="fa fa-star"></i></a>
-                            <a href="#"><i class="fa fa-star"></i></a>
-                            <a href="#"><i class="fa fa-star"></i></a>
-                            <a href="#"><i class="fa fa-star"></i></a>
-                            <a href="#"><i class="fa fa-star-half-o"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="media testimonial_item">
-                    <img class="rounded-circle" src="{% static 'main/image/testtimonial-1.jpg' %}" alt="">
-                    <div class="media-body">
-                        <p>As conscious traveling Paupers we must always be concerned about our dear Mother Earth. If
-                            you
-                            think about it, you travel across her face, and She is the </p>
-                        <a href="#"><h4 class="sec_h4">Fanny Spencer</h4></a>
-                        <div class="star">
-                            <a href="#"><i class="fa fa-star"></i></a>
-                            <a href="#"><i class="fa fa-star"></i></a>
-                            <a href="#"><i class="fa fa-star"></i></a>
-                            <a href="#"><i class="fa fa-star"></i></a>
-                            <a href="#"><i class="fa fa-star-half-o"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="media testimonial_item">
-                    <img class="rounded-circle" src="{% static 'main/image/testtimonial-1.jpg' %}" alt="">
-                    <div class="media-body">
-                        <p>As conscious traveling Paupers we must always be concerned about our dear Mother Earth. If
-                            you
-                            think about it, you travel across her face, and She is the </p>
-                        <a href="#"><h4 class="sec_h4">Fanny Spencer</h4></a>
-                        <div class="star">
-                            <a href="#"><i class="fa fa-star"></i></a>
-                            <a href="#"><i class="fa fa-star"></i></a>
-                            <a href="#"><i class="fa fa-star"></i></a>
-                            <a href="#"><i class="fa fa-star"></i></a>
-                            <a href="#"><i class="fa fa-star-half-o"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--================ Testimonial Area  =================-->
 {% endblock %}
