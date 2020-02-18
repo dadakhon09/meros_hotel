@@ -8,8 +8,8 @@ from adminka.model.room import Room
 class AdminIndexView(LoginRequiredMixin, View):
     def get(self, request):
         total_rooms = Room.objects.all().count()
-        available_rooms = Room.objects.filter(availability=True).count()
-        reserved_rooms = Room.objects.filter(availability=False).count()
+        available_rooms = Room.objects.filter().count()
+        reserved_rooms = Room.objects.filter().count()
 
         context = {
             'total_rooms': total_rooms,

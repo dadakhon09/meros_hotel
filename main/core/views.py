@@ -26,8 +26,3 @@ class IndexView(View):
                                                                        'num_of_adults': num_of_adults,
                                                                        'num_of_children': num_of_children}))
 
-        # checkaviabilty():
-        # roooms =Roon.objects.all()
-        # for room in rooms:
-        #     if now >= room.enddate:
-        #         room.abialb=True

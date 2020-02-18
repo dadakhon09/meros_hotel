@@ -4,7 +4,7 @@
     <!--================Banner Area =================-->
     <section class="banner_area">
         <div class="booking_table d_flex align-items-center">
-            <div class="overlay bg-parallax" data-stellar-ratio="0.9" data-stellar-vertical-offset="0"
+            <div class="overlay bg-parallax" data-stellar-ratio="0.5" data-stellar-vertical-offset="0"
                  data-background=""></div>
             <div class="container">
                 <div class="banner_content text-center">
@@ -18,7 +18,7 @@
         </div>
         <div class="hotel_booking_area position">
             <div class="container">
-                <form class="" action="{% url 'index' %}" method="POST">{% csrf_token %}
+                <form class="" action="{% url 'check_availability' %}" method="POST">{% csrf_token %}
 
                     <div class="hotel_booking_table">
                         <div class="col-md-3">
@@ -32,7 +32,7 @@
                                             <div class="form-group">
                                                 <div class='input-group date' id='datetimepicker11'>
                                                     <input type='text' class="form-control" name="start_date" required
-                                                           placeholder="Arrival Date"/>
+                                                           placeholder="Arrival Date" autocomplete="off"/>
                                                     <span class="input-group-addon">
                                                         <i class="fa fa-calendar" aria-hidden="true"></i>
                                                     </span>
@@ -41,7 +41,7 @@
                                             <div class="form-group">
                                                 <div class='input-group date' id='datetimepicker1'>
                                                     <input type='text' class="form-control" name="end_date" required
-                                                           placeholder="Departure Date"/>
+                                                           placeholder="Departure Date" autocomplete="off"/>
                                                     <span class="input-group-addon">
                                                         <i class="fa fa-calendar" aria-hidden="true"></i>
                                                     </span>
@@ -133,7 +133,8 @@
                 <div class="col-md-6 d_flex align-items-center">
                     <div class="about_content ">
                         <h2 class="title title_color">About Us <br>Our History<br>Mission & Vision</h2>
-                        <p>{{ about.text.text_en }}</p>
+                        {% autoescape off %}{% if LANGUAGE_CODE == 'en' %}<p>{{ about.text.text_en }}</p>{% else %}
+                            {{ about.text.text_ru }}{% endif %}{% endautoescape %}
                     </div>
                 </div>
                 <div class="col-md-6">

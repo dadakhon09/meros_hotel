@@ -5,6 +5,8 @@ from django.utils import timezone
 from django.dispatch import receiver
 from django.utils.text import slugify
 
+from meros_hotel import settings
+
 
 class RoomImage(models.Model):
     image = models.ImageField(null=True, blank=True)
@@ -20,13 +22,13 @@ class RoomImage(models.Model):
 
 class Reservation(models.Model):
     room = models.ForeignKey('Room', on_delete=models.CASCADE)
-    reservation_time = models.DateTimeField(default=timezone.now)
-    customer_name = models.CharField(max_length=255)
-    customer_email = models.CharField(max_length=255)
-    no_of_children = models.PositiveSmallIntegerField(default=0)
-    no_of_adults = models.PositiveSmallIntegerField(default=1)
-    start_date = models.DateTimeField(default=timezone.now)
-    end_date = models.DateTimeField(default=timezone.now)
+    reservation_time = models.DateField(default=timezone.now, null=True, blank=True)
+    customer_name = models.CharField(max_length=255, null=True, blank=True)
+    customer_email = models.CharField(max_length=255, null=True, blank=True)
+    no_of_children = models.PositiveSmallIntegerField(default=0, null=True, blank=True)
+    no_of_adults = models.PositiveSmallIntegerField(default=1, null=True, blank=True)
+    start_date = models.DateField(default=timezone.now)
+    end_date = models.DateField(default=timezone.now)
 
     # def save(self, *args, **kwargs):
     #     if self.room.availability(self.start_date, self.end_date):

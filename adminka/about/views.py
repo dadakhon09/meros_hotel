@@ -28,7 +28,11 @@ class AdminAboutView(View):
         image = self.request.FILES.get('image')
 
         about.text = text
-        about.image = image
+
+        if about.image and about.image != image:
+            about.save()
+        else:
+            about.image = image
         about.save()
 
         # for i in images:
