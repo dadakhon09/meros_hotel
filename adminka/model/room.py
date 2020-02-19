@@ -25,8 +25,8 @@ class Reservation(models.Model):
     reservation_time = models.DateField(default=timezone.now, null=True, blank=True)
     customer_name = models.CharField(max_length=255, null=True, blank=True)
     customer_email = models.CharField(max_length=255, null=True, blank=True)
-    no_of_children = models.PositiveSmallIntegerField(default=0, null=True, blank=True)
-    no_of_adults = models.PositiveSmallIntegerField(default=1, null=True, blank=True)
+    num_of_children = models.CharField(max_length=100, default=0, null=True, blank=True)
+    num_of_adults = models.CharField(max_length=100, default=1, null=True, blank=True)
     start_date = models.DateField(default=timezone.now)
     end_date = models.DateField(default=timezone.now)
 
@@ -57,13 +57,13 @@ class Room(models.Model):
     square_meter = models.FloatField(null=True, blank=True)
     room_type = models.IntegerField(choices=ROOM_TYPE, null=True, blank=True)
 
-    @property
-    def availability(self, start_date, end_date= timezone.now()):
-        resves = Reservation.objects.filter(room=self.id)
-        for res in resves:
-            if res.start_date <= start_date < res.end_date or res.start_date < end_date <= res.end_date:
-                return False
-        return True
+    # @property
+    # def availability(self, start_date, end_date= timezone.now()):
+    #     resves = Reservation.objects.filter(room=self.id)
+    #     for res in resves:
+    #         if res.start_date <= start_date < res.end_date or res.start_date < end_date <= res.end_date:
+    #             return False
+    #     return True
 
     class Meta:
         db_table = 'rooms'
