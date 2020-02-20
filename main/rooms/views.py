@@ -49,21 +49,35 @@ class CheckAvailability(View):
         print(case_2)
         print(case_3)
 
+        case_1_q = Reservation.objects.filter(start_date__lte=start_date, end_date__gte=start_date)
+        case_2_q = Reservation.objects.filter(start_date__lte=end_date, end_date__gte=end_date)
+        case_3_q = Reservation.objects.filter(start_date__gte=start_date, end_date__lte=end_date)
+
         if case_1 is False and case_2 is False and case_3 is False:
             context = {
                 'rvs': Reservation.objects.all()
             }
             return render(request, 'main/available_rooms.html', context)
         elif case_1 is False and case_2 is False:
-            pass
+            context = {
+                'rvs': case_1_q.union(case_2_q)
+            }
         elif case_1 is False and case_3 is False:
-            pass
+            context = {
+                'rvs': case_1_q.union(case_3_q)
+            }
         elif case_2 is False and case_3 is False:
-            pass
+            context = {
+                'rvs': case_2_q.union(case_3_q)
+            }
         elif not case_1:
-            pass
+            context = {
+                'rvs': case_1_q.union(case_2_q)
+            }
         elif not case_2:
-            pass
+            context = {
+                'rvs': case_1_q.union(case_2_q)
+            }
         elif not case_3:
             pass
         #
