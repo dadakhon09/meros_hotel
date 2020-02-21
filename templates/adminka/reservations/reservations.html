@@ -13,29 +13,30 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="card-main__title main-title">
-                            <h2>{% trans 'reservations' %}</h2>
+                            <h2>{% trans 'Reservations' %}</h2>
                             {% if reservations %}
-                            <div class="custom-search">
-                                <svg style="display: none">
-                                  <symbol id="magnify" viewBox="0 0 18 18" height="100%" width="100%">
-                                    <path d="M12.5 11h-.8l-.3-.3c1-1.1 1.6-2.6 1.6-4.2C13 2.9 10.1 0          6.5 0S0 2.9 0 6.5 2.9 13 6.5 13c1.6 0 3.1-.6 4.2-1.6l.3.3v.8l5 5          1.5-1.5-5-5zm-6 0C4 11 2 9 2 6.5S4 2 6.5 2 11 4 11 6.5 9 11 6.5            11z" fill="#fff" fill-rule="evenodd"/>
-                                  </symbol>
-                                </svg>
+                                <div class="custom-search">
+                                    <svg style="display: none">
+                                        <symbol id="magnify" viewBox="0 0 18 18" height="100%" width="100%">
+                                            <path d="M12.5 11h-.8l-.3-.3c1-1.1 1.6-2.6 1.6-4.2C13 2.9 10.1 0          6.5 0S0 2.9 0 6.5 2.9 13 6.5 13c1.6 0 3.1-.6 4.2-1.6l.3.3v.8l5 5          1.5-1.5-5-5zm-6 0C4 11 2 9 2 6.5S4 2 6.5 2 11 4 11 6.5 9 11 6.5            11z"
+                                                  fill="#fff" fill-rule="evenodd"/>
+                                        </symbol>
+                                    </svg>
 
-                                <form action="{% url 'reservations' %}" method="get">
-                                    <div class="search-bar">
-                                      <input type="text" class="input" name="q" placeholder="&nbsp;">
-                                      <span class="label">Title</span>
-                                      <span class="highlight"></span>
+                                    <form action="{% url 'reservations' %}" method="get">
+                                        <div class="search-bar">
+                                            <input type="text" class="input" name="q" placeholder="&nbsp;">
+                                            <span class="label">Title</span>
+                                            <span class="highlight"></span>
 
-                                      <button class="search-btn" style="border: none;">
-                                           <svg class="icon icon-18">
-                                             <use xlink:href="#magnify"></use>
-                                            </svg>
-                                       </button>
-                                      </div>
-                                </form>
-                            </div>
+                                            <button class="search-btn" style="border: none;">
+                                                <svg class="icon icon-18">
+                                                    <use xlink:href="#magnify"></use>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
                             {% endif %}
                             <div>
                                 {% if reservations.has_other_pages %}
@@ -76,8 +77,10 @@
                                 <thead>
                                 <tr>
                                     <th width="1%">#</th>
-                                    <th width="1%">{% trans 'Status' %}</th>
-                                    <th width="100">{% trans 'Title' %}</th>
+                                    <th width="1%">{% trans 'Room' %}</th>
+                                    <th width="100">{% trans 'Who' %}</th>
+                                    <th width="100">{% trans 'Arrival' %}</th>
+                                    <th width="100">{% trans 'Departure' %}</th>
                                     <th width="1%"></th>
                                     <th width="1%"></th>
 
@@ -86,22 +89,44 @@
                                 {% for rv in reservations %}
                                     <tr>
                                         <td>{{ rv.id }}</td>
-                                        <td>{{ rv.get_status_display }}</td>
                                         <td>
-                                            <a href="{% url 'reservations-update' rv.id %}">
+                                            <a href="{% url 'rooms-update' rv.id %}">
                                                 <div>
                                                     {% if LANGUAGE_CODE == 'en' %}
-                                                        <span>{{ rv.title.title_en }}</span>
+                                                        <span>{{ rv.room.title.title_en }}</span>
                                                     {% elif LANGUAGE_CODE == 'ru' %}
-                                                        <span>{{ rv.title.title_ru }}</span>
+                                                        <span>{{ rv.room.title.title_ru }}</span>
                                                     {% endif %}
                                                 </div>
                                             </a>
                                         </td>
+                                        <td>
+                                            <a href="{% url 'reservations-update' rv.id %}">
+                                                <div>
+                                                    <span>{{ rv.customer_name }}</span>
+                                                </div>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a href="{% url 'reservations-update' rv.id %}">
+                                                <div>
+                                                    <span>{{ rv.start_date }}</span>
+                                                </div>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a href="{% url 'reservations-update' rv.id %}">
+                                                <div>
+                                                    <span>{{ rv.end_date }}</span>
+                                                </div>
+                                            </a>
+                                        </td>
+
                                         <td><a href="{% url 'reservations-update' rv.id %}" class="label label-info"><i
                                                 class="fas fa-edit"></i>{% trans 'Edit' %}</a></td>
                                         <td><a href="#" data-id="{{ rv.id }}" id=""
-                                               class="removeButton label label-danger"><i class="fas fa-trash"></i></a></td>
+                                               class="removeButton label label-danger"><i class="fas fa-trash"></i></a>
+                                        </td>
                                     </tr>
                                 {% endfor %}
                                 </tbody>
