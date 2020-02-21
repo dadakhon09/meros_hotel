@@ -7,4 +7,8 @@ admin.site.register(About)
 admin.site.register(Room)
 admin.site.register(RoomImage)
 admin.site.register(Gallery)
-admin.site.register(Reservation)
+
+
+@admin.register(Reservation)
+class ReservationAdmin(admin.ModelAdmin):
+    list_display = ['room', 'start_date', 'end_date']

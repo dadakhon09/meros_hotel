@@ -30,22 +30,17 @@ class Reservation(models.Model):
     start_date = models.DateField(default=timezone.now)
     end_date = models.DateField(default=timezone.now)
 
-    # def save(self, *args, **kwargs):
-    #     if self.room.availability(self.start_date, self.end_date):
-    #        super().save(*args, **kwargs)
-    #     else:
-    #         return -1
-
     class Meta:
         db_table = 'reservations'
 
     def __str__(self):
-        return f'{self.id}-reservation + {self.customer_name}'
+        return f'{self.id}-reservation + {self.room}-room + {self.customer_name}'
 
 
 ROOM_TYPE = (
-    (0, 'Double/Twin room '),
-    (1, 'Triple room ')
+    (0, 'Double room '),
+    (1, 'Twin room '),
+    (2, 'Triple room ')
 )
 
 
@@ -53,7 +48,7 @@ class Room(models.Model):
     title = JSONField()
     description = JSONField(null=True, blank=True)
     slug = models.SlugField(max_length=255)
-    price = models.PositiveIntegerField(null=True, blank=True)
+    price = models.FloatField(null=True, blank=True)
     square_meter = models.FloatField(null=True, blank=True)
     room_type = models.IntegerField(choices=ROOM_TYPE, null=True, blank=True)
 

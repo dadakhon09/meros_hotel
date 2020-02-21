@@ -49,43 +49,57 @@ class CheckAvailability(View):
         print(case_2)
         print(case_3)
 
-        case_1_q = Reservation.objects.filter(start_date__lte=start_date, end_date__gte=start_date)
-        case_2_q = Reservation.objects.filter(start_date__lte=end_date, end_date__gte=end_date)
-        case_3_q = Reservation.objects.filter(start_date__gte=start_date, end_date__lte=end_date)
+        case_1_q = Reservation.objects.exclude(start_date__lte=start_date, end_date__gte=start_date)
+        case_2_q = Reservation.objects.exclude(start_date__lte=end_date, end_date__gte=end_date)
+        case_3_q = Reservation.objects.exclude(start_date__gte=start_date, end_date__lte=end_date)
+
+        for c in case_1_q:
+            rooms_1 = Room.objects.filter(id=c.room_id)
+
+        for c in case_2_q:
+            rooms_2 = Room.objects.filter(id=c.room_id)
+
+        for c in case_3_q:
+            rooms_3 = Room.objects.filter(id=c.room_id)
 
         if case_1 is False and case_2 is False and case_3 is False:
             context = {
-                'rvs': Reservation.objects.all()
+                'rooms': Room.objects.all()
             }
-            return render(request, 'main/available_rooms.html', context)
         elif case_1 is False and case_2 is False:
             context = {
-                'rvs': case_1_q.union(case_2_q)
+                'rooms': rooms_1.union(rooms_2)
             }
         elif case_1 is False and case_3 is False:
             context = {
-                'rvs': case_1_q.union(case_3_q)
+                'rooms': rooms_1.union(rooms_3)
             }
         elif case_2 is False and case_3 is False:
             context = {
-                'rvs': case_2_q.union(case_3_q)
+                'rooms': rooms_2.union(rooms_3)
             }
-        elif not case_1:
+        elif case_1 is False:
             context = {
-                'rvs': case_1_q.union(case_2_q)
+                'rooms': rooms_1
             }
-        elif not case_2:
+        elif case_2 is False:
             context = {
-                'rvs': case_1_q.union(case_2_q)
+                'rooms': rooms_2
             }
-        elif not case_3:
-            pass
+        elif case_3 is False:
+            context = {
+                'rooms': rooms_3
+            }
+        else:
+            context = {
+                'error': 'Sorry, there is no available rooms for your request'
+            }
         #
         # if case_1 or case_2 or case_3:
         #     # return render(request, "system/reserve.html",
         #     #               {"errors": "This room is not available on your selected dates"})
         #     return HttpResponse('error')
-        return HttpResponse('asdasdsa')
+        return render(request, 'main/available_rooms.html', context)
 
 
 class BookView(View):
@@ -101,6 +115,7 @@ class BookView(View):
         num_of_adults = self.request.POST.get('num_of_adults')
         print(num_of_adults)
         num_of_children = self.request.POST.get('num_of_children')
+        print(num_of_children)
         customer_name = self.request.POST.get('customer_name')
         customer_email = self.request.POST.get('customer_email')
 
