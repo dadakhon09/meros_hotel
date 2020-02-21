@@ -39,61 +39,96 @@ class CheckAvailability(View):
         num_of_adults = self.request.POST.get('num_of_adults')
         num_of_children = self.request.POST.get('num_of_children')
 
-        case_1 = Reservation.objects.filter(start_date__lte=start_date, end_date__gte=start_date).exists()
+        # case = Reservation.objects.raw(
+        #     '''select * from reservations where not ((start_date <= %s and end_date > %s) or (start_date < %s and end_date >= %s))''',
+        #     [start_date, start_date, end_date, end_date])
+        #
+        # for c in case:
+        #     pass
+        #     # print(c)
 
-        case_2 = Reservation.objects.filter(start_date__lte=end_date, end_date__gte=end_date).exists()
+        case2 = Reservation.objects.exclude(
+            Q(start_date__lte=start_date, end_date__gt=start_date) | Q(start_date__lt=end_date, end_date__gte=end_date))
 
-        case_3 = Reservation.objects.filter(start_date__gte=start_date, end_date__lte=end_date).exists()
+        rooms = Room.objects.filter(id=-1)
 
-        print(case_1)
-        print(case_2)
-        print(case_3)
+        for c in case2:
+            rooms = rooms.union(Room.objects.filter(id=c.room_id))
 
-        case_1_q = Reservation.objects.exclude(start_date__lte=start_date, end_date__gte=start_date)
-        case_2_q = Reservation.objects.exclude(start_date__lte=end_date, end_date__gte=end_date)
-        case_3_q = Reservation.objects.exclude(start_date__gte=start_date, end_date__lte=end_date)
+        print(rooms)
 
-        for c in case_1_q:
-            rooms_1 = Room.objects.filter(id=c.room_id)
+        context = {
+            'rooms': rooms,
+        }
+        #
+        # case_1 = Reservation.objects.filter(start_date__lte=start_date, end_date__gte=start_date).exists()
+        #
+        # case_2 = Reservation.objects.filter(start_date__lte=end_date, end_date__gte=end_date).exists()
+        #
+        # case_3 = Reservation.objects.filter(start_date__gte=start_date, end_date__lte=end_date).exists()
+        #
+        # print(case_1)
+        # print(case_2)
+        # print(case_3)
+        #
+        # case_1_q = Reservation.objects.select_related('room').filter(start_date__lte=start_date,
+        #                                                              end_date__gte=start_date)
+        # case_2_q = Reservation.objects.select_related('room').filter(start_date__lte=end_date, end_date__gte=end_date)
+        # case_3_q = Reservation.objects.select_related('room').filter(start_date__gte=start_date, end_date__lte=end_date)
+        #
+        # print(case_1_q)
+        # print(case_2_q)
+        # print(case_3_q)
 
-        for c in case_2_q:
-            rooms_2 = Room.objects.filter(id=c.room_id)
+        # rooms_1 = Room.objects.filter(id=-1)
+        # rooms_2 = Room.objects.filter(id=-1)
+        # rooms_3 = Room.objects.filter(id=-1)
 
-        for c in case_3_q:
-            rooms_3 = Room.objects.filter(id=c.room_id)
+        # for c in case_1_q:
+        #     rooms_1 = rooms_1.union(Room.objects.filter(id=c.room_id))
+        #
+        # for c in case_2_q:
+        #     rooms_2 = rooms_2.union(Room.objects.filter(id=c.room_id))
+        #
+        # for c in case_3_q:
+        #     rooms_3 = rooms_3.union(Room.objects.filter(id=c.room_id))
+        #
+        # print(rooms_1)
+        # print(rooms_2)
+        # print(rooms_3)
 
-        if case_1 is False and case_2 is False and case_3 is False:
-            context = {
-                'rooms': Room.objects.all()
-            }
-        elif case_1 is False and case_2 is False:
-            context = {
-                'rooms': rooms_1.union(rooms_2)
-            }
-        elif case_1 is False and case_3 is False:
-            context = {
-                'rooms': rooms_1.union(rooms_3)
-            }
-        elif case_2 is False and case_3 is False:
-            context = {
-                'rooms': rooms_2.union(rooms_3)
-            }
-        elif case_1 is False:
-            context = {
-                'rooms': rooms_1
-            }
-        elif case_2 is False:
-            context = {
-                'rooms': rooms_2
-            }
-        elif case_3 is False:
-            context = {
-                'rooms': rooms_3
-            }
-        else:
-            context = {
-                'error': 'Sorry, there is no available rooms for your request'
-            }
+        # if case_1 is False and case_2 is False and case_3 is False:
+        #     context = {
+        #         'rooms': Room.objects.all()
+        #     }
+        # elif case_1 is False and case_2 is False:
+        #     context = {
+        #         'rooms': rooms_1.union(rooms_2)
+        #     }
+        # elif case_1 is False and case_3 is False:
+        #     context = {
+        #         'rooms': rooms_1.union(rooms_3)
+        #     }
+        # elif case_2 is False and case_3 is False:
+        #     context = {
+        #         'rooms': rooms_2.union(rooms_3)
+        #     }
+        # elif case_1 is False:
+        #     context = {
+        #         'rooms': rooms_1
+        #     }
+        # elif case_2 is False:
+        #     context = {
+        #         'rooms': rooms_2
+        #     }
+        # elif case_3 is False:
+        #     context = {
+        #         'rooms': rooms_3
+        #     }
+        # else:
+        #     context = {
+        #         'error': 'Sorry, there is no available rooms for your request'
+        #     }
         #
         # if case_1 or case_2 or case_3:
         #     # return render(request, "system/reserve.html",
