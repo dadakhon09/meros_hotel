@@ -3,7 +3,8 @@
 {% get_current_language as LANGUAGE_CODE %}
 {% block head %}
     <link rel="stylesheet"
-          href="{% static 'adminka/assets/plugins/bootstrap-datepicker/bootstrap-datepicker.min.css' %}">
+          href="{% static 'adminka/assets/plugins/tempus-dominus/tempusdominus-bootstrap-4.min.css' %}"/>
+
 {% endblock %}
 {% block body %}
     <div class="container-fluid">
@@ -72,29 +73,40 @@
                                                    class="control-label">{% trans 'Check in' %}</label>
                                         </div>
                                         <div class="col-md-9">
-                                            <input type="text"
-                                                   class="form-control date" id="datetimepicker11"
-                                                   name="start_date" autocomplete="off" required>
-                                            <span class="add-on">
-                                                        <i class="fa fa-calendar-alt" aria-hidden="true"></i>
-                                            </span>
+                                            <div class="input-group date" id="datetimepicker4"
+                                                 data-target-input="nearest">
+                                                <input type="text" name="start_date"
+                                                       class="form-control datetimepicker-input"
+                                                       data-target="#datetimepicker4"/>
+                                                <div class="input-group-append" data-target="#datetimepicker4"
+                                                     data-toggle="datetimepicker">
+                                                    <div class="input-group-text"><i class="fa fa-calendar-alt"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="row">
-                                        <div class="col-md-3 text-right ">
+                                        <div class="col-md-3 text-right">
                                             <label for="end_date"
                                                    class="control-label">{% trans 'Check out' %}</label>
-
                                         </div>
-                                        <div class="col-md-9 ">
-                                            <input type="text"
-                                                   class="form-control date" id='datetimepicker11'
-                                                   name="end_date" autocomplete="off" required>
-                                            <span class="add-on">
-                                                        <i class="fa fa-calendar-alt" aria-hidden="true"></i>
-                                            </span>
+                                        <div class="col-md-9">
+                                            <div class="input-group date" id="datetimepicker44"
+                                                 data-target-input="nearest">
+                                                <input type="text" name="end_date"
+                                                       class="form-control datetimepicker-input"
+                                                       data-target="#datetimepicker44"/>
+                                                <div class="input-group-append" data-target="#datetimepicker44"
+                                                     data-toggle="datetimepicker">
+                                                    <div class="input-group-text"><i class="fa fa-calendar-alt"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
@@ -164,6 +176,18 @@
 {% endblock %}
 {% block js %}
     <script src="{% static 'adminka/assets/plugins/bootstrap-datepicker/bootstrap-datepicker.min.js' %}"></script>
-
+    <script type="text/javascript" src="{% static 'adminka/assets/plugins/tempus-dominus/moment.min.js' %}"></script>
+    <script type="text/javascript"
+            src="{% static 'adminka/assets/plugins/tempus-dominus/tempusdominus-bootstrap-4.min.js' %}"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('#datetimepicker4').datetimepicker({
+                format: 'L'
+            });
+            $('#datetimepicker44').datetimepicker({
+                format: 'L'
+            });
+        });
+    </script>
 
 {% endblock %}

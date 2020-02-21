@@ -17,6 +17,16 @@ class ReservationsCreateView(View):
         rooms = Room.objects.all()
         return render(request, 'adminka/reservations/reservations_create.html', {'rooms': rooms})
 
+    def post(self, request):
+        room = self.request.POST.get('room')
+        customer_name = self.request.POST.get('customer_name')
+        customer_email = self.request.POST.get('customer_email')
+        num_of_adults = self.request.POST.get('num_of_adults')
+        num_of_children = self.request.POST.get('num_of_children')
+        start_date = self.request.POST.get('start_date')
+        end_date = self.request.POST.get('end_date')
+
+
 
 class ReservationsUpdateView(View):
     def get(self, request, id):
