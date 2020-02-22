@@ -61,7 +61,7 @@
     
     $('select').niceSelect();
     $('#datetimepicker11,#datetimepicker1').datepicker({
-        // daysOfWeekDisabled: [0, 6]
+        startDate: '-0m',
         format: 'dd/mm/yyyy',
     });
     

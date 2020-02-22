@@ -77,7 +77,7 @@
                                                  data-target-input="nearest">
                                                 <input type="text" name="start_date"
                                                        class="form-control datetimepicker-input"
-                                                       data-target="#datetimepicker4"/>
+                                                       data-target="#datetimepicker4" required/>
                                                 <div class="input-group-append" data-target="#datetimepicker4"
                                                      data-toggle="datetimepicker">
                                                     <div class="input-group-text"><i class="fa fa-calendar-alt"></i>
@@ -99,7 +99,7 @@
                                                  data-target-input="nearest">
                                                 <input type="text" name="end_date"
                                                        class="form-control datetimepicker-input"
-                                                       data-target="#datetimepicker44"/>
+                                                       data-target="#datetimepicker44" required/>
                                                 <div class="input-group-append" data-target="#datetimepicker44"
                                                      data-toggle="datetimepicker">
                                                     <div class="input-group-text"><i class="fa fa-calendar-alt"></i>
@@ -117,7 +117,7 @@
                                                    class="control-label">{% trans 'Number of adults' %}</label>
                                         </div>
                                         <div class="col-md-9">
-                                            <input type="text"
+                                            <input type="number"
                                                    class="form-control" id="num_of_adults"
                                                    name="num_of_adults" autocomplete="off">
                                         </div>
@@ -130,7 +130,7 @@
                                                    class="control-label">{% trans 'Number of children' %}</label>
                                         </div>
                                         <div class="col-md-9">
-                                            <input type="text"
+                                            <input type="number"
                                                    class="form-control" id="num_of_children"
                                                    name="num_of_children" autocomplete="off">
                                         </div>

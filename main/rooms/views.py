@@ -39,6 +39,31 @@ class CheckAvailability(View):
         num_of_adults = self.request.POST.get('num_of_adults')
         num_of_children = self.request.POST.get('num_of_children')
 
+        if start_date >= end_date:
+            return render(request, 'main/available_rooms.html', {'error': 'Invalid dates. Please try again!'})
+
+        available_rooms = Room.objects.filter(reservation__isnull=True)
+        reserved_rooms = Room.objects.filter(id=-1)
+
+        for room in Room.objects.all():
+            for res in Reservation.objects.select_related('room').filter(room=room):
+                if res.start_date <= start_date < res.end_date or res.start_date < end_date <= res.end_date:
+                    reserved_rooms = reserved_rooms.union(Room.objects.filter(id=res.room_id))
+                else:
+                    available_rooms = available_rooms.union(Room.objects.filter(id=res.room_id))
+
+        available_rooms = available_rooms.difference(reserved_rooms)
+
+        if available_rooms:
+            context = {
+                'rooms': available_rooms,
+            }
+        else:
+            context = {
+                'error': 'Sorry, there is no available rooms for your request'
+            }
+        return render(request, 'main/available_rooms.html', context)
+
         # case = Reservation.objects.raw(
         #     '''select * from reservations where not ((start_date <= %s and end_date > %s) or (start_date < %s and end_date >= %s))''',
         #     [start_date, start_date, end_date, end_date])
@@ -47,19 +72,25 @@ class CheckAvailability(View):
         #     pass
         #     # print(c)
 
-        case2 = Reservation.objects.exclude(
-            Q(start_date__lte=start_date, end_date__gt=start_date) | Q(start_date__lt=end_date, end_date__gte=end_date))
+        #
+        # case1 = Reservation.objects.select_related('room').filter(
+        #     Q(start_date__lte=start_date, end_date__gt=start_date) | Q(start_date__lt=end_date, end_date__gte=end_date))
+        #
+        # reserved_rooms = Room.objects.filter(id=-1)
+        #
+        # for c in case1:
+        #     reserved_rooms = reserved_rooms.union(Room.objects.filter(id=c.room_id))
+        #
+        # case2 = Reservation.objects.select_related('room').exclude(
+        #     Q(start_date__lte=start_date, end_date__gt=start_date) | Q(start_date__lt=end_date, end_date__gte=end_date))
+        #
+        # available_rooms = Room.objects.filter(id=-1)
+        #
+        # for c in case2:
+        #     while c.room not in reserved_rooms:
+        #         available_rooms = available_rooms.union(Room.objects.filter(id=c.room_id))
+        #
 
-        rooms = Room.objects.filter(id=-1)
-
-        for c in case2:
-            rooms = rooms.union(Room.objects.filter(id=c.room_id))
-
-        print(rooms)
-
-        context = {
-            'rooms': rooms,
-        }
         #
         # case_1 = Reservation.objects.filter(start_date__lte=start_date, end_date__gte=start_date).exists()
         #
@@ -134,7 +165,6 @@ class CheckAvailability(View):
         #     # return render(request, "system/reserve.html",
         #     #               {"errors": "This room is not available on your selected dates"})
         #     return HttpResponse('error')
-        return render(request, 'main/available_rooms.html', context)
 
 
 class BookView(View):
@@ -148,9 +178,7 @@ class BookView(View):
         end_date = end_date.split('/')
         end_date = date(year=int(end_date[2]), month=int(end_date[1]), day=int(end_date[0]))
         num_of_adults = self.request.POST.get('num_of_adults')
-        print(num_of_adults)
         num_of_children = self.request.POST.get('num_of_children')
-        print(num_of_children)
         customer_name = self.request.POST.get('customer_name')
         customer_email = self.request.POST.get('customer_email')
 
