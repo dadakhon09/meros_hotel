@@ -59,6 +59,7 @@ class ReservationsUpdateView(View):
         start_date = date(year=int(start_date[2]), month=int(start_date[1]), day=int(start_date[0]))
 
         end_date = self.request.POST.get('end_date')
+        print(end_date)
         end_date = end_date.split('/')
         end_date = date(year=int(end_date[2]), month=int(end_date[1]), day=int(end_date[0]))
 

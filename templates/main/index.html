@@ -6,96 +6,109 @@
         <div class="booking_table d_flex align-items-center">
             <div class="overlay bg-parallax" data-stellar-ratio="0.5" data-stellar-vertical-offset="0"
                  data-background=""></div>
+
             <div class="container">
+                <div id="navbar"></div>
                 <div class="banner_content text-center">
                     <h6>Away from monotonous life</h6>
                     <h2>Relax Your Mind</h2>
                     <p>If you are looking at blank cassettes on the web, you may be very confused at the<br> difference
                         in price. You may see some for as low as $.17 each.</p>
-                    <a href="#" class="btn theme_btn button_hover">Get Started</a>
+                    <button class="btn scrollTo theme_btn get_started button_hover">Get Started</button>
                 </div>
             </div>
         </div>
-        <div class="hotel_booking_area position">
-            <div class="container">
-                <form class="" action="{% url 'check_availability' %}" method="POST">{% csrf_token %}
 
-                    <div class="hotel_booking_table">
-                        <div class="col-md-3">
-                            <h2>Book<br> Your Room</h2>
-                        </div>
-                        <div class="col-md-9">
-                            <div class="boking_table">
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <div class="book_tabel_item">
-                                            <div class="form-group">
-                                                <div class='input-group date' id='datetimepicker11'>
-                                                    <input type='text' class="form-control" name="start_date" required
-                                                           placeholder="Arrival Date" autocomplete="off"/>
-                                                    <span class="input-group-addon">
+        <div>
+            <div class="hotel_booking_area position">
+                <div class="container">
+                    <form class="" action="{% url 'check_availability' %}" method="POST">{% csrf_token %}
+
+                        <div class="hotel_booking_table">
+                            <div class="col-md-3">
+                                <h2>Book<br> Your Room</h2>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="boking_table">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="book_tabel_item">
+                                                <div class="form-group">
+                                                    <div class='input-group date' id='datetimepicker11'>
+                                                        <input type='text' class="form-control" name="start_date"
+                                                               required
+                                                               placeholder="Arrival Date" autocomplete="off"/>
+                                                        <span class="input-group-addon">
                                                         <i class="fa fa-calendar" aria-hidden="true"></i>
                                                     </span>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <div class='input-group date' id='datetimepicker1'>
-                                                    <input type='text' class="form-control" name="end_date" required
-                                                           placeholder="Departure Date" autocomplete="off"/>
-                                                    <span class="input-group-addon">
+                                                <div class="form-group">
+                                                    <div class='input-group date' id='datetimepicker1'>
+                                                        <input type='text' class="form-control" name="end_date" required
+                                                               placeholder="Departure Date" autocomplete="off"/>
+                                                        <span class="input-group-addon">
                                                         <i class="fa fa-calendar" aria-hidden="true"></i>
                                                     </span>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="book_tabel_item">
-                                            <div class="input-group">
-                                                <select class="wide" name="num_of_adults" required>
-                                                    <option data-display="Number of adults" selected disabled hidden>Number of adults</option>
-                                                    <option value="1">1</option>
-                                                    <option value="2">2</option>
-                                                    <option value="3">3</option>
-                                                    <option value="4">4</option>
-                                                    <option value="5">5</option>
-                                                    <option value="6">6</option>
-                                                    <option value="7">7</option>
-                                                    <option value="8">8</option>
-                                                    <option value="9">9</option>
-                                                </select>
-                                            </div>
-                                            <div class="input-group">
-                                                <select class="wide" name="num_of_children" required>
-                                                    <option data-display="Number of children" selected disabled hidden>Number of children
-                                                    </option>
-                                                    <option value="0">0</option>
-                                                    <option value="1">1</option>
-                                                    <option value="2">2</option>
-                                                    <option value="3">3</option>
-                                                    <option value="4">4</option>
-                                                    <option value="5">5</option>
-                                                    <option value="6">6</option>
-                                                    <option value="7">7</option>
-                                                    <option value="8">8</option>
-                                                    <option value="9">9</option>
-                                                </select>
+                                        <div class="col-md-4">
+                                            <div class="book_tabel_item">
+                                                <div class="input-group">
+                                                    <select class="wide" name="num_of_adults" required>
+                                                        <option data-display="Number of adults" selected disabled
+                                                                hidden>
+                                                            Number of adults
+                                                        </option>
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                        <option value="4">4</option>
+                                                        <option value="5">5</option>
+                                                        <option value="6">6</option>
+                                                        <option value="7">7</option>
+                                                        <option value="8">8</option>
+                                                        <option value="9">9</option>
+                                                    </select>
+                                                </div>
+                                                <div class="input-group">
+                                                    <select class="wide" name="num_of_children" required>
+                                                        <option data-display="Number of children" selected disabled
+                                                                hidden>
+                                                            Number of children
+                                                        </option>
+                                                        <option value="0">0</option>
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                        <option value="4">4</option>
+                                                        <option value="5">5</option>
+                                                        <option value="6">6</option>
+                                                        <option value="7">7</option>
+                                                        <option value="8">8</option>
+                                                        <option value="9">9</option>
+                                                    </select>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="book_tabel_item">
-                                            <br>
-                                            <button class="book_now_btn button_hover" type="submit">Book Now</button>
+                                        <div class="col-md-4">
+                                            <div class="book_tabel_item">
+                                                <br>
+                                                <button class="book_now_btn button_hover" type="submit">Check
+                                                    Availability
+                                                </button>
+                                            </div>
                                         </div>
-                                    </div>
 
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </form>
+                    </form>
 
+                </div>
             </div>
         </div>
     </section>
@@ -109,17 +122,53 @@
                 <p>We all live in an age that belongs to the young at heart. Life that is becoming extremely fast, </p>
             </div>
             <div class="row mb_30">
-                <div class="col-lg-3 col-sm-6">
+                {% if room1 %}
+
+                    <div class="col-lg-4 col-sm-6">
+                        <div class="accomodation_item text-center">
+                            <div class="hotel_img">
+
+                                <img src="{% if room1.images.first.image %}{{ room1.images.first.image }}{% endif %}"
+                                     alt="">
+                                <a href="{% url 'room-view' room1.slug %}" class="btn theme_btn button_hover">Book Now</a>
+                            </div>
+                            <a href="{% url 'room-view' room1.slug %}"><h4
+                                    class="sec_h4">{{ room1.get_room_type_display }}</h4>
+                            </a>
+                            <h5>{{ room1.price }}<small>/night</small></h5>
+                        </div>
+                    </div>
+                {% endif %}
+            {% if room2 %}
+                <div class="col-lg-4 col-sm-6">
                     <div class="accomodation_item text-center">
                         <div class="hotel_img">
-                            <img src="{% static 'main/image/room1.jpg' %}" alt="">
-                            <a href="#" class="btn theme_btn button_hover">Book Now</a>
+                            <img src="{% if room2.images.first.image %}{{ room2.images.first.image }}{% endif %}"
+                                 alt="">
+                            <a href="{% url 'room-view' room2.slug %}" class="btn theme_btn button_hover">Book Now</a>
                         </div>
-                        <a href="#"><h4 class="sec_h4">Double Deluxe Room</h4></a>
-                        <h5>$250<small>/night</small></h5>
+                        <a href="{% url 'room-view' room2.slug %}"><h4 class="sec_h4">{{ room2.get_room_type_display }}</h4>
+                        </a>
+                        <h5>{{ room2.price }}<small>/night</small></h5>
                     </div>
                 </div>
+            {% endif %}
+            {% if room3 %}
+                <div class="col-lg-4 col-sm-6">
+                    <div class="accomodation_item text-center">
+                        <div class="hotel_img">
+                            <img src="{% if room3.images.first.image %}{{ room3.images.first.image }}{% endif %}"
+                                 alt="">
+                            <a href="{% url 'room-view' room3.slug %}" class="btn theme_btn button_hover">Book Now</a>
+                        </div>
+                        <a href="{% url 'room-view' room3.slug %}"><h4 class="sec_h4">{{ room3.get_room_type_display }}</h4>
+                        </a>
+                        <h5>{{ room3.price }}<small>/night</small></h5>
+                    </div>
+                </div>
+            {% endif %}
             </div>
+        </div>
         </div>
     </section>
     <!--================ Accomodation Area  =================-->
@@ -146,4 +195,18 @@
     <!--================ About History Area  =================-->
 
     {% include 'main/testimonials.html' %}
+{% endblock %}
+{% block js %}
+    <script>
+        function scrollWin(x, y) {
+            window.scrollBy(x, y);
+        }
+
+        $(".scrollTo").click(function () {
+            $('html, body').animate({
+                scrollTop: $("#navbar").offset().top
+            }, 1000);
+        });
+
+    </script>
 {% endblock %}
