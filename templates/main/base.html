@@ -21,11 +21,18 @@
     <!-- main css -->
     <link rel="stylesheet" href="{% static 'main/css/style.css' %}">
     <link rel="stylesheet" href="{% static 'main/css/responsive.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/spinners.css' %}">
 
     {% block head %}
     {% endblock %}
 </head>
 <body>
+<div class="preloader">
+    <div class="loader">
+        <div class="loader__figure"></div>
+        <p class="loader__label">Meros B&B</p>
+    </div>
+</div>
 <!--================Header Area =================-->
 <header class="header_area">
     <div class="container">

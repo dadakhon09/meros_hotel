@@ -10,6 +10,15 @@ from adminka.model.room import Reservation, Room
 
 class ReservationsView(View):
     def get(self, request):
+        if request.GET.get('q'):
+            search_term = request.GET.get('q')
+            if request.LANGUAGE_CODE == 'en':
+                search_result = Reservation.objects.all().filter(room__title__title_en__icontains=search_term)
+            else:
+                search_result = Reservation.objects.all().filter(room__title__title_ru__icontains=search_term)
+
+            return render(request, 'adminka/reservations/reservations.html', {'reservations': search_result})
+
         rvs = Reservation.objects.all()
         return render(request, 'adminka/reservations/reservations.html', {'reservations': rvs})
 
