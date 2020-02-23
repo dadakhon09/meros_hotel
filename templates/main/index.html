@@ -138,7 +138,7 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <img class="img-fluid" src="{{ about.image.url }}" alt="img">
+                    <img class="img-fluid" src="{% if about.image %}{{ about.image.url }}{% endif %}" alt="img">
                 </div>
             </div>
         </div>
