@@ -7,10 +7,10 @@
              data-background=""></div>
         <div class="container">
             <div class="page-cover text-center">
-                <h2 class="page-cover-tittle">Contact Us</h2>
+                <h2 class="page-cover-tittle">{% trans 'Contact Us' %}</h2>
                 <ol class="breadcrumb">
-                    <li><a href="{% url 'index' %}">Home</a></li>
-                    <li class="active">Contact Us</li>
+                    <li><a href="{% url 'index' %}">{% trans 'Home' %}</a></li>
+                    <li class="active">{% trans 'Contact Us' %}</li>
                 </ol>
             </div>
         </div>
@@ -26,46 +26,48 @@
                     <div class="contact_info">
                         <div class="info_item">
                             <i class="lnr lnr-home"></i>
-                            <h6>220900 Bo’yoqchilar 57 street.</h6>
-                            <p>Khiva, Khorezm, UZBEKISTAN. </p>
+                            <h6>{% trans '220900 Bo’yoqchilar 57 street.' %}</h6>
+                            <p>{% trans 'Khiva, Khorezm, UZBEKISTAN. ' %}</p>
                         </div>
                         <div class="info_item">
                             <i class="lnr lnr-phone-handset"></i>
                             <h6><a href="#">M: +998 94 315 37 00</a></h6>
                             <h6><a href="#">T/F:+998 62 377 66 42</a></h6>
-                            <p>Mon to Fri 9am to 6 pm</p>
+                            <p>{% trans 'Mon to Fri 9am to 6 pm' %}</p>
                         </div>
                         <div class="info_item">
                             <i class="lnr lnr-envelope"></i>
                             <h6><a href="mailto:meros.khiva@gmail.com ">meros.khiva@gmail.com</a></h6>
-                            <p>Send us your query anytime!</p>
+                            <p>{% trans 'Send us your query anytime!' %}</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-9">
-                    <form class="row contact_form" action="{% url 'contact' %}" method="post" id="contactForm" novalidate="novalidate">{% csrf_token %}
+                    <form class="row contact_form" action="{% url 'contact' %}" method="post" id="contactForm"
+                          novalidate="novalidate">{% csrf_token %}
                         <div class="col-md-6">
                             <div class="form-group">
                                 <input type="text" class="form-control" id="name" name="name"
-                                       placeholder="Enter your name">
+                                       placeholder="{% trans 'Your name' %}">
                             </div>
                             <div class="form-group">
                                 <input type="email" class="form-control" id="email" name="email"
-                                       placeholder="Enter email address">
+                                       placeholder="{% trans 'Your email' %}">
                             </div>
                             <div class="form-group">
                                 <input type="text" class="form-control" id="subject" name="subject"
-                                       placeholder="Enter Subject">
+                                       placeholder="{% trans 'Subject' %}">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <textarea class="form-control" name="message" id="message" rows="1"
-                                          placeholder="Enter Message"></textarea>
+                                          placeholder="{% trans 'Enter Message' %}"></textarea>
                             </div>
                         </div>
                         <div class="col-md-12 text-right">
-                            <button type="submit" value="submit" class="btn theme_btn button_hover">Send Message
+                            <button type="submit" value="submit"
+                                    class="btn theme_btn button_hover">{% trans 'Send Message' %}
                             </button>
                         </div>
                     </form>
@@ -85,8 +87,8 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <i class="fa fa-close"></i>
                     </button>
-                    <h2>Thank you</h2>
-                    <p>Your message is successfully sent...</p>
+                    <h2>{% trans 'Thank you' %}</h2>
+                    <p>{% trans 'Your message is successfully sent...' %}</p>
                 </div>
             </div>
         </div>
@@ -101,8 +103,8 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <i class="fa fa-close"></i>
                     </button>
-                    <h2>Sorry !</h2>
-                    <p> Something went wrong </p>
+                    <h2>{% trans 'Sorry !' %}</h2>
+                    <p> {% trans 'Something went wrong' %} </p>
                 </div>
             </div>
         </div>
@@ -110,18 +112,18 @@
     <!--================End Contact Success and Error message Area =================-->
 {% endblock %}
 {% block js %}
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-{#<script src="{% static 'main/vendors/imagesloaded/imagesloaded.pkgd.min.js' %}"></script>#}
-{#<script src="{% static 'main/vendors/isotope/isotope-min.js' %}"></script>#}
-<!-- contact js -->
-<script src="{% static 'main/js/jquery.form.js' %}"></script>
-<script src="{% static 'main/js/jquery.validate.min.js' %}"></script>
-<script src="{% static 'main/js/contact.js' %}"></script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    {#<script src="{% static 'main/vendors/imagesloaded/imagesloaded.pkgd.min.js' %}"></script>#}
+    {#<script src="{% static 'main/vendors/isotope/isotope-min.js' %}"></script>#}
+    <!-- contact js -->
+    <script src="{% static 'main/js/jquery.form.js' %}"></script>
+    <script src="{% static 'main/js/jquery.validate.min.js' %}"></script>
+    <script src="{% static 'main/js/contact.js' %}"></script>
 
 
 
-    <script>$(function() {
+    <script>$(function () {
         $('#contactForm').validate({
             rules: {
                 name: {
@@ -131,10 +133,6 @@
                 subject: {
                     required: true,
                     minlength: 4
-                },
-                number: {
-                    required: true,
-                    minlength: 5
                 },
                 email: {
                     required: true,
@@ -147,45 +145,41 @@
             },
             messages: {
                 name: {
-                    required: "come on, you have a name, don't you?",
-                    minlength: "your name must consist of at least 2 characters"
+                    required: "{% trans 'come on, you have a name, don`t you?' %}",
+                    minlength: "{% trans 'your name must consist of at least 2 characters' %}"
                 },
                 subject: {
-                    required: "come on, you have a subject, don't you?",
-                    minlength: "your subject must consist of at least 4 characters"
-                },
-                number: {
-                    required: "come on, you have a number, don't you?",
-                    minlength: "your Number must consist of at least 5 characters"
+                    required: "{% trans 'come on, you have a subject, don`t you?' %}",
+                    minlength: "{% trans 'your subject must consist of at least 4 characters' %}"
                 },
                 email: {
-                    required: "no email, no message"
+                    required: "{% trans 'no email, no message' %}"
                 },
                 message: {
-                    required: "um...yea, you have to write something to send this form.",
-                    minlength: "thats all? really?"
+                    required: "{% trans 'um...yea, you have to write something to send this form.' %}",
+                    minlength: "{% trans 'thats all? really?' %}"
                 }
             },
-            submitHandler: function(form) {
+            submitHandler: function (form) {
                 $(form).ajaxSubmit({
-                    type:"POST",
+                    type: "POST",
                     data: $(form).serialize(),
                     url: '',
-                    success: function() {
+                    success: function () {
                         $('#contactForm :input').attr('disabled', 'disabled');
-                        $('#contactForm').fadeTo( "slow", 1, function() {
+                        $('#contactForm').fadeTo("slow", 1, function () {
                             $(this).find(':input').attr('disabled', 'disabled');
-                            $(this).find('label').css('cursor','default');
+                            $(this).find('label').css('cursor', 'default');
                             $('#success').fadeIn()
                             $('.modal').modal('hide');
-		                	$('#success').modal('show');
+                            $('#success').modal('show');
                         })
                     },
-                    error: function() {
-                        $('#contactForm').fadeTo( "slow", 1, function() {
+                    error: function () {
+                        $('#contactForm').fadeTo("slow", 1, function () {
                             $('#error').fadeIn()
                             $('.modal').modal('hide');
-		                	$('#error').modal('show');
+                            $('#error').modal('show');
                         })
                     }
                 })

@@ -9,10 +9,10 @@
              data-background=""></div>
         <div class="container">
             <div class="page-cover text-center">
-                <h2 class="page-cover-tittle">About Us</h2>
+                <h2 class="page-cover-tittle">{% trans 'About Us' %}</h2>
                 <ol class="breadcrumb">
-                    <li><a href="{% url 'index' %}">Home</a></li>
-                    <li class="active">About</li>
+                    <li><a href="{% url 'index' %}">{% trans 'Home' %}</a></li>
+                    <li class="active">{% trans 'About' %}</li>
                 </ol>
             </div>
         </div>
@@ -25,7 +25,7 @@
             <div class="row">
                 <div class="col-md-6 d_flex align-items-center">
                     <div class="about_content ">
-                        <h2 class="title title_color">About Us <br>Our History<br>Mission & Vision</h2>
+                        <h2 class="title title_color">{% trans 'About Us' %} <br>{% trans 'Our History' %}<br>{% trans 'Mission & Vision' %}</h2>
                         {% autoescape off %}{% if LANGUAGE_CODE == 'en' %}<p>{{ about.text.text_en }}</p>{% else %}
                             {{ about.text.text_ru }}{% endif %}{% endautoescape %}
                     </div>

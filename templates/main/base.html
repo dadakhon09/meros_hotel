@@ -51,11 +51,11 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
                 <ul class="nav navbar-nav menu_nav ml-auto">
-                    <li class="nav-item"><a class="nav-link" href="{% url 'index' %}">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">About us</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{% url 'rooms' %}">Accomodation</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{% url 'gallery' %}">Gallery</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'index' %}">{% trans 'Home' %}</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">{% trans 'About us' %}</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'rooms' %}">{% trans 'Accomodation' %}</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'gallery' %}">{% trans 'Gallery' %}</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">{% trans 'Contact' %}</a></li>
                     {% if LANGUAGE_CODE == 'en' %}
                         <li class="nav-item submenu dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"

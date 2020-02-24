@@ -1,20 +1,18 @@
-{% load static %}
+{% load static i18n %}
 <!--================ Testimonial Area  =================-->
 <section class="testimonial_area section_gap">
     <div class="container">
         <div class="section_title text-center">
-            <h2 class="title_color">Testimonial from our Clients</h2>
-            <p>The French Revolution constituted for the conscience of the dominant aristocratic class a fall
-                from </p>
+            <h2 class="title_color">{% trans 'Testimonial from our Clients' %}</h2>
         </div>
         <div class="testimonial_slider owl-carousel">
             <div class="media testimonial_item">
                 <img width="100vh" height="100vh" class="rounded-circle"
                      src="{% static 'main/image/testimonial-2.jpg' %}" alt="">
                 <div class="media-body">
-                    <p>I think this is my 4th stay at Meros B&B, Khiva and I would like to prefer staying here again for
-                        my future visits to Uzbekistan. Thanks to all the Meros B&B Staff! <br><br><br><br></p>
-                    <h4 class="sec_h4">Ms. Angela, US</h4>
+                    <p>{% trans 'I think this is my 4th stay at Meros B&B, Khiva and I would like to prefer staying here again for my future visits to Uzbekistan. Thanks to all the Meros B&B Staff!' %}
+                        <br><br><br><br></p>
+                    <h4 class="sec_h4">{% trans 'Ms. Angela, US' %}</h4>
                     <div class="star">
                         <a>
                             <i class="fa fa-star"></i>
@@ -30,8 +28,9 @@
                 <img width="100vh" height="100vh" class="rounded-circle"
                      src="{% static 'main/image/testimonial-3.jpg' %}" alt="">
                 <div class="media-body">
-                    <p>Simply the best! It is genuinely "First Class" all the way.<br><br><br><br><br><br><br></p>
-                    <h4 class="sec_h4">Mr. & Mrs. Davidson, France</h4>
+                    <p>{% trans 'Simply the best! It is genuinely "First Class" all the way.' %}<br><br><br><br><br><br><br>
+                    </p>
+                    <h4 class="sec_h4">{% trans 'Mr. & Mrs. Davidson, France' %}</h4>
                     <div class="star">
                         <a>
                             <i class="fa fa-star"></i>
@@ -47,11 +46,8 @@
                 <img width="100vh" height="100vh" class="rounded-circle"
                      src="{% static 'main/image/testimonial-1.jpg' %}" alt="">
                 <div class="media-body">
-                    <p>I have to recognize your outstanding hospitality and service that I receive on a daily basis. My
-                        room is always clean, fresh towels and linens are always present. Your staff makes me feel as If
-                        I am the only customer in your hotel. If you are looking for exclusivity and first class then
-                        look no further </p>
-                    <h4 class="sec_h4">Mr. Sean G. Pearson, UK</h4>
+                    <p>{% trans 'I have to recognize your outstanding hospitality and service that I receive on a daily basis. My room is always clean, fresh towels and linens are always present. Your staff makes me feel as If I am the only customer in your hotel. If you are looking for exclusivity and first class then look no further ' %}</p>
+                    <h4 class="sec_h4">{% trans 'Mr. Sean G. Pearson, UK' %}</h4>
                     <div class="star">
                         <a>
                             <i class="fa fa-star"></i>
