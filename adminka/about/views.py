@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
@@ -7,7 +8,7 @@ from django.views.decorators.csrf import csrf_exempt
 from adminka.model.about import About
 
 
-class AdminAboutView(View):
+class AdminAboutView(LoginRequiredMixin, View):
     def get(self, request):
         about = About.objects.get(id=1)
         return render(request, 'adminka/about/about.html', {'about': about})

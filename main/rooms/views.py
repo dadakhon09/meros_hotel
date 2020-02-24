@@ -182,6 +182,8 @@ class BookView(View):
         customer_name = self.request.POST.get('customer_name')
         customer_email = self.request.POST.get('customer_email')
 
+        
+
         r = Reservation.objects.create(room=room, start_date=start_date, end_date=end_date,
                                        num_of_adults=int(num_of_adults),
                                        num_of_children=int(num_of_children), customer_email=customer_email,

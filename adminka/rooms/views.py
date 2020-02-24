@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.views import View
 from django.http import HttpResponseRedirect, HttpResponse
@@ -8,7 +9,7 @@ from django.views.decorators.csrf import csrf_exempt
 from adminka.model.room import Room, RoomImage
 
 
-class AdminRoomsView(View):
+class AdminRoomsView(LoginRequiredMixin, View):
     def get(self, request):
         if request.GET.get('q'):
             search_term = request.GET.get('q')
@@ -34,7 +35,7 @@ class AdminRoomsView(View):
         return render(request, 'adminka/rooms/rooms.html', {'rooms': rooms})
 
 
-class RoomsCreateView(View):
+class RoomsCreateView(LoginRequiredMixin, View):
     def get(self, request):
         return render(request, 'adminka/rooms/rooms_create.html')
 
@@ -80,7 +81,7 @@ class RoomsCreateView(View):
         return HttpResponseRedirect(reverse('adminka-rooms'))
 
 
-class RoomsUpdateView(View):
+class RoomsUpdateView(LoginRequiredMixin, View):
     def get(self, request, id):
         room = Room.objects.get(id=id)
         r_images = RoomImage.objects.filter(room=room)
@@ -133,7 +134,7 @@ class RoomsUpdateView(View):
         return HttpResponseRedirect(reverse('adminka-rooms'))
 
 
-class RoomsDeleteView(View):
+class RoomsDeleteView(LoginRequiredMixin, View):
     def get(self, request, id):
         r = Room.objects.get(id=id)
         r.delete()

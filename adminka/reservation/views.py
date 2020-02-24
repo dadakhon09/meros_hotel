@@ -1,5 +1,6 @@
 from datetime import date
 
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
@@ -8,7 +9,7 @@ from django.views import View
 from adminka.model.room import Reservation, Room
 
 
-class ReservationsView(View):
+class ReservationsView(LoginRequiredMixin, View):
     def get(self, request):
         if request.GET.get('q'):
             search_term = request.GET.get('q')
@@ -23,7 +24,7 @@ class ReservationsView(View):
         return render(request, 'adminka/reservations/reservations.html', {'reservations': rvs})
 
 
-class ReservationsCreateView(View):
+class ReservationsCreateView(LoginRequiredMixin, View):
     def get(self, request):
         rooms = Room.objects.all()
         return render(request, 'adminka/reservations/reservations_create.html', {'rooms': rooms})
@@ -49,7 +50,7 @@ class ReservationsCreateView(View):
         return HttpResponseRedirect(reverse('reservations'))
 
 
-class ReservationsUpdateView(View):
+class ReservationsUpdateView(LoginRequiredMixin, View):
     def get(self, request, id):
         r = Reservation.objects.get(id=id)
         rooms = Room.objects.exclude(id=r.room_id)
@@ -89,7 +90,8 @@ class ReservationsUpdateView(View):
 
         return HttpResponseRedirect(reverse('reservations'))
 
-class ReservationsDeleteView(View):
+
+class ReservationsDeleteView(LoginRequiredMixin, View):
     def get(self, request, id):
         r = Reservation.objects.get(id=id)
         r.delete()
