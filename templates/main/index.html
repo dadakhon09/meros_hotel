@@ -13,7 +13,7 @@
                 <div class="banner_content text-center">
                     <h2>{% trans 'WELCOME TO MEROS B&B' %}</h2>
                     <p>{% trans 'The best way for the adventure is to visit us' %}.</p>
-                    <button class="btn scrollTo theme_btn get_started button_hover">{% trans 'Get Started' %}</button>
+{#                    <button class="btn scrollTo theme_btn get_started button_hover">{% trans 'Get Started' %}</button>#}
                 </div>
             </div>
         </div>
@@ -28,7 +28,7 @@
                                 {% if LANGUAGE_CODE == 'en' %}
                                 <h2>Book <br> Your Room</h2>
                                 {% else %}
-
+                                    <h2>Заказывай<br> Свой Номер</h2>
                                 {% endif %}
                             </div>
                             <div class="col-md-9">
@@ -56,6 +56,9 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            {% if error %}
+                                                <p style="color:red; margin-bottom: 0">{{ error }}</p>
+                                            {% endif %}
                                         </div>
                                         <div class="col-md-4">
                                             <div class="book_tabel_item">

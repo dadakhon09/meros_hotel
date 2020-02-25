@@ -40,7 +40,7 @@ class CheckAvailability(View):
         num_of_children = self.request.POST.get('num_of_children')
 
         if start_date >= end_date:
-            return render(request, 'main/available_rooms.html', {'error': 'Invalid dates. Please try again!'})
+            return render(request, 'main/index.html', {'error': 'Invalid dates'})
 
         available_rooms = Room.objects.filter(reservation__isnull=True)
         reserved_rooms = Room.objects.filter(id=-1)
@@ -182,7 +182,8 @@ class BookView(View):
         customer_name = self.request.POST.get('customer_name')
         customer_email = self.request.POST.get('customer_email')
 
-        
+        if start_date >= end_date:
+            return render(request, 'main/accomodation_view.html', {'error': 'Invalid dates'})
 
         r = Reservation.objects.create(room=room, start_date=start_date, end_date=end_date,
                                        num_of_adults=int(num_of_adults),
