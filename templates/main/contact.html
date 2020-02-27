@@ -73,8 +73,13 @@
                     </form>
                 </div>
             </div>
+{#            <div class="map" style="width: 100%; height: 400px" id="map"></div> //custom map#}
+           <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2995.6361351727483!2d69.3323413!3d41.338525!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38aef48a8ed4d0e9%3A0x3772abeffc72e7b8!2sInha%20University%20in%20Tashkent!5e0!3m2!1sen!2s!4v1582787288088!5m2!1sen!2s" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+
         </div>
+
     </section>
+
     <!--================Contact Area =================-->
 
 
@@ -186,5 +191,23 @@
             }
         })
     })
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA8DFpSGoKPof5ZoW7Nx-4iWdObowtVFNc&callback=initMap"
+            async defer></script>
+    <script>
+        var user_lat, user_lng;
+        var map;
+
+        function initMap() {
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: {lat: 17, lng: 80},
+                zoom: 5
+            });
+            var marker = new google.maps.Marker({
+                position: {lat: 17, lng: 80},
+                map: map,
+                title: 'Hello World!'
+            });
+        }
     </script>
 {% endblock %}
