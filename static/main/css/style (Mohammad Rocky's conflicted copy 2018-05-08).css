@@ -423,7 +423,7 @@ button:focus {
 .navbar .menu_nav .nav-item.submenu ul .nav-item .nav-link {
   line-height: 45px;
   color: #222222;
-  padding: 0px 30px;
+  padding: 0px 20px;
   -webkit-transition: all 150ms linear;
   -o-transition: all 150ms linear;
   transition: all 150ms linear;
