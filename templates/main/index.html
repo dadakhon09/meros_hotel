@@ -21,8 +21,7 @@
         <div>
             <div class="hotel_booking_area position">
                 <div class="container">
-                    <form class="" action="{% url 'check_availability' %}" method="POST">{% csrf_token %}
-
+                    <form class="" data-url="{% url 'check_availability' %}" method="POST">{% csrf_token %}
                         <div class="hotel_booking_table">
                             <div class="col-md-3">
                                 {% if LANGUAGE_CODE == 'en' %}
@@ -213,4 +212,17 @@
         });
 
     </script>
+    <script>
+        $(".book_now_btn").onclick(function () {
+            var form = $(this).closest("form");
+            $.ajax({
+                url: form.attr("data-url"),
+                data: form.serialize(),
+                success: function () {
+                    
+                }
+            })
+        })
+    </script>
+
 {% endblock %}

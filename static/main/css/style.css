@@ -349,7 +349,7 @@ button:focus {
 }
 
 .navbar .menu_nav .nav-item:hover .nav-link, .navbar .menu_nav .nav-item.active .nav-link {
-  color: #52c5fd;
+  color: #f3c70f;
 }
 
 .navbar .menu_nav .nav-item.submenu {
@@ -436,7 +436,7 @@ button:focus {
 
 .navbar .menu_nav .nav-item.submenu ul .nav-item:hover .nav-link {
   background: #f0f0f0;
-  color: #52c5fd;
+  color: #f3c70f;
 }
 
 @media (min-width: 992px) {
@@ -1896,7 +1896,7 @@ button:focus {
   font-size: 13px;
   line-height: 26px;
   color: #999;
-  border: 1px solid #eeeeee;
+  border: 1px solid #f3c70f;
   font-family: "Poppins", sans-serif;
   border-radius: 0px;
   padding-left: 20px;
