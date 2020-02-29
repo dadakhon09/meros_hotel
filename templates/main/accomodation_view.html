@@ -200,83 +200,93 @@
 
 {% block js %}
     <script src="{% static 'main/js/fancybox/jquery.fancybox.min.js' %}"></script>
-{##}
-{#    <script src="{% static 'main/js/jquery.form.js' %}"></script>#}
-{#    <script src="{% static 'main/js/jquery.validate.min.js' %}"></script>#}
-{#    <script src="{% static 'main/js/contact.js' %}"></script>#}
+    <script>
+        {% if success %}
+            $('#success').modal('show');
+        {% endif %}
+        if (typeof jqXhr.success != 'undefined') {
+            $('#success').modal('show');
+        } else {
+            $('#bookForm').html(jqXhr);
+        }
+    </script>
+    {##}
+    {#    <script src="{% static 'main/js/jquery.form.js' %}"></script>#}
+    {#    <script src="{% static 'main/js/jquery.validate.min.js' %}"></script>#}
+    {#    <script src="{% static 'main/js/contact.js' %}"></script>#}
 
 
 
-{#    <script>$(function () {#}
-{#        $('#bookForm').validate({#}
-{#            rules: {#}
-{#                customer_name: {#}
-{#                    required: true,#}
-{#                    minlength: 2#}
-{#                },#}
-{#                start_time: {#}
-{#                    required: true,#}
-{#                    minlength: 10#}
-{#                },#}
-{#                end_time: {#}
-{#                    required: true,#}
-{#                    minlength: 10#}
-{#                },#}
-{#                customer_email: {#}
-{#                    required: true,#}
-{#                    email: true#}
-{#                },#}
-{#                num_of_adults: {#}
-{#                    required: true,#}
-{#                    number: true,#}
-{#                },#}
-{#                num_of_children: {#}
-{#                    number: true,#}
-{#                }#}
-{#            },#}
-{#            messages: {#}
-{#                customer_name: {#}
-{#                    required: "{% trans 'come on, you have a name, don`t you?' %}",#}
-{#                    minlength: "{% trans 'your name must consist of at least 2 characters' %}"#}
-{#                },#}
-{#                start_time: {#}
-{#                    required: "come on, please indicate when you are arriving",#}
-{#                },#}
-{#                end_time: {#}
-{#                    required: "come on, please indicate when you are leaving",#}
-{#                },#}
-{#                customer_email: {#}
-{#                    required: "no email, no booking"#}
-{#                },#}
-{#                num_of_adults: {#}
-{#                    required: "um...yea, you have to write how many people are coming",#}
-{#                }#}
-{#            },#}
-{#            submitHandler: function (form) {#}
-{#                $(form).ajaxSubmit({#}
-{#                    type: "POST",#}
-{#                    data: $(form).serialize(),#}
-{#                    url: '',#}
-{#                    success: function () {#}
-{#                        $('#bookForm :input').attr('disabled', 'disabled');#}
-{#                        $('#bookForm').fadeTo("slow", 1, function () {#}
-{#                            $(this).find(':input').attr('disabled', 'disabled');#}
-{#                            $(this).find('label').css('cursor', 'default');#}
-{#                            $('#success').fadeIn()#}
-{#                            $('.modal').modal('hide');#}
-{#                            $('#success').modal('show');#}
-{#                        })#}
-{#                    },#}
-{#                    error: function () {#}
-{#                        $('#bookForm').fadeTo("slow", 1, function () {#}
-{#                            $('#error').fadeIn()#}
-{#                            $('.modal').modal('hide');#}
-{#                            $('#error').modal('show');#}
-{#                        })#}
-{#                    }#}
-{#                })#}
-{#            }#}
-{#        })#}
-{#    })#}
-{#    </script>#}
+    {#    <script>$(function () {#}
+    {#        $('#bookForm').validate({#}
+    {#            rules: {#}
+    {#                customer_name: {#}
+    {#                    required: true,#}
+    {#                    minlength: 2#}
+    {#                },#}
+    {#                start_time: {#}
+    {#                    required: true,#}
+    {#                    minlength: 10#}
+    {#                },#}
+    {#                end_time: {#}
+    {#                    required: true,#}
+    {#                    minlength: 10#}
+    {#                },#}
+    {#                customer_email: {#}
+    {#                    required: true,#}
+    {#                    email: true#}
+    {#                },#}
+    {#                num_of_adults: {#}
+    {#                    required: true,#}
+    {#                    number: true,#}
+    {#                },#}
+    {#                num_of_children: {#}
+    {#                    number: true,#}
+    {#                }#}
+    {#            },#}
+    {#            messages: {#}
+    {#                customer_name: {#}
+    {#                    required: "{% trans 'come on, you have a name, don`t you?' %}",#}
+    {#                    minlength: "{% trans 'your name must consist of at least 2 characters' %}"#}
+    {#                },#}
+    {#                start_time: {#}
+    {#                    required: "come on, please indicate when you are arriving",#}
+    {#                },#}
+    {#                end_time: {#}
+    {#                    required: "come on, please indicate when you are leaving",#}
+    {#                },#}
+    {#                customer_email: {#}
+    {#                    required: "no email, no booking"#}
+    {#                },#}
+    {#                num_of_adults: {#}
+    {#                    required: "um...yea, you have to write how many people are coming",#}
+    {#                }#}
+    {#            },#}
+    {#            submitHandler: function (form) {#}
+    {#                $(form).ajaxSubmit({#}
+    {#                    type: "POST",#}
+    {#                    data: $(form).serialize(),#}
+    {#                    url: '',#}
+    {#                    success: function () {#}
+    {#                        $('#bookForm :input').attr('disabled', 'disabled');#}
+    {#                        $('#bookForm').fadeTo("slow", 1, function () {#}
+    {#                            $(this).find(':input').attr('disabled', 'disabled');#}
+    {#                            $(this).find('label').css('cursor', 'default');#}
+    {#                            $('#success').fadeIn()#}
+    {#                            $('.modal').modal('hide');#}
+    {#                            $('#success').modal('show');#}
+    {#                        })#}
+    {#                    },#}
+    {#                    error: function () {#}
+    {#                        $('#bookForm').fadeTo("slow", 1, function () {#}
+    {#                            $('#error').fadeIn()#}
+    {#                            $('.modal').modal('hide');#}
+    {#                            $('#error').modal('show');#}
+    {#                        })#}
+    {#                    }#}
+    {#                })#}
+    {#            }#}
+    {#        })#}
+    {#    })#}
+    {#    </script>#}
 {% endblock %}

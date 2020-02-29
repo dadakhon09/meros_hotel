@@ -1,3 +1,4 @@
+import json
 from datetime import datetime, date, timedelta
 
 from django.db.models import Q
@@ -6,6 +7,7 @@ from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.views import View
 
+from adminka.model import Gallery
 from adminka.model.room import Room, RoomImage, Reservation
 
 
@@ -191,4 +193,7 @@ class BookView(View):
                                        num_of_children=int(num_of_children), customer_email=customer_email,
                                        customer_name=customer_name)
 
-        return HttpResponseRedirect(reverse('room-view', kwargs={'slug': room.slug}))
+        return render(request, 'main/gallery.html', {'success': True,
+                                                     'g_images': Gallery.objects.all(),
+                                                     'r_images': RoomImage.objects.all()})
+        # return HttpResponseRedirect(reverse('room-view', kwargs={'slug': room.slug}))
