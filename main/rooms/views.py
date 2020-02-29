@@ -168,22 +168,23 @@ class CheckAvailability(View):
 
 
 class BookView(View):
-    def get(self, request, room_id):
+    def post(self, request, room_id):
         room = Room.objects.get(id=room_id)
 
-        start_date = self.request.GET.get('start_date')
+        start_date = self.request.POST.get('start_date')
         start_date = start_date.split('/')
         start_date = date(year=int(start_date[2]), month=int(start_date[1]), day=int(start_date[0]))
-        end_date = self.request.GET.get('end_date')
+        end_date = self.request.POST.get('end_date')
         end_date = end_date.split('/')
         end_date = date(year=int(end_date[2]), month=int(end_date[1]), day=int(end_date[0]))
-        num_of_adults = self.request.GET.get('num_of_adults')
+        num_of_adults = self.request.POST.get('num_of_adults')
         num_of_children = self.request.POST.get('num_of_children')
         customer_name = self.request.POST.get('customer_name')
         customer_email = self.request.POST.get('customer_email')
 
         if start_date >= end_date:
-            return render(request, 'main/accomodation_view.html', {'error': 'Invalid dates'})
+            return HttpResponseRedirect(reverse('room-view', {'error': 'Invalid dates'}, kwargs={'slug': room.slug}))
+            # return render(request, 'main/accomodation_view.html', {'error': 'Invalid dates'})
 
         r = Reservation.objects.create(room=room, start_date=start_date, end_date=end_date,
                                        num_of_adults=int(num_of_adults),

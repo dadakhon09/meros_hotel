@@ -65,7 +65,7 @@
     <!--================Booking Tabel Area =================-->
     <section class="hotel_booking_area">
         <div class="container">
-            <form id="bookForm" class="" action="{% url 'book' room.id %}" method="POST">{% csrf_token %}
+            <form id="bookForm" class="" action="{% url 'book' room.id %}" method="post">{% csrf_token %}
 
                 <div class="row hotel_booking_table">
                     <div class="col-md-3">
@@ -96,6 +96,9 @@
                                                 </span>
                                             </div>
                                         </div>
+                                        {% if error %}
+                                            {{ error }}
+                                        {% endif %}
                                     </div>
                                 </div>
                                 <div class="col-md-4">
@@ -144,7 +147,8 @@
                                                        required/>
                                             </div>
                                         </div>
-                                        <button class="book_now_btn button_hover" type="submit">{% trans 'Book Now' %}</button>
+                                        <button class="book_now_btn button_hover"
+                                                type="submit">{% trans 'Book Now' %}</button>
                                     </div>
                                 </div>
                             </div>
@@ -252,7 +256,7 @@
                 $(form).ajaxSubmit({
                     type: "POST",
                     data: $(form).serialize(),
-                    url: '{% url 'book' room.id %}',
+                    url: '',
                     success: function () {
                         $('#bookForm :input').attr('disabled', 'disabled');
                         $('#bookForm').fadeTo("slow", 1, function () {
