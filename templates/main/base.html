@@ -25,7 +25,7 @@
 
     {% block head %}
     {% endblock %}
-    <meta name="google-site-verification" content="g5F8HQGjTvEJRHj08XUzArJcd_ptp0-fBQJ4knKlTzw" />
+    <meta name="google-site-verification" content="g5F8HQGjTvEJRHj08XUzArJcd_ptp0-fBQJ4knKlTzw"/>
 </head>
 <body>
 <div class="preloader">
@@ -54,7 +54,8 @@
                 <ul class="nav navbar-nav menu_nav ml-auto">
                     <li class="nav-item"><a class="nav-link" href="{% url 'index' %}">{% trans 'Home' %}</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">{% trans 'About us' %}</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{% url 'rooms' %}">{% trans 'Accomodation' %}</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'rooms' %}">{% trans 'Accomodation' %}</a>
+                    </li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'gallery' %}">{% trans 'Gallery' %}</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">{% trans 'Contact' %}</a></li>
                     {% if LANGUAGE_CODE == 'en' %}
@@ -90,32 +91,37 @@
         <div class="row">
             <div class="col-lg-3  col-md-6 col-sm-6">
                 <div class="single-footer-widget">
-                    <h6 class="footer_title">About Hotel</h6>
-                    <p>The world has become so fast paced that people don’t want to stand by reading a page of
-                        information, they would much rather look at a presentation and understand the message. It has
-                        come to a point </p>
+                    <h6 class="footer_title">{% if LANGUAGE_CODE == 'en' %} About {% else %} О {% endif %} Meros
+                        B&B</h6>
+                    <p>{% if LANGUAGE_CODE == 'en' %}The Meros B&B is located inside the baked mud walls of ancient
+                        Khiva, not far from the Western (Ota Darvoza) and Northern (Boqcha Darvoza) gates. “MEROS” means
+                        'cultural heritage' in English, and the Matkarimov family is steeped in Uzbek
+                        culture.{% else %}  Meros B&B  расположен внутри обожженных грязевых
+                        стен древней Хивы, недалеко от западных (Ота Дарвоза) и Северных (Бокча Дарвоза) ворот. «MEROS»
+                        означает «культурное наследие» на английском языке, а семья Маткаримовых погружена в узбекскую
+                        культуру.{% endif %} </p>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="single-footer-widget">
-                    <h6 class="footer_title">Navigation Links</h6>
+                    <h6 class="footer_title">{% trans 'Navigation Links' %}</h6>
                     <div class="row">
                         <div class="col-4">
                             <ul class="list_style">
-                                <li><a href="{% url 'index' %}">Home</a></li>
-                                <li><a href="#">Feature</a></li>
-                                <li><a href="#">Services</a></li>
-                                <li><a href="#">Portfolio</a></li>
+                                <li><a href="{% url 'index' %}">{% trans 'Home' %}</a></li>
+                                <li><a href="#">{% trans 'About' %}</a></li>
+                                <li><a href="#">{% trans 'Pricing' %}</a></li>
+                                <li><a href="#">{% trans 'Contact' %}</a></li>
                             </ul>
                         </div>
-                        <div class="col-4">
-                            <ul class="list_style">
-                                <li><a href="#">Team</a></li>
-                                <li><a href="{% url 'rooms' %}">Pricing</a></li>
-                                <li><a href="#">Blog</a></li>
-                                <li><a href="{% url 'contact' %}">Contact</a></li>
-                            </ul>
-                        </div>
+                        {#                        <div class="col-4">#}
+                        {#                            <ul class="list_style">#}
+                        {#                                <li><a href="#">Team</a></li>#}
+                        {#                                <li><a href="{% url 'rooms' %}">Pricing</a></li>#}
+                        {#                                <li><a href="#">Blog</a></li>#}
+                        {#                                <li><a href="{% url 'contact' %}">Contact</a></li>#}
+                        {#                            </ul>#}
+                        {#                        </div>#}
                     </div>
                 </div>
             </div>
@@ -144,7 +150,7 @@
             </div>
             <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="single-footer-widget instafeed">
-                    <h6 class="footer_title">InstaFeed</h6>
+                    <h6 class="footer_title">{% trans 'InstaFeed' %}</h6>
                     <ul class="list_style instafeed d-flex flex-wrap">
                         <li><img src="{% static 'main/image/instagram/Image-01.jpg' %}" alt=""></li>
                         <li><img src="{% static 'main/image/instagram/Image-02.jpg' %}" alt=""></li>
@@ -163,12 +169,12 @@
             <p class="col-lg-8 col-sm-12 footer-text m-0">
 
                 Copyright &copy;<script>document.write(new Date().getFullYear());</script>
+                . Powered by <a href="http://hbmedia.uz">HBMedia</a>
 
             <div class="col-lg-4 col-sm-12 footer-social">
-                <a href="#"><i class="fa fa-facebook"></i></a>
-                <a href="#"><i class="fa fa-twitter"></i></a>
-                <a href="#"><i class="fa fa-instagram"></i></a>
-                <a href="#"><i class="fa fa-telegram"></i></a>
+                <a href="https://www.facebook.com/meroskhiva/"><i class="fa fa-facebook"></i></a>
+                <a href="https://instagram.com/meroskhiva?igshid=p97stft6i1gy"><i class="fa fa-instagram"></i></a>
+                <a href="https://twitter.com/meroskhiva?s=09"><i class="fa fa-twitter"></i></a>
             </div>
         </div>
     </div>

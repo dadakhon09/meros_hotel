@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-02-25 20:57+0500\n"
+"POT-Creation-Date: 2020-02-29 12:26+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -52,6 +52,7 @@ msgid "logout"
 msgstr "выйти"
 
 #: templates/adminka/_base.html:160 templates/main/about.html:15
+#: templates/main/base.html:112
 msgid "About"
 msgstr "О Мерос"
 
@@ -60,7 +61,7 @@ msgstr "О Мерос"
 msgid "Rooms"
 msgstr "Номера"
 
-#: templates/adminka/_base.html:168 templates/main/base.html:57
+#: templates/adminka/_base.html:168 templates/main/base.html:59
 #: templates/main/gallery.html:13 templates/main/gallery.html:16
 msgid "Gallery"
 msgstr "Галерея"
@@ -201,14 +202,13 @@ msgstr "Выезд"
 
 #: templates/adminka/reservations/reservations_create.html:117
 #: templates/adminka/reservations/reservations_update.html:115
-#: templates/main/accomodation_view.html:105 templates/main/index.html:65
+#: templates/main/accomodation_view.html:105 templates/main/index.html:67
 msgid "Number of adults"
 msgstr "Количество взрослых"
 
 #: templates/adminka/reservations/reservations_create.html:130
 #: templates/adminka/reservations/reservations_update.html:129
-#: templates/main/accomodation_view.html:119 templates/main/index.html:81
-
+#: templates/main/accomodation_view.html:119 templates/main/index.html:83
 msgid "Number of children"
 msgstr "Количество детей"
 
@@ -251,28 +251,29 @@ msgid "Square meter(in  km2)"
 msgstr "Квадратный метр(в км2)"
 
 #: templates/main/about.html:12 templates/main/about.html:28
-#: templates/main/index.html:185
+#: templates/main/index.html:187
 msgid "About Us"
 msgstr "О нас"
 
 #: templates/main/about.html:14 templates/main/accomodation.html:11
 #: templates/main/accomodation_view.html:17
-#: templates/main/available_rooms.html:11 templates/main/base.html:54
-#: templates/main/contact.html:12 templates/main/gallery.html:15
+#: templates/main/available_rooms.html:11 templates/main/base.html:55
+#: templates/main/base.html:111 templates/main/contact.html:12
+#: templates/main/gallery.html:15
 msgid "Home"
 msgstr "Главная"
 
-#: templates/main/about.html:28 templates/main/index.html:185
+#: templates/main/about.html:28 templates/main/index.html:187
 msgid "Our History"
 msgstr "Наша история"
 
-#: templates/main/about.html:28 templates/main/index.html:185
+#: templates/main/about.html:28 templates/main/index.html:187
 msgid "Mission & Vision"
 msgstr "Видение миссии"
 
 #: templates/main/accomodation.html:9 templates/main/accomodation.html:12
 #: templates/main/accomodation.html:23 templates/main/available_rooms.html:26
-#: templates/main/base.html:56
+#: templates/main/base.html:57
 msgid "Accomodation"
 msgstr "Размещение"
 
@@ -280,12 +281,14 @@ msgstr "Размещение"
 msgid ""
 "We all live in an age that belongs to the young at heart. Life that is "
 "becoming extremely fast,"
-msgstr "Мы все живем в эпоху, которая принадлежит молодым сердцем. Жизнь, которая становится чрезвычайно быстрой"
+msgstr ""
+"Мы все живем в эпоху, которая принадлежит молодым сердцем. Жизнь, которая "
+"становится чрезвычайно быстрой"
 
 #: templates/main/accomodation.html:33
 #: templates/main/accomodation_view.html:147
-#: templates/main/available_rooms.html:37 templates/main/index.html:133
-#: templates/main/index.html:149 templates/main/index.html:163
+#: templates/main/available_rooms.html:37 templates/main/index.html:135
+#: templates/main/index.html:151 templates/main/index.html:165
 msgid "Book Now"
 msgstr "Заказать сейчас"
 
@@ -293,6 +296,10 @@ msgstr "Заказать сейчас"
 #: templates/main/accomodation_view.html:18
 msgid "Single View"
 msgstr "Одиночный вид"
+
+#: templates/main/accomodation_view.html:38
+msgid "Square meter"
+msgstr "Квадратный метр(в км2)"
 
 #: templates/main/accomodation_view.html:39
 msgid "Room type"
@@ -306,11 +313,11 @@ msgstr "Заказывать"
 msgid "This Room"
 msgstr ""
 
-#: templates/main/accomodation_view.html:83 templates/main/index.html:43
+#: templates/main/accomodation_view.html:83 templates/main/index.html:42
 msgid "Arrival Date"
 msgstr "Дата прибытия"
 
-#: templates/main/accomodation_view.html:93 templates/main/index.html:52
+#: templates/main/accomodation_view.html:93 templates/main/index.html:51
 msgid "Departure Date"
 msgstr "Дата отбытия"
 
@@ -322,42 +329,55 @@ msgstr "Ваше имя"
 msgid "Your email"
 msgstr "Ваш адрес электронной почты"
 
-#: templates/main/accomodation_view.html:171 templates/main/contact.html:90
+#: templates/main/accomodation_view.html:171 templates/main/contact.html:94
 msgid "Thank you"
 msgstr "Спасибо"
 
 #: templates/main/accomodation_view.html:172
 msgid "We will contact you back, please check your email regularly"
-msgstr "Мы свяжемся с вами, пожалуйста, регулярно проверяйте вашу электронную почту"
+msgstr ""
+"Мы свяжемся с вами, пожалуйста, регулярно проверяйте вашу электронную почту"
 
-#: templates/main/accomodation_view.html:187 templates/main/contact.html:106
+#: templates/main/accomodation_view.html:187 templates/main/contact.html:110
 msgid "Sorry !"
 msgstr "R сожалению"
 
-#: templates/main/accomodation_view.html:188 templates/main/contact.html:107
+#: templates/main/accomodation_view.html:188 templates/main/contact.html:111
 msgid "Something went wrong"
 msgstr "Что-то пошло не так"
 
-#: templates/main/accomodation_view.html:235 templates/main/contact.html:148
+#: templates/main/accomodation_view.html:235 templates/main/contact.html:152
 msgid "come on, you have a name, don`t you?"
 msgstr "у вас есть имя, не так ли?"
 
-#: templates/main/accomodation_view.html:236 templates/main/contact.html:149
+#: templates/main/accomodation_view.html:236 templates/main/contact.html:153
 msgid "your name must consist of at least 2 characters"
 msgstr "Ваше имя должно состоять как минимум из 2 символов"
 
-#: templates/main/available_rooms.html:40 templates/main/index.html:138
-#: templates/main/index.html:153 templates/main/index.html:167
+#: templates/main/available_rooms.html:40 templates/main/index.html:140
+#: templates/main/index.html:155 templates/main/index.html:169
 msgid "/night"
 msgstr "ночь"
 
-#: templates/main/base.html:55
+#: templates/main/base.html:56
 msgid "About us"
 msgstr "О нас"
 
-#: templates/main/base.html:58
+#: templates/main/base.html:60 templates/main/base.html:114
 msgid "Contact"
 msgstr "Контакт"
+
+#: templates/main/base.html:107
+msgid "Navigation Links"
+msgstr "Навигационные ссылки"
+
+#: templates/main/base.html:113
+msgid "Pricing"
+msgstr "Цена"
+
+#: templates/main/base.html:153
+msgid "InstaFeed"
+msgstr "InstaFeed"
 
 #: templates/main/contact.html:10 templates/main/contact.html:13
 msgid "Contact Us"
@@ -391,27 +411,27 @@ msgstr "Введите сообщение"
 msgid "Send Message"
 msgstr "Отправить сообщение"
 
-#: templates/main/contact.html:91
+#: templates/main/contact.html:95
 msgid "Your message is successfully sent..."
 msgstr "Ваше сообщение успешно отправлено..."
 
-#: templates/main/contact.html:152
+#: templates/main/contact.html:156
 msgid "come on, you have a subject, don`t you?"
 msgstr "у вас есть тема, не так ли?"
 
-#: templates/main/contact.html:153
+#: templates/main/contact.html:157
 msgid "your subject must consist of at least 4 characters"
 msgstr "тема должна содержать не менее 4 символов"
 
-#: templates/main/contact.html:156
+#: templates/main/contact.html:160
 msgid "no email, no message"
 msgstr "нет электронной почты, нет сообщений"
 
-#: templates/main/contact.html:159
+#: templates/main/contact.html:163
 msgid "um...yea, you have to write something to send this form."
 msgstr "хм ... да, вы должны написать что-то, чтобы отправить эту форму."
 
-#: templates/main/contact.html:160
+#: templates/main/contact.html:164
 msgid "thats all? really?"
 msgstr "это все? действительно?"
 
@@ -419,9 +439,9 @@ msgstr "это все? действительно?"
 msgid "Facilities"
 msgstr "Услуги"
 
-#: templates/main/facilities.html:9 templates/main/gallery.html:28
-msgid "Who are in extremely love with eco friendly system."
-msgstr ""
+#: templates/main/facilities.html:9
+msgid "We are in extremely love with eco friendly system."
+msgstr "Мы очень любим экологически чистую систему"
 
 #: templates/main/facilities.html:14
 msgid "Restaurant"
@@ -431,7 +451,9 @@ msgstr "Ресторан"
 msgid ""
 "Hotel provides delicious both local and international cuisines for our "
 "guests."
-msgstr "Отель предлагает вкусные блюда местной и международной кухни для наших гостей."
+msgstr ""
+"Отель предлагает вкусные блюда местной и международной кухни для наших "
+"гостей."
 
 #: templates/main/facilities.html:20
 msgid "Library"
@@ -440,7 +462,9 @@ msgstr "Библиотека"
 #: templates/main/facilities.html:21
 msgid ""
 "Hotel has a library and we help our guests to choose a proper book to read."
-msgstr "В отеле есть библиотека, и мы помогаем нашим гостям выбрать подходящую книгу для чтения."
+msgstr ""
+"В отеле есть библиотека, и мы помогаем нашим гостям выбрать подходящую книгу "
+"для чтения."
 
 #: templates/main/facilities.html:26
 msgid "Sun Teracce"
@@ -449,7 +473,9 @@ msgstr "Солнечная терраса"
 #: templates/main/facilities.html:27
 msgid ""
 "Our sun terrace is in a wonderfully sunny location, right on the ski slopes."
-msgstr "Наша солнечная терраса находится в чудесно солнечном месте, прямо на лыжных склонах."
+msgstr ""
+"Наша солнечная терраса находится в чудесно солнечном месте, прямо на лыжных "
+"склонах."
 
 #: templates/main/facilities.html:32
 msgid "Free Parking"
@@ -458,7 +484,9 @@ msgstr "Бесплатная парковка"
 #: templates/main/facilities.html:33
 msgid ""
 "Free public parking is possible on site where you can park your car easily."
-msgstr "На территории отеля имеется бесплатная общественная парковка, где вы можете легко припарковать свой автомобиль."
+msgstr ""
+"На территории отеля имеется бесплатная общественная парковка, где вы можете "
+"легко припарковать свой автомобиль."
 
 #: templates/main/facilities.html:38
 msgid "Free WiFi"
@@ -467,7 +495,9 @@ msgstr "Бесплатный WiFi"
 #: templates/main/facilities.html:39
 msgid ""
 "Free untimited accses for INTERNET is available for our guests in the hotel."
-msgstr "Для наших гостей в отеле доступны бесплатные безналичные платежи по Интернету."
+msgstr ""
+"Для наших гостей в отеле доступны бесплатные безналичные платежи по "
+"Интернету."
 
 #: templates/main/facilities.html:44
 msgid "Bar"
@@ -481,6 +511,10 @@ msgstr "Холодные, горячие и другие виды готовят
 msgid "Meros B&B Gallery"
 msgstr "Meros B&B Галерея"
 
+#: templates/main/gallery.html:28
+msgid "Who are in extremely love with eco friendly system."
+msgstr ""
+
 #: templates/main/index.html:14
 msgid "WELCOME TO MEROS B&B"
 msgstr "ДОБРО ПОЖАЛОВАТЬ В MEROS B&B"
@@ -489,23 +523,21 @@ msgstr "ДОБРО ПОЖАЛОВАТЬ В MEROS B&B"
 msgid "The best way for the adventure is to visit us"
 msgstr "Лучший способ для приключений - посетить нас"
 
-#: templates/main/index.html:16
-msgid "Get Started"
-msgstr "Начать"
-
-#: templates/main/index.html:100
+#: templates/main/index.html:102
 msgid "Check Availability"
 msgstr "Проверять наличие"
 
-#: templates/main/index.html:121
+#: templates/main/index.html:123
 msgid "Hotel Accomodation"
 msgstr "Размещение в гостинице"
 
-#: templates/main/index.html:122
+#: templates/main/index.html:124
 msgid ""
 "We all live in an age that belongs to the young at heart. Life that is "
 "becoming extremely fast, "
-msgstr "Мы все живем в эпоху, которая принадлежит молодым в глубине души. Жизнь, которая становится чрезвычайно быстрой"
+msgstr ""
+"Мы все живем в эпоху, которая принадлежит молодым в глубине души. Жизнь, "
+"которая становится чрезвычайно быстрой"
 
 #: templates/main/testimonials.html:6
 msgid "Testimonial from our Clients"
@@ -516,7 +548,10 @@ msgid ""
 "I think this is my 4th stay at Meros B&B, Khiva and I would like to prefer "
 "staying here again for my future visits to Uzbekistan. Thanks to all the "
 "Meros B&B Staff!"
-msgstr "Я думаю, что это мое четвертое пребывание в Meros B & B, Хива, и я бы хотел остаться здесь еще раз для моих будущих визитов в Узбекистан. Спасибо всему персоналу Meros B & B!"
+msgstr ""
+"Я думаю, что это мое четвертое пребывание в Meros B & B, Хива, и я бы хотел "
+"остаться здесь еще раз для моих будущих визитов в Узбекистан. Спасибо всему "
+"персоналу Meros B & B!"
 
 #: templates/main/testimonials.html:15
 msgid "Ms. Angela, US"
@@ -537,7 +572,12 @@ msgid ""
 "always present. Your staff makes me feel as If I am the only customer in "
 "your hotel. If you are looking for exclusivity and first class then look no "
 "further "
-msgstr "Я должен признать ваше выдающееся гостеприимство и обслуживание, которые я получаю ежедневно. Моя комната всегда чистая, свежие полотенца и постельное белье всегда присутствуют. Ваш персонал заставляет меня чувствовать, будто я единственный клиент в вашем отеле. Если вы ищете эксклюзивность и первый класс, то не смотрите дальше"
+msgstr ""
+"Я должен признать ваше выдающееся гостеприимство и обслуживание, которые я "
+"получаю ежедневно. Моя комната всегда чистая, свежие полотенца и постельное "
+"белье всегда присутствуют. Ваш персонал заставляет меня чувствовать, будто я "
+"единственный клиент в вашем отеле. Если вы ищете эксклюзивность и первый "
+"класс, то не смотрите дальше"
 
 #: templates/main/testimonials.html:50
 msgid "Mr. Sean G. Pearson, UK"
@@ -1736,3 +1776,6 @@ msgstr ""
 #: venv/lib/python3.8/site-packages/django/views/templates/default_urlconf.html:409
 msgid "Connect, get help, or contribute"
 msgstr ""
+
+#~ msgid "Get Started"
+#~ msgstr "Начать"
