@@ -290,7 +290,7 @@ msgstr ""
 #: templates/main/available_rooms.html:37 templates/main/index.html:135
 #: templates/main/index.html:151 templates/main/index.html:165
 msgid "Book Now"
-msgstr "Заказать сейчас"
+msgstr "Заказать"
 
 #: templates/main/accomodation_view.html:15
 #: templates/main/accomodation_view.html:18
