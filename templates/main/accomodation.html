@@ -34,7 +34,7 @@
                                 <a href="{% url 'room-view' room.slug %}"
                                    class="btn theme_btn button_hover">{% trans 'Book Now' %}</a>
                             </div>
-                            <a href="{% url 'room-view' room.slug %}"><h4 class="sec_h4">{{ room.title.title_en }}</h4>
+                            <a href="{% url 'room-view' room.slug %}"><h4 class="sec_h4">{{ room.get_room_type_display }}</h4>
                             </a>
                             <h5>${{ room.price }}<small>/night</small></h5>
                         </div>
