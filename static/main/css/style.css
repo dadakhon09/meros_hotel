@@ -836,6 +836,7 @@ button:focus {
 
 .facilities_item {
   border: 1px solid #777777;
+  height: 80%;
   border-radius: 10px;
   background-color: rgba(249, 249, 255, 0.102);
   padding: 31px 40px 37px;
