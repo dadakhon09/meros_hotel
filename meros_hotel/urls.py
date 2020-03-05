@@ -25,7 +25,7 @@ urlpatterns = [
 
 urlpatterns += i18n_patterns(
     path('', include('main.urls')),
-    path('admin/', include('adminka.urls')),
+    path('m/', include('adminka.urls')),
 )
 
 if settings.DEBUG:

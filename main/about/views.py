@@ -8,4 +8,3 @@ class AboutView(View):
     def get(self, request):
         about = About.objects.get(id=1)
         return render(request, 'main/about.html', {'about': about})
-
