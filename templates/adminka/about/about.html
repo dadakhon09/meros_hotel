@@ -177,6 +177,16 @@
                     },
 
                 ]
+            }).on('filebeforedelete', function () {
+                var aborted = !window.confirm('Are you sure you want to delete this file?');
+                if (aborted) {
+                    window.alert('File deletion was aborted! ');
+                };
+                return aborted;
+            }).on('filedeleted', function () {
+                setTimeout(function () {
+                    window.alert('File deletion was successful! ');
+                }, 700);
             });
         });
     </script>

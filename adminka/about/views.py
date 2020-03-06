@@ -1,6 +1,6 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
-from django.http import HttpResponseRedirect, HttpResponse
+from django.http import HttpResponseRedirect, HttpResponse, JsonResponse
 from django.urls import reverse
 from django.views import View
 from django.views.decorators.csrf import csrf_exempt
@@ -46,4 +46,5 @@ class AdminAboutView(LoginRequiredMixin, View):
 def about_image_delete(self):
     about = About.objects.get(id=1)
     about.image.delete()
-    return HttpResponse('image deleted')
+    return JsonResponse({'i': 'image deleted'})
+

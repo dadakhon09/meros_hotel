@@ -1,7 +1,7 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.views import View
-from django.http import HttpResponseRedirect, HttpResponse
+from django.http import HttpResponseRedirect, HttpResponse, JsonResponse
 from django.urls import reverse
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.views.decorators.csrf import csrf_exempt
@@ -146,4 +146,4 @@ def room_image_delete(self):
     image = RoomImage.objects.get(id=self.POST.get('key'))
     image.image.delete()
     image.delete()
-    return HttpResponse('image deleted')
+    return JsonResponse({'i': 'image deleted'})

@@ -20,12 +20,12 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('root/', admin.site.urls),
 ]
 
 urlpatterns += i18n_patterns(
     path('', include('main.urls')),
-    path('admin/', include('adminka.urls')),
+    path('meros/', include('adminka.urls')),
 )
 
 if settings.DEBUG:
