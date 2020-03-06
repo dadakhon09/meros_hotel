@@ -180,12 +180,16 @@
     <script type="text/javascript"
             src="{% static 'adminka/assets/plugins/tempus-dominus/tempusdominus-bootstrap-4.min.js' %}"></script>
     <script type="text/javascript">
+        $.fn.datepicker.defaults.format = "dd/mm/yyyy";
         $(function () {
-            $('#datetimepicker4').datetimepicker({
-                format: 'L'
+            $('#datetimepicker4').datepicker({
+                startDate: '-0m',
+                autoClose: true
+
             });
-            $('#datetimepicker44').datetimepicker({
-                format: 'L'
+            $('#datetimepicker44').datepicker({
+                startDate: '-0m',
+                autoClose: true
             });
         });
     </script>

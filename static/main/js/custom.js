@@ -68,6 +68,7 @@
     $('#datetimepicker11,#datetimepicker1').datepicker({
         startDate: '-0m',
         format: 'dd/mm/yyyy',
+        autoclose: true
     });
     
      /*---------gallery isotope js-----------*/
