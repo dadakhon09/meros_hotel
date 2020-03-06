@@ -1,5 +1,5 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.shortcuts import render
 from django.urls import reverse
 from django.views import View
@@ -34,4 +34,4 @@ def gallery_image_delete(self):
     image = Gallery.objects.get(id=self.POST.get('key'))
     image.image.delete()
     image.delete()
-    return HttpResponse('image deleted')
+    return JsonResponse({'i': 'image deletedd'})
