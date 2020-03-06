@@ -19,4 +19,4 @@ class ContactView(View):
                          f'Name: {full_name}\n Email: {email}\n Message:\n{message}',
                          'odadaxon99@gmail.com', ['odadaxon99@gmail.com', ])
         m.send()
-        return HttpResponseRedirect(reverse('contact'))
+        return render(request, 'main/contact.html')

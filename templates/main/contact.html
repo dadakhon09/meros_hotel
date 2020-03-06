@@ -1,5 +1,6 @@
 {% extends 'main/base.html' %}
 {% load static i18n %}
+{% get_current_language as LANGUAGE_CODE %}
 {% block body %}
     <!--================Breadcrumb Area =================-->
     <section class="breadcrumb_area">
@@ -178,6 +179,14 @@
                             $('#success').fadeIn()
                             $('.modal').modal('hide');
                             $('#success').modal('show');
+                            setTimeout(function () {
+                                {% if LANGUAGE_CODE == 'en' %}
+                                    location.href = "http://meroskhiva.uz/en/contact";
+                                {% else %}
+                                    location.href = "http://meroskhiva.uz/ru/contact";
+                                {% endif %}
+                            }, 3000);
+
                         })
                     },
                     error: function () {
