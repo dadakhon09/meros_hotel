@@ -77,7 +77,8 @@
                                 <thead>
                                 <tr>
                                     <th width="1%">#</th>
-                                    <th width="87%">{% trans 'Title' %}</th>
+                                    <th width="77%">{% trans 'Title' %}</th>
+                                    <th width="10%">{% trans 'Type' %}</th>
                                     <th width="10%">{% trans 'Price' %}</th>
                                     <th width="1%"></th>
                                     <th width="1%"></th>
@@ -98,6 +99,7 @@
                                                 </div>
                                             </a>
                                         </td>
+                                        <td>{{ room.get_room_type_display }}</td>
                                         <td>${{ room.price }}</td>
                                         <td><a href="{% url 'rooms-update' room.id %}" class="label label-info"><i
                                                 class="fas fa-edit"></i>{% trans 'Edit' %}</a></td>
