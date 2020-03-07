@@ -929,9 +929,10 @@ button:focus {
 }
 
 .testimonial_slider .testimonial_item {
-    border: 1px solid #eeeeee;
-    background: #fff;
+    /*border: 1px solid #eeeeee;*/
+    /*background: #fff;*/
     /*padding: 40px;*/
+    margin-left: 40px;
     height: 60vh;
 
 }
