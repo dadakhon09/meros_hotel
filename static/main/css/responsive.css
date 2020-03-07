@@ -216,6 +216,7 @@
 	}
 	.testimonial_slider .testimonial_item{
 		display: block;
+		margin-left: 0;
 	}
     .navbar{
         padding: 0px 10px;
