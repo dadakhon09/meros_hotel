@@ -931,14 +931,14 @@ button:focus {
 .testimonial_slider .testimonial_item {
     border: 1px solid #eeeeee;
     background: #fff;
-    padding: 40px;
+    /*padding: 40px;*/
     height: 60vh;
 
 }
 
 .testimonial_slider .testimonial_item img {
     width: auto;
-    margin-right: 30px;
+    /*margin-right: 30px;*/
 }
 
 .testimonial_slider .testimonial_item p {
